@@ -3,12 +3,13 @@
 import { MapPin, Heart, Star, ArrowRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { formatPrice, getTourPricing, type Tour } from "@/data/promotions"
+import { formatPrice, getTourDiscount, getTourPricing, type Tour } from "@/data/promotions"
 
 export default function TourCard({ tour }: { tour: Tour }) {
     const roundedRating = Math.round(tour.rating)
     const formattedRating = Number.isInteger(tour.rating) ? tour.rating.toFixed(0) : tour.rating.toFixed(1)
     const pricing = getTourPricing(tour)
+    const promotion = getTourDiscount(tour)
 
     return (
         <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition p-3 sm:p-4 flex flex-col sm:flex-row gap-4 sm:items-center">
@@ -37,9 +38,9 @@ export default function TourCard({ tour }: { tour: Tour }) {
                 </div>
 
                 {/* DISCOUNT */}
-                {tour.discount && (
-                    <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded z-10">
-                        {tour.discount}
+                {(promotion || tour.discount) && (
+                    <span className={`absolute top-2 left-2 text-white text-xs font-semibold px-2 py-1 rounded z-10 shadow-sm ${promotion ? "bg-red-500" : "bg-green-500"}`}>
+                        {promotion?.label ?? tour.discount}
                     </span>
                 )}
 
@@ -112,15 +113,31 @@ export default function TourCard({ tour }: { tour: Tour }) {
                         <span className="text-gray-500 font-normal">/ Día</span>
                     </div>
 
-                    <div>
-                        <div className="text-green-500 font-semibold">
-                            {pricing.isGroupPricing ? "Desde " : ""}
-                            {formatPrice(pricing.startingPrice)}{" "}
-                            <span className="text-gray-500 font-normal">/ persona</span>
+                    <div className="min-w-0">
+                        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                            {pricing.hasDiscount && (
+                                <span className="text-sm font-medium text-gray-400 line-through">
+                                    {formatPrice(pricing.originalStartingPrice)}
+                                </span>
+                            )}
+                            <div className="text-green-500 font-semibold">
+                                {pricing.isGroupPricing ? "Desde " : ""}
+                                {formatPrice(pricing.startingPrice)}{" "}
+                                <span className="text-gray-500 font-normal">/ persona</span>
+                            </div>
                         </div>
                         {pricing.isGroupPricing && (
-                            <p className="mt-1 text-xs text-gray-500">
-                                Tarifa base del grupo: {formatPrice(pricing.totalPrice)} hasta {pricing.maxPeople} personas
+                            <p className="mt-1 flex flex-wrap gap-x-1 text-xs text-gray-500">
+                                <span>Tarifa base del grupo:</span>
+                                {pricing.hasDiscount && (
+                                    <span className="text-gray-400 line-through">
+                                        {formatPrice(pricing.originalTotalPrice)}
+                                    </span>
+                                )}
+                                <span className={pricing.hasDiscount ? "font-semibold text-red-500" : undefined}>
+                                    {formatPrice(pricing.totalPrice)}
+                                </span>
+                                <span>hasta {pricing.maxPeople} personas</span>
                             </p>
                         )}
                     </div>

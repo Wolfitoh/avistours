@@ -7,6 +7,7 @@ export type Tour = {
     location: string
     price: number
     groupPrice?: number
+    discountPrice?: number
     minPeople?: number
     maxPeople?: number
     image: string
@@ -33,6 +34,27 @@ function roundPrice(value: number) {
     return Number(value.toFixed(2))
 }
 
+function getValidDiscountPrice(discountPrice: number | undefined, originalPrice: number) {
+    if (
+        typeof discountPrice !== "number" ||
+        !Number.isFinite(discountPrice) ||
+        discountPrice <= 0 ||
+        discountPrice >= originalPrice
+    ) {
+        return null
+    }
+
+    return roundPrice(discountPrice)
+}
+
+function getDiscountPercent(originalPrice: number, currentPrice: number) {
+    if (currentPrice >= originalPrice) {
+        return undefined
+    }
+
+    return Math.max(1, Math.round(((originalPrice - currentPrice) / originalPrice) * 100))
+}
+
 export function formatPrice(value: number) {
     const safeValue = roundPrice(value)
 
@@ -40,15 +62,34 @@ export function formatPrice(value: number) {
 }
 
 export function getTourStartingPrice(tour: Tour) {
-    if (tour.groupPrice && tour.maxPeople) {
-        return roundPrice(tour.groupPrice / tour.maxPeople)
-    }
-
-    return roundPrice(tour.price)
+    return getTourPricing(tour).startingPrice
 }
 
 export function hasGroupPricing(tour: Tour) {
     return Boolean(tour.groupPrice && tour.maxPeople && tour.maxPeople > 1)
+}
+
+export function getTourDiscount(tour: Tour) {
+    const originalPrice = hasGroupPricing(tour) ? roundPrice(tour.groupPrice!) : roundPrice(tour.price)
+    const discountPrice = getValidDiscountPrice(tour.discountPrice, originalPrice)
+
+    if (!discountPrice) {
+        return null
+    }
+
+    const percent = getDiscountPercent(originalPrice, discountPrice)
+
+    if (!percent) {
+        return null
+    }
+
+    return {
+        originalPrice,
+        discountPrice,
+        amountOff: roundPrice(originalPrice - discountPrice),
+        percent,
+        label: `En Promocion -${percent}%`,
+    }
 }
 
 export function getTourPricing(tour: Tour, people?: number) {
@@ -56,8 +97,13 @@ export function getTourPricing(tour: Tour, people?: number) {
         const minPeople = tour.minPeople ?? 1
         const maxPeople = tour.maxPeople ?? 1
         const selectedPeople = Math.min(Math.max(people ?? maxPeople, minPeople), maxPeople)
-        const totalPrice = roundPrice(tour.groupPrice!)
+        const originalTotalPrice = roundPrice(tour.groupPrice!)
+        const discountTotalPrice = getValidDiscountPrice(tour.discountPrice, originalTotalPrice)
+        const totalPrice = discountTotalPrice ?? originalTotalPrice
         const perPersonPrice = roundPrice(totalPrice / selectedPeople)
+        const originalPerPersonPrice = roundPrice(originalTotalPrice / selectedPeople)
+        const originalStartingPrice = roundPrice(originalTotalPrice / maxPeople)
+        const discountPercent = getDiscountPercent(originalTotalPrice, totalPrice)
 
         return {
             isGroupPricing: true,
@@ -67,19 +113,34 @@ export function getTourPricing(tour: Tour, people?: number) {
             totalPrice,
             perPersonPrice,
             startingPrice: roundPrice(totalPrice / maxPeople),
+            originalTotalPrice,
+            originalPerPersonPrice,
+            originalStartingPrice,
+            hasDiscount: Boolean(discountPercent),
+            discountPercent,
         }
     }
 
     const selectedPeople = Math.max(people ?? 1, 1)
-    const perPersonPrice = roundPrice(tour.price)
+    const originalPerPersonPrice = roundPrice(tour.price)
+    const discountPerPersonPrice = getValidDiscountPrice(tour.discountPrice, originalPerPersonPrice)
+    const perPersonPrice = discountPerPersonPrice ?? originalPerPersonPrice
+    const originalTotalPrice = roundPrice(originalPerPersonPrice * selectedPeople)
+    const totalPrice = roundPrice(perPersonPrice * selectedPeople)
+    const discountPercent = getDiscountPercent(originalPerPersonPrice, perPersonPrice)
 
     return {
         isGroupPricing: false,
         minPeople: 1,
         maxPeople: 1,
         people: selectedPeople,
-        totalPrice: roundPrice(perPersonPrice * selectedPeople),
+        totalPrice,
         perPersonPrice,
         startingPrice: perPersonPrice,
+        originalTotalPrice,
+        originalPerPersonPrice,
+        originalStartingPrice: originalPerPersonPrice,
+        hasDiscount: Boolean(discountPercent),
+        discountPercent,
     }
 }

@@ -8,7 +8,7 @@ import PackageGallery from "@/components/gallery/PackageGallery"
 import TourPricingCard from "@/components/promotions/TourPricingCard"
 import JsonLd from "@/components/seo/JsonLd"
 import { companyProfile } from "@/data/company"
-import { getTour, getTourPricing, tours } from "@/data/promotions"
+import { getTour, getTourDiscount, getTourPricing, tours } from "@/data/promotions"
 import { brandName, getTourSearchTerms, getTourSeoTarget } from "@/data/seo"
 import { absoluteUrl, siteConfig } from "@/data/site"
 import { getTourRatingSummaries } from "@/services/testimonials"
@@ -81,6 +81,7 @@ export default async function PromotionDetailPage({ params }: PromotionDetailPag
     const liveRating = ratingSummary?.rating ?? tour.rating
     const liveReviews = ratingSummary?.reviews ?? tour.reviews
     const pricing = getTourPricing(tour)
+    const promotion = getTourDiscount(tour)
     const seoTarget = getTourSeoTarget(tour)
 
     return (
@@ -157,9 +158,9 @@ export default async function PromotionDetailPage({ params }: PromotionDetailPag
                             <ArrowLeft size={16} />
                             Volver a tours
                         </Link>
-                        {tour.discount && (
-                            <span className="inline-flex h-8 items-center bg-green-500 text-white text-xs font-semibold px-3 rounded">
-                                {tour.discount}
+                        {(promotion || tour.discount) && (
+                            <span className={`inline-flex h-8 items-center text-white text-xs font-semibold px-3 rounded shadow-sm ${promotion ? "bg-red-500" : "bg-green-500"}`}>
+                                {promotion?.label ?? tour.discount}
                             </span>
                         )}
                     </div>

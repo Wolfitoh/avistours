@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react"
 import { MessageCircle } from "lucide-react"
 import WhatsAppLink from "@/components/whatsapp/WhatsAppLink"
-import { formatPrice, getTourPricing, type Tour } from "@/data/promotions"
+import { formatPrice, getTourDiscount, getTourPricing, type Tour } from "@/data/promotions"
 
 type TourPricingCardProps = {
     tour: Tour
@@ -15,20 +15,39 @@ export default function TourPricingCard({ tour, number }: TourPricingCardProps) 
     const [people, setPeople] = useState(defaultPeople)
 
     const pricing = useMemo(() => getTourPricing(tour, people), [tour, people])
+    const promotion = getTourDiscount(tour)
 
     const message = pricing.isGroupPricing
-        ? `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s). Entiendo que la tarifa total es ${formatPrice(pricing.totalPrice)}.`
-        : `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s).`
+        ? pricing.hasDiscount
+            ? `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s). Vi que esta en promocion: de ${formatPrice(pricing.originalTotalPrice)} a ${formatPrice(pricing.totalPrice)} total.`
+            : `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s). Entiendo que la tarifa total es ${formatPrice(pricing.totalPrice)}.`
+        : pricing.hasDiscount
+            ? `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s). Vi que esta en promocion: de ${formatPrice(pricing.originalPerPersonPrice)} a ${formatPrice(pricing.perPersonPrice)} por persona.`
+            : `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s).`
 
     return (
         <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-            <span className="text-sm font-semibold text-green-500">
-                {pricing.isGroupPricing ? "Tarifa desde" : "Precio por persona"}
-            </span>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-sm font-semibold text-green-500">
+                    {pricing.isGroupPricing ? "Tarifa desde" : "Precio por persona"}
+                </span>
+                {promotion && (
+                    <span className="rounded bg-red-500 px-2 py-1 text-xs font-semibold text-white shadow-sm">
+                        {promotion.label}
+                    </span>
+                )}
+            </div>
 
             <div className="mt-2">
-                <div className="text-4xl font-semibold text-gray-900">
-                    {formatPrice(pricing.startingPrice)}
+                <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
+                    {pricing.hasDiscount && (
+                        <span className="pb-1 text-lg font-semibold text-slate-400 line-through">
+                            {formatPrice(pricing.originalStartingPrice)}
+                        </span>
+                    )}
+                    <div className="text-4xl font-semibold text-gray-900">
+                        {formatPrice(pricing.startingPrice)}
+                    </div>
                 </div>
                 <p className="mt-1 text-sm text-gray-500">
                     {pricing.isGroupPricing
@@ -59,21 +78,35 @@ export default function TourPricingCard({ tour, number }: TourPricingCardProps) 
                     <div className="grid grid-cols-2 gap-3">
                         <div className="rounded-md border border-slate-200 bg-white px-3 py-3">
                             <span className="block text-xs text-slate-500">Total del grupo</span>
-                            <strong className="mt-1 block text-base text-slate-900">
-                                {formatPrice(pricing.totalPrice)}
-                            </strong>
+                            <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                                {pricing.hasDiscount && (
+                                    <span className="text-sm font-semibold text-slate-400 line-through">
+                                        {formatPrice(pricing.originalTotalPrice)}
+                                    </span>
+                                )}
+                                <strong className="block text-base text-slate-900">
+                                    {formatPrice(pricing.totalPrice)}
+                                </strong>
+                            </div>
                         </div>
                         <div className="rounded-md border border-slate-200 bg-white px-3 py-3">
                             <span className="block text-xs text-slate-500">Equivale a</span>
-                            <strong className="mt-1 block text-base text-slate-900">
-                                {formatPrice(pricing.perPersonPrice)}
-                            </strong>
+                            <div className="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                                {pricing.hasDiscount && (
+                                    <span className="text-sm font-semibold text-slate-400 line-through">
+                                        {formatPrice(pricing.originalPerPersonPrice)}
+                                    </span>
+                                )}
+                                <strong className="block text-base text-slate-900">
+                                    {formatPrice(pricing.perPersonPrice)}
+                                </strong>
+                            </div>
                             <span className="block text-xs text-slate-500">por pers.</span>
                         </div>
                     </div>
 
                     <p className="text-xs leading-5 text-slate-500">
-                        La tarifa base del recorrido se mantiene en {formatPrice(pricing.totalPrice)}. El valor por persona se calcula segun la cantidad seleccionada.
+                        La tarifa base del recorrido es {formatPrice(pricing.totalPrice)}. El valor por persona se calcula segun la cantidad seleccionada.
                     </p>
                 </div>
             )}
