@@ -142,7 +142,7 @@ export default function TestimonialFeedbackForm() {
                     required
                     maxLength={700}
                     rows={5}
-                    placeholder="Cuentanos que te gusto del recorrido, la atencion o las paradas del tour."
+                    placeholder="Cuéntanos qué te gustó del recorrido, la atención o las paradas del tour."
                     className="mt-2 w-full rounded-md border border-slate-200 bg-slate-50 px-3 py-3 text-sm outline-none transition focus:border-green-400 focus:bg-white"
                 />
             </label>

@@ -34,7 +34,7 @@ function HeroContent() {
             </h1>
 
             <p className="mt-2 max-w-2xl text-sm leading-7 text-gray-200 sm:text-base md:mt-4">
-                Recorre manglares, islas, aves y cocodrilos con atencion local, horarios coordinados segun marea y reserva directa con Avis Tours.
+                Recorre manglares, islas, aves y cocodrilos con atención local, horarios coordinados según marea y reserva directa con Avis Tours.
             </p>
 
             <Link href="/packages" className="btn mt-6 mb-10 border-green-500 bg-green-500 text-white md:mb-20">

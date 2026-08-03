@@ -17,9 +17,9 @@ export default function ContactWhatsAppForm() {
         event.preventDefault()
 
         const text = [
-            "Hola Avis Tours, quiero informacion para reservar.",
+            "Hola Avis Tours, quiero información para reservar.",
             `Nombre: ${name || "Por completar"}`,
-            `Telefono: ${phone || "Por completar"}`,
+            `Teléfono: ${phone || "Por completar"}`,
             `Personas: ${people}`,
             `Interes: ${tour}`,
             message ? `Mensaje: ${message}` : "",
@@ -38,7 +38,7 @@ export default function ContactWhatsAppForm() {
                 </div>
                 <div>
                     <h2 className="text-xl font-semibold text-slate-900">
-                        Solicita informacion
+                        Solicita información
                     </h2>
                     <p className="text-sm text-slate-500">
                         Te responderemos por WhatsApp.
@@ -59,7 +59,7 @@ export default function ContactWhatsAppForm() {
                 </label>
 
                 <label className="text-sm font-medium text-slate-700">
-                    Telefono
+                    Teléfono
                     <input
                         value={phone}
                         onChange={(event) => setPhone(event.target.value)}
@@ -79,12 +79,12 @@ export default function ContactWhatsAppForm() {
                         <option>1 persona</option>
                         <option>2 personas</option>
                         <option>3 a 5 personas</option>
-                        <option>6 a mas personas</option>
+                        <option>6 a más personas</option>
                     </select>
                 </label>
 
                 <label className="text-sm font-medium text-slate-700">
-                    Interes
+                    Interés
                     <select
                         value={tour}
                         onChange={(event) => setTour(event.target.value)}
@@ -92,7 +92,7 @@ export default function ContactWhatsAppForm() {
                     >
                         <option>Puerto Pizarro completo</option>
                         <option>Solo ida a la isla</option>
-                        <option>Isla, pajaros y manglares</option>
+                        <option>Isla, pájaros y manglares</option>
                         <option>Islas, manglares y cocodrilos</option>
                         <option>Consulta general</option>
                     </select>

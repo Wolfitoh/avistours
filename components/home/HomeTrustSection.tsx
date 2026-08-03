@@ -4,15 +4,15 @@ import { brandName } from "@/data/seo"
 
 const homeTrustPillars = [
     {
-        title: "Guias y coordinacion local",
+        title: "Guías y coordinación local",
         description: "Salidas organizadas en Puerto Pizarro, con información clara y recomendaciones según tu tipo de viaje.",
     },
     {
-        title: "Horarios segun marea",
+        title: "Horarios según marea",
         description: "Coordinamos la mejor hora para disfrutar manglares, islas y cocodrilos con una navegación más cómoda.",
     },
     {
-        title: "Reserva rapida por WhatsApp",
+        title: "Reserva rápida por WhatsApp",
         description: "Cotiza, consulta disponibilidad y separa tu tour de forma rápida y directa.",
     },
 ]
@@ -53,7 +53,7 @@ export default function HomeTrustSection() {
                             Conoce al operador
                         </Link>
                         <Link href="/blog" className="rounded-md border border-white/35 px-5 py-3 text-white transition hover:border-green-300 hover:text-green-200">
-                            Leer guia local
+                            Leer guía local
                         </Link>
                     </div>
                 </div>

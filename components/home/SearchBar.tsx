@@ -9,10 +9,10 @@ export default function SearchSection() {
                         Encuentra tu ruta
                     </span>
                     <h2 className="mt-3 text-2xl font-semibold text-slate-900 md:text-3xl">
-                        Busca paquetes y guias de Puerto Pizarro
+                        Busca paquetes y guías de Puerto Pizarro
                     </h2>
                     <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-500 md:text-base">
-                        Escribe lo que quieres vivir: manglares, mareas, cocodrilos, Isla de los Pajaros o boca del mar.
+                        Escribe lo que quieres vivir: manglares, mareas, cocodrilos, Isla de los Pájaros o boca del mar.
                     </p>
                 </div>
 

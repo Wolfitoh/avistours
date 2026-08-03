@@ -7,22 +7,22 @@ import { blogKeywords, brandName, primaryKeywords, siteWideKeywords } from "@/da
 import { absoluteUrl } from "@/data/site"
 
 export const metadata: Metadata = {
-    title: `Guia de Puerto Pizarro: mareas, manglares y paseos | ${brandName}`,
-    description: `Lee articulos de ${brandName} sobre mareas en Puerto Pizarro, manglares de Tumbes, rutas en bote, Isla de los Pajaros y consejos para visitar el estero.`,
+    title: "Guía de Puerto Pizarro: mareas, manglares y paseos",
+    description: `Guías de ${brandName} para planificar Puerto Pizarro: mareas, manglares de Tumbes, rutas en bote, Isla de los Pájaros y consejos antes de reservar.`,
     keywords: [...siteWideKeywords, primaryKeywords.blog, ...blogKeywords],
     alternates: {
         canonical: "/blog",
     },
     openGraph: {
-        title: `Guia de Puerto Pizarro, mareas y manglares | ${brandName}`,
-        description: "Aprende sobre mareas, manglares y rutas turisticas por Puerto Pizarro, Tumbes.",
+        title: `Guía de Puerto Pizarro, mareas y manglares | ${brandName}`,
+        description: "Aprende sobre mareas, manglares y rutas turísticas por Puerto Pizarro, Tumbes.",
         url: "/blog",
         images: [
             {
                 url: absoluteUrl("/images-optimized/galeria/galeria17.webp"),
                 width: 1200,
                 height: 630,
-                alt: "Guia turistica de Puerto Pizarro y manglares de Tumbes",
+                alt: "Guía turística de Puerto Pizarro y manglares de Tumbes",
             },
         ],
     },
@@ -46,13 +46,13 @@ export default function BlogPage() {
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/55 to-slate-950/70" />
                 <div className="relative mx-auto max-w-6xl px-4 pb-16 md:pb-20">
                     <span className="inline-flex rounded-md bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-green-300 backdrop-blur">
-                        Guia Avis Tours
+                        Guía Avis Tours
                     </span>
                     <h1 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight lg:text-5xl">
-                        Guia de Puerto Pizarro, mareas y manglares de Tumbes
+                        Guía de Puerto Pizarro, mareas y manglares de Tumbes
                     </h1>
                     <p className="mt-5 max-w-2xl leading-relaxed text-white/75">
-                        Informacion clara para planificar tours en Puerto Pizarro, elegir horarios segun la marea y conocer mejor manglares, islas y aves antes de reservar.
+                        Información clara para planificar tours en Puerto Pizarro, elegir horarios según la marea y conocer mejor manglares, islas y aves antes de reservar.
                     </p>
                 </div>
             </section>
@@ -72,7 +72,7 @@ export default function BlogPage() {
 
                         <div>
                             <span className="text-green-500 font-semibold text-sm uppercase tracking-[0.18em]">
-                                Guia destacada
+                                Guía destacada
                             </span>
                             <h2 className="text-3xl font-semibold text-gray-800 mt-4 leading-tight">
                                 <Link href={`/blog/${featuredPost.slug}`} className="hover:text-green-500 transition">
@@ -100,7 +100,7 @@ export default function BlogPage() {
                                 href={`/blog/${featuredPost.slug}`}
                                 className="inline-flex items-center gap-2 mt-8 bg-green-500 text-white px-5 py-3 rounded-md font-medium hover:bg-green-600 transition"
                             >
-                                Leer articulo
+                                Leer artículo
                                 <ArrowRight size={18} />
                             </Link>
                         </div>
@@ -131,7 +131,7 @@ export default function BlogPage() {
                                         {post.excerpt}
                                     </p>
                                     <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-gray-700 hover:text-green-500 transition">
-                                        Leer mas
+                                        Leer más
                                         <ArrowRight size={16} />
                                     </Link>
                                 </div>

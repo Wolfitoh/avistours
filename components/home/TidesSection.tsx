@@ -14,7 +14,7 @@ const tideNotes = [
     },
     // {
     //     title: "Horario de salida",
-    //     text: "Los paseos se coordinan segun clima, marea y disponibilidad de embarcaciones para cuidar la experiencia.",
+    //     text: "Los paseos se coordinan según clima, marea y disponibilidad de embarcaciones para cuidar la experiencia.",
     //     icon: Clock,
     // },
 ]
@@ -31,7 +31,7 @@ export default async function TidesSection() {
                             Mareas en Tumbes
                         </span>
                         <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mt-3 leading-tight">
-                            La marea tambien decide el ritmo del paseo
+                            La marea también decide el ritmo del paseo
                         </h2>
                         <p className="text-gray-500 leading-7 mt-4">
                             La marea define el mejor momento para vivir Puerto Pizarro. Coordinamos tu salida según el nivel del agua para que disfrutes mejor los manglares, las islas y el avistamiento de aves.
@@ -97,7 +97,7 @@ export default async function TidesSection() {
                         <div className="mt-6 rounded-lg border border-amber-200 bg-amber-50 p-4 flex gap-3">
                             <AlertCircle size={20} className="text-amber-600 mt-1 shrink-0" />
                             <p className="text-sm leading-6 text-amber-800">
-                                Esta seccion es una guia informativa. Los horarios exactos de marea cambian cada dia y se validan al reservar el tour.
+                                Esta sección es una guía informativa. Los horarios exactos de marea cambian cada día y se validan al reservar el tour.
                             </p>
                         </div>
                     </div>

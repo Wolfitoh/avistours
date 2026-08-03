@@ -724,19 +724,19 @@ const blogConnections: Record<string, BlogConnection> = {
         primaryTourSlug: "isla-pajaros-manglares",
         relatedTourSlugs: ["puerto-pizarro-completo", "isla-pajaros-manglares"],
         relatedPostSlugs: ["ruta-completa-islas-manglares-cocodrilos", "como-llegar-a-puerto-pizarro-desde-tumbes"],
-        whatsappMessage: "Hola Avis Tours, lei su articulo sobre mareas en Puerto Pizarro y quiero que me recomienden el mejor horario para reservar un tour.",
+        whatsappMessage: "Hola Avis Tours, leí su artículo sobre mareas en Puerto Pizarro y quiero que me recomienden el mejor horario para reservar un tour.",
     },
     "ruta-completa-islas-manglares-cocodrilos": {
         primaryTourSlug: "puerto-pizarro-completo",
         relatedTourSlugs: ["puerto-pizarro-completo", "islas-manglares-cocodrilos"],
         relatedPostSlugs: ["isla-de-los-pajaros-y-manglares", "que-llevar-a-un-tour-por-los-manglares-de-puerto-pizarro"],
-        whatsappMessage: "Hola Avis Tours, vi su articulo sobre el tour completo en Puerto Pizarro y quiero consultar disponibilidad.",
+        whatsappMessage: "Hola Avis Tours, vi su artículo sobre el tour completo en Puerto Pizarro y quiero consultar disponibilidad.",
     },
     "isla-de-los-pajaros-y-manglares": {
         primaryTourSlug: "isla-pajaros-manglares",
         relatedTourSlugs: ["isla-pajaros-manglares", "pajaros-y-manglares"],
         relatedPostSlugs: ["ruta-completa-islas-manglares-cocodrilos", "mareas-en-puerto-pizarro"],
-        whatsappMessage: "Hola Avis Tours, vi su articulo sobre Isla de los Pajaros y quiero cotizar ese tour en Puerto Pizarro.",
+        whatsappMessage: "Hola Avis Tours, vi su artículo sobre Isla de los Pájaros y quiero cotizar ese tour en Puerto Pizarro.",
     },
     "como-llegar-a-puerto-pizarro-desde-tumbes": {
         primaryTourSlug: "solo-visita-a-la-isla",
@@ -748,7 +748,7 @@ const blogConnections: Record<string, BlogConnection> = {
         primaryTourSlug: "manglares-y-cocodrilos",
         relatedTourSlugs: ["puerto-pizarro-completo", "manglares-y-cocodrilos"],
         relatedPostSlugs: ["mareas-en-puerto-pizarro", "como-llegar-a-puerto-pizarro-desde-tumbes"],
-        whatsappMessage: "Hola Avis Tours, lei su guia sobre que llevar a un tour y quiero consultar que recorrido me recomiendan.",
+        whatsappMessage: "Hola Avis Tours, leí su guía sobre qué llevar a un tour y quiero consultar qué recorrido me recomiendan.",
     },
     "que-hacer-en-tumbes-en-1-dia": {
         primaryTourSlug: "puerto-pizarro-completo",
@@ -814,5 +814,5 @@ export function getBlogRelatedPosts(post: BlogPost): BlogPost[] {
 
 export function getBlogWhatsAppMessage(post: BlogPost) {
     return blogConnections[post.slug]?.whatsappMessage
-        ?? `Hola Avis Tours, lei su articulo "${post.title}" y quiero consultar un tour en Puerto Pizarro.`
+        ?? `Hola Avis Tours, leí su artículo "${post.title}" y quiero consultar un tour en Puerto Pizarro.`
 }

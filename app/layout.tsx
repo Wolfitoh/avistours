@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         url: absoluteUrl("/images-optimized/hero/bg_inicio2.webp"),
         width: 1200,
         height: 630,
-        alt: "Paseo turistico por manglares de Puerto Pizarro en Tumbes",
+        alt: "Paseo turístico por manglares de Puerto Pizarro en Tumbes",
       },
     ],
   },

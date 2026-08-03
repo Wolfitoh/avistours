@@ -5,7 +5,7 @@ export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://avistours.c
 export const siteConfig = {
     name: companyProfile.brandName,
     legalName: companyProfile.legalName,
-    description: "Tours en Puerto Pizarro y manglares de Tumbes con guia local: islas, aves, cocodrilos y reserva por WhatsApp.",
+    description: "Tours en Puerto Pizarro y manglares de Tumbes con guía local: islas, aves, cocodrilos y reserva por WhatsApp.",
     url: siteUrl,
     phone: companyProfile.phone,
     email: companyProfile.email,

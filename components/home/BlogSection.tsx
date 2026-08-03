@@ -9,10 +9,10 @@ export default function BlogSection() {
             <div className="max-w-6xl mx-auto px-4">
                 <div className="text-center mb-12">
                     <span className="text-green-500 font-semibold text-sm uppercase tracking-[0.18em]">
-                        Guia local
+                        Guía local
                     </span>
                     <h2 className="text-3xl font-semibold text-gray-800 mt-3">
-                        Guia para visitar Puerto Pizarro y sus manglares
+                        Guía para visitar Puerto Pizarro y sus manglares
                     </h2>
                     <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
                         Mareas, rutas por manglares, horarios y recomendaciones para elegir mejor tu tour en Puerto Pizarro, Tumbes.
@@ -65,7 +65,7 @@ export default function BlogSection() {
                                     href={`/blog/${post.slug}`}
                                     className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-gray-700 hover:text-green-500 transition"
                                 >
-                                    Leer mas
+                                    Leer más
                                     <ArrowRight size={16} />
                                 </Link>
                             </div>

@@ -18,22 +18,22 @@ type PackagesPageProps = {
 }
 
 export const metadata: Metadata = {
-    title: `Tours en Puerto Pizarro: precios, rutas y reservas | ${brandName}`,
-    description: `Explora tours en Puerto Pizarro con ${brandName}: manglares, islas, Isla de los Pajaros, cocodrilos y boca del mar con precios, detalles y reserva por WhatsApp.`,
+    title: "Tours en Puerto Pizarro: precios, rutas y reservas",
+    description: `Compara tours en Puerto Pizarro con ${brandName}: precios, rutas por manglares, islas, aves, cocodrilos y reserva directa por WhatsApp.`,
     keywords: [...siteWideKeywords, primaryKeywords.packages, ...packagesKeywords],
     alternates: {
         canonical: "/packages",
     },
     openGraph: {
         title: `Tours en Puerto Pizarro y manglares de Tumbes | ${brandName}`,
-        description: "Paquetes por islas, manglares, Isla de los Pajaros, cocodrilos y boca del mar en Puerto Pizarro.",
+        description: "Paquetes por islas, manglares, Isla de los Pájaros, cocodrilos y boca del mar en Puerto Pizarro.",
         url: "/packages",
         images: [
             {
                 url: absoluteUrl("/images-optimized/promotions/manglares_cocodrilos.webp"),
                 width: 1200,
                 height: 630,
-                alt: "Paquetes turisticos por Puerto Pizarro y manglares de Tumbes",
+                alt: "Paquetes turísticos por Puerto Pizarro y manglares de Tumbes",
             },
         ],
     },
@@ -116,7 +116,7 @@ export default async function PackagesPage({ searchParams }: PackagesPageProps) 
                         Tours Avis Tours
                     </span>
                     <h1 className="mt-5 max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
-                        Tours en Puerto Pizarro con precios, rutas y guia local
+                        Tours en Puerto Pizarro con precios, rutas y guía local
                     </h1>
                     <p className="mt-5 max-w-2xl text-sm leading-7 text-white/75 md:text-base">
                         Encuentra paseos en bote por manglares, islas, aves, cocodrilos y boca del mar. Compara paquetes, revisa detalles y elige la salida que mejor se adapta a tu tiempo y presupuesto.
@@ -125,7 +125,7 @@ export default async function PackagesPage({ searchParams }: PackagesPageProps) 
                     <SiteSearch
                         initialQuery={query}
                         className="mt-8 max-w-4xl text-slate-900"
-                        placeholder="Busca por manglares, cocodrilos, marea o Isla de los Pajaros"
+                        placeholder="Busca por manglares, cocodrilos, marea o Isla de los Pájaros"
                         showSuggestions={hasQuery}
                     />
                 </div>
@@ -136,7 +136,7 @@ export default async function PackagesPage({ searchParams }: PackagesPageProps) 
                     <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                         <div>
                             <span className="text-sm font-semibold uppercase tracking-[0.18em] text-green-500">
-                                {hasQuery ? "Resultados de busqueda" : "Paquetes disponibles"}
+                                {hasQuery ? "Resultados de búsqueda" : "Paquetes disponibles"}
                             </span>
                             <h2 className="mt-2 text-2xl font-semibold text-slate-900 md:text-3xl">
                                 {hasQuery ? `Resultados para "${query}"` : "Elige tu paseo por Puerto Pizarro"}
@@ -153,7 +153,7 @@ export default async function PackagesPage({ searchParams }: PackagesPageProps) 
                                 href="/packages"
                                 className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 transition hover:text-green-600"
                             >
-                                Limpiar busqueda
+                                Limpiar búsqueda
                                 <Search size={16} />
                             </Link>
                         )}
@@ -167,7 +167,7 @@ export default async function PackagesPage({ searchParams }: PackagesPageProps) 
                         <div className="mb-7 flex items-end justify-between gap-4">
                             <div>
                                 <span className="text-sm font-semibold uppercase tracking-[0.18em] text-green-500">
-                                    Guia local
+                                    Guía local
                                 </span>
                                 <h2 className="mt-2 text-2xl font-semibold text-slate-900">
                                     Entradas de blog relacionadas
@@ -228,7 +228,7 @@ export default async function PackagesPage({ searchParams }: PackagesPageProps) 
                             </div>
                         ) : (
                             <div className="rounded-lg border border-slate-200 bg-slate-50 p-6 text-sm text-slate-500">
-                                No hay entradas del blog relacionadas con esta busqueda.
+                                No hay entradas del blog relacionadas con esta búsqueda.
                             </div>
                         )}
                     </div>
@@ -238,7 +238,7 @@ export default async function PackagesPage({ searchParams }: PackagesPageProps) 
             <FaqSection
                 eyebrow="Reserva y precios"
                 title="Preguntas frecuentes sobre tours en Puerto Pizarro"
-                description={`Una base rapida para resolver dudas de precio, rutas, grupos y reserva antes de escribirle a ${siteConfig.name}.`}
+                description={`Una base rápida para resolver dudas de precio, rutas, grupos y reserva antes de escribirle a ${siteConfig.name}.`}
                 items={packagesFaqs}
             />
         </div>
@@ -283,10 +283,10 @@ async function TourResultsSection({
         return (
             <div className="rounded-lg border border-slate-200 bg-slate-50 p-8 text-center">
                 <h3 className="text-lg font-semibold text-slate-900">
-                    No encontramos paquetes con esa busqueda
+                    No encontramos paquetes con esa búsqueda
                 </h3>
                 <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-500">
-                    Prueba con: islas, manglares, pajaros, cocodrilos o marea.
+                    Prueba con: islas, manglares, pájaros, cocodrilos o marea.
                 </p>
             </div>
         )

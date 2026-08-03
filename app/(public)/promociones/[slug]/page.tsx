@@ -9,7 +9,7 @@ import TourPricingCard from "@/components/promotions/TourPricingCard"
 import JsonLd from "@/components/seo/JsonLd"
 import { companyProfile } from "@/data/company"
 import { getTour, getTourDiscount, getTourPricing, tours } from "@/data/promotions"
-import { brandName, getTourSearchTerms, getTourSeoTarget } from "@/data/seo"
+import { brandName, getTourMetaDescription, getTourSearchTerms, getTourSeoTarget } from "@/data/seo"
 import { absoluteUrl, siteConfig } from "@/data/site"
 import { getTourRatingSummaries } from "@/services/testimonials"
 
@@ -31,13 +31,14 @@ export async function generateMetadata({ params }: PromotionDetailPageProps): Pr
 
     if (!tour) {
         return {
-            title: `Promocion no encontrada | ${brandName}`,
+            title: "Promoción no encontrada",
         }
     }
 
     const seoTarget = getTourSeoTarget(tour)
-    const metaTitle = `${seoTarget.primaryKeyword} | ${brandName}`
-    const metaDescription = `${tour.description} Ideal si buscas ${seoTarget.secondaryKeyword} y quieres ${seoTarget.intent} en Puerto Pizarro.`
+    const metaTitle = seoTarget.primaryKeyword
+    const metaDescription = getTourMetaDescription(tour)
+    const socialTitle = `${metaTitle} | ${brandName}`
 
     return {
         title: metaTitle,
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: PromotionDetailPageProps): Pr
             canonical: `/promociones/${tour.slug}`,
         },
         openGraph: {
-            title: metaTitle,
+            title: socialTitle,
             description: metaDescription,
             url: `/promociones/${tour.slug}`,
             images: [
@@ -61,7 +62,7 @@ export async function generateMetadata({ params }: PromotionDetailPageProps): Pr
         },
         twitter: {
             card: "summary_large_image",
-            title: metaTitle,
+            title: socialTitle,
             description: metaDescription,
             images: [absoluteUrl(tour.image)],
         },
@@ -243,7 +244,7 @@ export default async function PromotionDetailPage({ params }: PromotionDetailPag
                                     Momentos del recorrido
                                 </h2>
                                 <p className="text-gray-500 leading-7 mt-3 max-w-2xl">
-                                    Imagenes referenciales de la experiencia: navegacion, manglares, islas y paisajes del estero de Puerto Pizarro.
+                                    Imágenes referenciales de la experiencia: navegación, manglares, islas y paisajes del estero de Puerto Pizarro.
                                 </p>
 
                                 <PackageGallery images={[tour.image, ...tour.gallery]} title={tour.title} />
@@ -314,7 +315,7 @@ export default async function PromotionDetailPage({ params }: PromotionDetailPag
                                 </div>
                             </div>
 
-                            {/* <AdSlot label="Anuncio lateral para paquetes turisticos" slot="tour-sidebar" /> */}
+                            {/* <AdSlot label="Anuncio lateral para paquetes turísticos" slot="tour-sidebar" /> */}
                         </aside>
                     </div>
                 </div>

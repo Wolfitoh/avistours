@@ -88,7 +88,7 @@ export function getTourDiscount(tour: Tour) {
         discountPrice,
         amountOff: roundPrice(originalPrice - discountPrice),
         percent,
-        label: `En Promocion -${percent}%`,
+        label: `En Promoción -${percent}%`,
     }
 }
 

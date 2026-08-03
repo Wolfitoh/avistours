@@ -19,10 +19,10 @@ export default function TourPricingCard({ tour, number }: TourPricingCardProps) 
 
     const message = pricing.isGroupPricing
         ? pricing.hasDiscount
-            ? `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s). Vi que esta en promocion: de ${formatPrice(pricing.originalTotalPrice)} a ${formatPrice(pricing.totalPrice)} total.`
+            ? `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s). Vi que está en promoción: de ${formatPrice(pricing.originalTotalPrice)} a ${formatPrice(pricing.totalPrice)} total.`
             : `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s). Entiendo que la tarifa total es ${formatPrice(pricing.totalPrice)}.`
         : pricing.hasDiscount
-            ? `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s). Vi que esta en promocion: de ${formatPrice(pricing.originalPerPersonPrice)} a ${formatPrice(pricing.perPersonPrice)} por persona.`
+            ? `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s). Vi que está en promoción: de ${formatPrice(pricing.originalPerPersonPrice)} a ${formatPrice(pricing.perPersonPrice)} por persona.`
             : `Hola AviTours, quiero consultar por el paquete ${tour.title} para ${pricing.people} persona(s).`
 
     return (
@@ -106,7 +106,7 @@ export default function TourPricingCard({ tour, number }: TourPricingCardProps) 
                     </div>
 
                     <p className="text-xs leading-5 text-slate-500">
-                        La tarifa base del recorrido es {formatPrice(pricing.totalPrice)}. El valor por persona se calcula segun la cantidad seleccionada.
+                        La tarifa base del recorrido es {formatPrice(pricing.totalPrice)}. El valor por persona se calcula según la cantidad seleccionada.
                     </p>
                 </div>
             )}

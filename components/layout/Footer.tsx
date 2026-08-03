@@ -47,7 +47,7 @@ export default function Footer() {
                             />
                         </Link>
                         <p className="text-sm text-white/75 leading-6 mt-5 max-w-xs">
-                            Tours en Puerto Pizarro, manglares de Tumbes, islas, aves y cocodrilos con atencion local y reserva por WhatsApp.
+                            Tours en Puerto Pizarro, manglares de Tumbes, islas, aves y cocodrilos con atención local y reserva por WhatsApp.
                         </p>
 
                         <div className="flex flex-wrap gap-2 mt-5">
@@ -80,7 +80,7 @@ export default function Footer() {
                             </p>
                             <div className="flex gap-3 leading-6">
                                 <MapPin size={16} className="text-green-500 mt-1 shrink-0" />
-                                <span>{companyProfile.streetAddress}<br />{companyProfile.region}, Peru</span>
+                                <span>{companyProfile.streetAddress}<br />{companyProfile.region}, Perú</span>
                             </div>
                             <Link href={`mailto:${companyProfile.email}`} className="flex items-center gap-3 hover:text-white transition">
                                 <Mail size={16} className="text-green-500" />
@@ -100,7 +100,7 @@ export default function Footer() {
 
                     <div>
                         <h2 className="text-sm font-semibold tracking-wide">
-                            Informacion
+                            Información
                         </h2>
                         <ul className="mt-5 space-y-3 text-sm text-white/75">
                             {companyLinks.map((link) => (

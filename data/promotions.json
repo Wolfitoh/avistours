@@ -13,14 +13,14 @@
         "gallery": ["/images-optimized/galeria/completo_galeria1.webp", "/images-optimized/galeria/completo_galeria2.webp", "/images-optimized/galeria/completo_galeria3.webp", "/images-optimized/galeria/completo_galeria4.webp", "/images-optimized/galeria/completo_galeria6.webp", "/images-optimized/galeria/completo_galeria7.webp", "/images-optimized/galeria/completo_galeria8.webp"],
         "rating": 4.9,
         "reviews": 8,
-        "discount": "Mas completo",
+        "discount": "Más completo",
         "duration": "2 - 3 horas",
-        "description": "Recorrido por islas, manglares, Isla de los Pajaros, zoocriadero de cocodrilos y avistamiento de la boca del mar.",
+        "description": "Recorrido por islas, manglares, Isla de los Pájaros, zoocriadero de cocodrilos y avistamiento de la boca del mar.",
         "features": ["Islas", "Manglares", "Cocodrilos", "Boca del mar"],
-        "activities": ["Navegacion por esteros", "Observacion de aves", "Visita al zoocriadero", "Avistamiento de la boca del mar", "Estadía en la isla del Amor"],
-        "includes": ["Bote turistico", "Guia local", "Paradas interpretativas", "Coordinacion segun marea"],
+        "activities": ["Navegación por esteros", "Observación de aves", "Visita al zoocriadero", "Avistamiento de la boca del mar", "Estadía en la isla del Amor"],
+        "includes": ["Bote turístico", "Guía local", "Paradas interpretativas", "Coordinación según marea"],
         "recommendations": ["Llevar bloqueador", "Usar gorra o sombrero", "Portar efectivo para consumos personales", "Confirmar hora por marea", "Llevar repelente"],
-        "itinerary": ["Salida desde el muelle turistico de Puerto Pizarro", "Navegacion por canales de manglar e islas cercanas", "Parada para observar aves en Isla de los Pajaros", "Visita al zoocriadero de cocodrilos", "Avistamiento de la entrada o boca del mar antes del retorno"]
+        "itinerary": ["Salida desde el muelle turístico de Puerto Pizarro", "Navegación por canales de manglar e islas cercanas", "Parada para observar aves en Isla de los Pájaros", "Visita al zoocriadero de cocodrilos", "Avistamiento de la entrada o boca del mar antes del retorno"]
     },
     {
         "id": 2,
@@ -38,15 +38,15 @@
         "duration": "2 horas",
         "description": "Ideal para quienes desean llegar a la isla, disfrutar el entorno marino y organizar su tiempo con libertad.",
         "features": ["Traslado", "Isla", "Vista al estero"],
-        "activities": ["Traslado en bote", "Estadia en la isla", "Vista del estero"],
-        "includes": ["Bote de ida y regreso", "Orientacion de embarque", "Coordinacion de horario"],
-        "recommendations": ["Coordinar retorno con anticipacion", "Llevar agua", "Consultar condiciones de marea"],
-        "itinerary": ["Encuentro en el muelle turistico", "Embarque y traslado hacia la isla", "Llegada y orientacion para disfrutar el entorno con libertad"]
+        "activities": ["Traslado en bote", "Estadía en la isla", "Vista del estero"],
+        "includes": ["Bote de ida y regreso", "Orientación de embarque", "Coordinación de horario"],
+        "recommendations": ["Coordinar retorno con anticipación", "Llevar agua", "Consultar condiciones de marea"],
+        "itinerary": ["Encuentro en el muelle turístico", "Embarque y traslado hacia la isla", "Llegada y orientación para disfrutar el entorno con libertad"]
     },
     {
         "id": 3,
         "slug": "isla-pajaros-manglares",
-        "title": "Isla, pajaros y manglares",
+        "title": "Isla, pájaros y manglares",
         "location": "Manglares de Tumbes",
         "price": 10,
         "groupPrice": 100,
@@ -57,12 +57,12 @@
         "rating": 5,
         "reviews": 2,
         "duration": "1 a 2 horas",
-        "description": "Una ruta escenica para navegar entre canales, observar aves y sentir de cerca el paisaje de los manglares.",
+        "description": "Una ruta escénica para navegar entre canales, observar aves y sentir de cerca el paisaje de los manglares.",
         "features": ["Isla", "Aves", "Manglares"],
-        "activities": ["Navegacion por manglares", "Observacion de aves", "Fotografia de paisaje", "Visita a isla"],
-        "includes": ["Bote turistico", "Guia local", "Ruta por canales", "Parada de observacion"],
-        "recommendations": ["Llevar camara o celular cargado", "Usar ropa ligera", "Evitar alimentar aves con alimentos no permitidos"],
-        "itinerary": ["Salida desde Puerto Pizarro", "Recorrido por canales del manglar", "Observacion de aves en Isla de los Pajaros", "Estadía en la isla del Amor", "Retorno al muelle turistico"]
+        "activities": ["Navegación por manglares", "Observación de aves", "Fotografía de paisaje", "Visita a isla"],
+        "includes": ["Bote turístico", "Guía local", "Ruta por canales", "Parada de observación"],
+        "recommendations": ["Llevar cámara o celular cargado", "Usar ropa ligera", "Evitar alimentar aves con alimentos no permitidos"],
+        "itinerary": ["Salida desde Puerto Pizarro", "Recorrido por canales del manglar", "Observación de aves en Isla de los Pájaros", "Estadía en la isla del Amor", "Retorno al muelle turístico"]
     },
     {
         "id": 4,
@@ -80,15 +80,15 @@
         "duration": "2 horas",
         "description": "Tour equilibrado para conocer los canales del manglar, las islas principales y el zoocriadero de cocodrilos.",
         "features": ["Islas", "Manglares", "Zoocriadero"],
-        "activities": ["Recorrido por islas", "Navegacion por manglares", "Visita al zoocriadero", "Interpretacion natural"],
-        "includes": ["Bote turistico", "Guia local", "Ingreso coordinado a paradas", "Asistencia durante el paseo"],
-        "recommendations": ["Llevar repelente", "Usar calzado comodo", "Confirmar salida segun marea"],
-        "itinerary": ["Embarque en el muelle turistico", "Recorrido por islas y canales de manglar", "Visita al zoocriadero de cocodrilos", "Estadía en la isla del Amor", "Retorno a Puerto Pizarro"]
+        "activities": ["Recorrido por islas", "Navegación por manglares", "Visita al zoocriadero", "Interpretación natural"],
+        "includes": ["Bote turístico", "Guía local", "Ingreso coordinado a paradas", "Asistencia durante el paseo"],
+        "recommendations": ["Llevar repelente", "Usar calzado cómodo", "Confirmar salida según marea"],
+        "itinerary": ["Embarque en el muelle turístico", "Recorrido por islas y canales de manglar", "Visita al zoocriadero de cocodrilos", "Estadía en la isla del Amor", "Retorno a Puerto Pizarro"]
     },
     {
         "id": 5,
         "slug": "pajaros-y-manglares",
-        "title": "Pajaros y manglares",
+        "title": "Pájaros y manglares",
         "location": "Manglares de Tumbes",
         "price": 8,        
         "groupPrice": 80,
@@ -101,10 +101,10 @@
         "duration": "1 hora",
         "description": "Una salida accesible para observar aves y navegar por los canales de manglar de Puerto Pizarro.",
         "features": ["Aves", "Manglares", "Ruta corta"],
-        "activities": ["Navegacion por canales", "Observacion de aves", "Fotografia de naturaleza", "Vista del ecosistema de manglar"],
-        "includes": ["Bote compartido", "Orientacion local", "Recorrido por zona de manglares", "Coordinacion segun marea"],
-        "recommendations": ["Llevar celular o camara cargada", "Usar gorra", "Evitar hacer ruido cerca de las aves", "Confirmar horario antes de llegar"],
-        "itinerary": ["Encuentro en el muelle turistico de Puerto Pizarro", "Embarque en bote compartido", "Recorrido por canales de manglar y zonas de observacion de aves", "Retorno al muelle turistico"]
+        "activities": ["Navegación por canales", "Observación de aves", "Fotografía de naturaleza", "Vista del ecosistema de manglar"],
+        "includes": ["Bote compartido", "Orientación local", "Recorrido por zona de manglares", "Coordinación según marea"],
+        "recommendations": ["Llevar celular o cámara cargada", "Usar gorra", "Evitar hacer ruido cerca de las aves", "Confirmar horario antes de llegar"],
+        "itinerary": ["Encuentro en el muelle turístico de Puerto Pizarro", "Embarque en bote compartido", "Recorrido por canales de manglar y zonas de observación de aves", "Retorno al muelle turístico"]
     },
     {
         "id": 6,
@@ -120,11 +120,11 @@
         "rating": 4.8,
         "reviews": 4,
         "duration": "1 hora",
-        "description": "Recorrido practico por los manglares con visita al zoocriadero de cocodrilos, ideal para una primera experiencia.",
+        "description": "Recorrido práctico por los manglares con visita al zoocriadero de cocodrilos, ideal para una primera experiencia.",
         "features": ["Manglares", "Cocodrilo", "Zoocriadero"],
-        "activities": ["Navegacion por manglares", "Visita al zoocriadero", "Interpretacion del entorno", "Fotografia del recorrido"],
-        "includes": ["Bote compartido", "Orientacion local", "Parada en zoocriadero", "Asistencia durante el paseo"],
-        "recommendations": ["Llevar repelente", "Usar ropa ligera", "Seguir las indicaciones del guia", "Consultar condiciones de marea"],
-        "itinerary": ["Salida desde el muelle turistico", "Navegacion por canales de manglar", "Visita al zoocriadero de cocodrilos", "Retorno a Puerto Pizarro"]
+        "activities": ["Navegación por manglares", "Visita al zoocriadero", "Interpretación del entorno", "Fotografía del recorrido"],
+        "includes": ["Bote compartido", "Orientación local", "Parada en zoocriadero", "Asistencia durante el paseo"],
+        "recommendations": ["Llevar repelente", "Usar ropa ligera", "Seguir las indicaciones del guía", "Consultar condiciones de marea"],
+        "itinerary": ["Salida desde el muelle turístico", "Navegación por canales de manglar", "Visita al zoocriadero de cocodrilos", "Retorno a Puerto Pizarro"]
     }
 ]

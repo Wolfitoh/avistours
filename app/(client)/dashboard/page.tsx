@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "Panel cliente | Avis Tours",
+    title: "Panel cliente",
     robots: {
         index: false,
         follow: false,
@@ -15,7 +15,7 @@ export default function DashboardPage() {
                 Panel de cliente
             </h1>
             <p className="mt-2 text-sm text-gray-600">
-                Aqui se mostraran reservas, mensajes y seguimiento de experiencias de Avis Tours.
+                Aquí se mostrarán reservas, mensajes y seguimiento de experiencias de Avis Tours.
             </p>
         </section>
     )

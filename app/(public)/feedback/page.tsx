@@ -4,7 +4,7 @@ import { MessageSquareText, ShieldCheck, Star } from "lucide-react"
 import TestimonialFeedbackForm from "@/components/testimonials/TestimonialFeedbackForm"
 
 export const metadata: Metadata = {
-    title: "Califica tu tour | Avis Tours",
+    title: "Califica tu tour",
     description: "Formulario privado para clientes que realizaron un tour con Avis Tours.",
     robots: {
         index: false,
@@ -42,13 +42,13 @@ export default function FeedbackPage() {
                         <div className="rounded-lg border border-white/10 bg-white/10 p-4 backdrop-blur">
                             <Star size={20} className="text-green-300" />
                             <p className="mt-3 text-sm leading-6 text-white/75">
-                                Tu calificacion ayuda a mejorar la ruta, la atencion y la informacion previa al paseo.
+                                Tu calificación ayuda a mejorar la ruta, la atención y la información previa al paseo.
                             </p>
                         </div>
                         <div className="rounded-lg border border-white/10 bg-white/10 p-4 backdrop-blur">
                             <ShieldCheck size={20} className="text-green-300" />
                             <p className="mt-3 text-sm leading-6 text-white/75">
-                                Revisamos cada comentario antes de publicarlo en la seccion de testimonios.
+                                Revisamos cada comentario antes de publicarlo en la sección de testimonios.
                             </p>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ export default function FeedbackPage() {
                             Tus palabras pueden aparecer en nuestra web
                         </h2>
                         <p className="mt-4 text-sm leading-7 text-slate-600">
-                            Usaremos tu nombre, referencia de ciudad, tour realizado, comentario y calificacion. Si prefieres que no se publique algun dato, indicalo dentro del comentario.
+                            Usaremos tu nombre, referencia de ciudad, tour realizado, comentario y calificación. Si prefieres que no se publique algún dato, indícalo dentro del comentario.
                         </p>
                     </div>
 

@@ -100,7 +100,7 @@ export default function Navbar() {
                     {/* DROPDOWN */}
                     {/* <li className="relative group">
                         <div className={dropdownClass}>
-                            Guia <ChevronDown size={16} />
+                            Guía <ChevronDown size={16} />
                         </div>
 
                         <div className="absolute top-8 left-0 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-200">
@@ -136,7 +136,7 @@ export default function Navbar() {
 
                 <button
                     type="button"
-                    aria-label={menuOpen ? "Cerrar menu" : "Abrir menu"}
+                    aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
                     aria-expanded={menuOpen}
                     onClick={() => setMenuOpen((open) => !open)}
                     className={`
@@ -174,7 +174,7 @@ export default function Navbar() {
 
                         <div className="mt-2 rounded-md bg-slate-50 px-4 py-3">
                             <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
-                                Mas informacion <ChevronDown size={16} />
+                                Más información <ChevronDown size={16} />
                             </div>
                             <div className="mt-3 grid gap-2 text-sm text-gray-500">
                                 <Link href="/blog/mareas-en-puerto-pizarro" onClick={closeMenu} className="hover:text-green-600 transition">Mareas</Link>

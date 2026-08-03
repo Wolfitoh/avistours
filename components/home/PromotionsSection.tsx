@@ -22,7 +22,7 @@ export default async function ToursSection() {
                         Tours por islas, manglares y cocodrilos
                     </h2>
                     <p className="text-sm md:text-base text-gray-500 mt-3 max-w-xl mx-auto leading-7">
-                        Elige un tour en Puerto Pizarro segun tu tiempo y presupuesto: islas, aves, manglares, cocodrilos y la boca del mar con reserva directa.
+                        Elige un tour en Puerto Pizarro según tu tiempo y presupuesto: islas, aves, manglares, cocodrilos y la boca del mar con reserva directa.
                     </p>
                 </div>
 

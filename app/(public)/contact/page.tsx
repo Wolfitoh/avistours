@@ -82,8 +82,8 @@ const contactCards = [
 ]
 
 export const metadata: Metadata = {
-    title: `Contacto | ${brandName}`,
-    description: `Contacta a ${brandName} para reservar tours en Puerto Pizarro, Tumbes: manglares, islas, aves, cocodrilos y salidas segun marea.`,
+    title: "Contacto",
+    description: `Escribe a ${brandName} por WhatsApp para reservar tours en Puerto Pizarro, Tumbes: manglares, islas, aves, cocodrilos y salidas según marea.`,
     keywords: [...siteWideKeywords, ...contactKeywords],
     alternates: {
         canonical: "/contact",
@@ -162,10 +162,10 @@ export default function ContactPage() {
                             {`Contacto ${brandName}`}
                         </span>
                         <h1 className="mt-5 max-w-3xl text-3xl font-semibold leading-tight md:text-5xl">
-                            Reserva tu tour en Puerto Pizarro con guia local
+                            Reserva tu tour en Puerto Pizarro con guía local
                         </h1>
                         <p className="mt-5 max-w-2xl text-sm leading-7 text-white/75 md:text-base">
-                            Coordinamos tours por islas, manglares, Isla de los Pajaros, zoocriadero de cocodrilos y boca del mar, ajustando la experiencia segun marea y clima.
+                            Coordinamos tours por islas, manglares, Isla de los Pájaros, zoocriadero de cocodrilos y boca del mar, ajustando la experiencia según marea y clima.
                         </p>
                     </div>
 
@@ -183,7 +183,7 @@ export default function ContactPage() {
                             </span>
                             <span className="inline-flex items-start gap-2">
                                 <ShieldCheck size={17} className="mt-0.5 shrink-0 text-green-300" />
-                                Operacion turistica local en Puerto Pizarro
+                                Operación turística local en Puerto Pizarro
                             </span>
                         </div>
                     </div>
@@ -195,10 +195,10 @@ export default function ContactPage() {
                     <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-start">
                         <div>
                             <span className="text-sm font-semibold uppercase tracking-[0.18em] text-green-500">
-                                Informacion de contacto
+                                Información de contacto
                             </span>
                             <h2 className="mt-3 text-2xl font-semibold text-slate-900 md:text-3xl">
-                                Estamos cerca del muelle turistico
+                                Estamos cerca del muelle turístico
                             </h2>
                             <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-500 md:text-base">
                                 Puedes escribirnos para consultar horarios, disponibilidad, recomendaciones por marea o armar una salida para grupos familiares, parejas y visitantes que llegan por primera vez a Tumbes.
@@ -250,13 +250,13 @@ export default function ContactPage() {
                 <div className="mx-auto max-w-6xl px-4">
                     <div className="max-w-2xl">
                         <span className="text-sm font-semibold uppercase tracking-[0.18em] text-green-500">
-                            Galeria
+                            Galería
                         </span>
                         <h2 className="mt-3 text-2xl font-semibold text-slate-900 md:text-3xl">
-                            Puerto Pizarro en imagenes
+                            Puerto Pizarro en imágenes
                         </h2>
                         <p className="mt-4 text-sm leading-7 text-slate-500 md:text-base">
-                            Una galeria general con imagenes reales de nuestros paquetes: islas, manglares, aves, cocodrilos y recorridos completos por Puerto Pizarro.
+                            Una galería general con imágenes reales de nuestros paquetes: islas, manglares, aves, cocodrilos y recorridos completos por Puerto Pizarro.
                         </p>
                     </div>
 
@@ -265,9 +265,9 @@ export default function ContactPage() {
             </section>
 
             <FaqSection
-                eyebrow="Ayuda rapida"
+                eyebrow="Ayuda rápida"
                 title="Preguntas frecuentes antes de escribirnos"
-                description={`Te dejamos respuestas utiles sobre horarios, punto de encuentro y reserva para que contactes a ${siteConfig.name} con mas contexto.`}
+                description={`Te dejamos respuestas útiles sobre horarios, punto de encuentro y reserva para que contactes a ${siteConfig.name} con más contexto.`}
                 items={contactFaqs}
             />
         </div>

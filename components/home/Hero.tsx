@@ -25,7 +25,7 @@ function HeroStaticContent() {
             </h1>
 
             <p className="mt-2 max-w-2xl text-sm leading-7 text-gray-200 sm:text-base">
-                Vive paseos en bote por manglares, islas, cocodrilos y la Isla de los Pajaros con guia local, coordinacion por marea y reserva directa por WhatsApp.
+                Vive paseos en bote por manglares, islas, cocodrilos y la Isla de los Pájaros con guía local, coordinación por marea y reserva directa por WhatsApp.
             </p>
 
             <Link href="/packages" className="btn mt-6 mb-10 border-green-500 bg-green-500 text-white">

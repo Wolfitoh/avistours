@@ -9,7 +9,7 @@ import WhatsAppLink from "@/components/whatsapp/WhatsAppLink"
 import { companyProfile } from "@/data/company"
 import { formatPrice, getTourPricing } from "@/data/promotions"
 import { blogPosts, getBlogPost, getBlogPrimaryTour, getBlogRelatedPosts, getBlogRelatedTours, getBlogWhatsAppMessage, type BlogContentBlock } from "@/data/blogs"
-import { brandName, getBlogSearchTerms, getBlogSeoTarget } from "@/data/seo"
+import { brandName, getBlogMetaDescription, getBlogSearchTerms, getBlogSeoTarget } from "@/data/seo"
 import { absoluteUrl, siteConfig } from "@/data/site"
 
 type BlogDetailPageProps = {
@@ -143,13 +143,14 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
 
     if (!post) {
         return {
-            title: `Articulo no encontrado | ${brandName}`,
+            title: "Articulo no encontrado",
         }
     }
 
     const seoTarget = getBlogSeoTarget(post)
-    const metaTitle = `${seoTarget.primaryKeyword} | ${brandName}`
-    const metaDescription = `${post.excerpt} Ideal si buscas ${seoTarget.secondaryKeyword} y quieres ${seoTarget.intent} antes de visitar Puerto Pizarro.`
+    const metaTitle = seoTarget.primaryKeyword
+    const metaDescription = getBlogMetaDescription(post)
+    const socialTitle = `${metaTitle} | ${brandName}`
 
     return {
         title: metaTitle,
@@ -160,7 +161,7 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
         },
         openGraph: {
             type: "article",
-            title: metaTitle,
+            title: socialTitle,
             description: metaDescription,
             url: `/blog/${post.slug}`,
             images: [
@@ -174,7 +175,7 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
         },
         twitter: {
             card: "summary_large_image",
-            title: metaTitle,
+            title: socialTitle,
             description: metaDescription,
             images: [absoluteUrl(post.image)],
         },
@@ -337,7 +338,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                                             {primaryTour && relatedPosts[0] ? " " : ""}
                                             {relatedPosts[0] && (
                                                 <>
-                                                    Tambien te puede servir la guia{" "}
+                                                    También te puede servir la guía{" "}
                                                     <Link href={`/blog/${relatedPosts[0].slug}`} className="font-semibold text-green-600 transition hover:text-green-700">
                                                         {relatedPosts[0].title}
                                                     </Link>
@@ -361,7 +362,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                                         Tu siguiente paso para visitar Puerto Pizarro
                                     </h2>
                                     <p className="mt-3 text-sm leading-6 text-gray-600">
-                                        Si ya tienes una idea mas clara de tu viaje, aqui puedes dar el siguiente paso: revisar una guia relacionada o escribirnos por WhatsApp para ayudarte a elegir mejor tu paseo en Puerto Pizarro.
+                                        Si ya tienes una idea más clara de tu viaje, aquí puedes dar el siguiente paso: revisar una guía relacionada o escribirnos por WhatsApp para ayudarte a elegir mejor tu paseo en Puerto Pizarro.
                                     </p>
 
                                     {relatedTours.length > 0 && (
@@ -389,7 +390,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                                             Resolver tu viaje
                                         </span>
                                         <p className="mt-2 text-sm leading-6 text-gray-700">
-                                            Si ya leiste la guia y quieres una recomendacion concreta, escribenos y te ayudamos a elegir la mejor ruta segun marea, tiempo disponible y tipo de viaje.
+                                            Si ya leíste la guía y quieres una recomendación concreta, escríbenos y te ayudamos a elegir la mejor ruta según marea, tiempo disponible y tipo de viaje.
                                         </p>
                                         <WhatsAppLink
                                             number={companyProfile.whatsapp}
@@ -410,7 +411,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                                         Consulta tu paseo por WhatsApp
                                     </h2>
                                     <p className="mt-2 text-sm leading-6 text-gray-700">
-                                        Si quieres una recomendacion rapida para este recorrido, escribenos y te ayudamos a elegir mejor segun marea, tiempo disponible y tipo de viaje.
+                                        Si quieres una recomendación rápida para este recorrido, escríbenos y te ayudamos a elegir mejor según marea, tiempo disponible y tipo de viaje.
                                     </p>
                                     <WhatsAppLink
                                         number={companyProfile.whatsapp}
@@ -431,7 +432,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                                         Tour recomendado
                                     </h2>
                                     <p className="mt-3 text-sm leading-6 text-gray-600">
-                                        Este articulo conecta mejor con este recorrido:
+                                        Este artículo conecta mejor con este recorrido:
                                     </p>
                                     <div className="mt-4">
                                         <TourShowcaseCard

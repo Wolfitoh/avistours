@@ -11,7 +11,7 @@ export type PublicTestimonial = {
 export const fallbackTestimonials: PublicTestimonial[] = [
     {
         id: "fallback-1",
-        text: "El paseo por los manglares fue tranquilo y muy bien explicado. La parada en la Isla de los Pajaros fue lo mejor del dia.",
+        text: "El paseo por los manglares fue tranquilo y muy bien explicado. La parada en la Isla de los Pájaros fue lo mejor del día.",
         name: "Mariana Rojas",
         role: "Visitante de Lima",
         image: "/images/clients/client1.png",
@@ -20,7 +20,7 @@ export const fallbackTestimonials: PublicTestimonial[] = [
     },
     {
         id: "fallback-2",
-        text: "Nos ayudaron a elegir el horario segun la marea y el recorrido salio perfecto para viajar con ninos.",
+        text: "Nos ayudaron a elegir el horario según la marea y el recorrido salió perfecto para viajar con niños.",
         name: "Carlos Medina",
         role: "Familia viajera",
         image: "/images/clients/client2.png",
@@ -38,16 +38,16 @@ export const fallbackTestimonials: PublicTestimonial[] = [
     },
     {
         id: "fallback-4",
-        text: "Puerto Pizarro tiene un paisaje distinto. El guia nos conto sobre aves, manglares y la vida del estero.",
+        text: "Puerto Pizarro tiene un paisaje distinto. El guía nos contó sobre aves, manglares y la vida del estero.",
         name: "Diego Salazar",
         role: "Viajero nacional",
         image: "/images/clients/client5.png",
         rating: 5,
-        tourTitle: "Isla, pajaros y manglares",
+        tourTitle: "Isla, pájaros y manglares",
     },
     {
         id: "fallback-5",
-        text: "Tomamos solo la ida a la isla y fue una opcion practica para pasar la tarde con calma.",
+        text: "Tomamos solo la ida a la isla y fue una opción práctica para pasar la tarde con calma.",
         name: "Andrea Cruz",
         role: "Visitante de Tumbes",
         image: "/images/clients/client2.png",
@@ -56,7 +56,7 @@ export const fallbackTestimonials: PublicTestimonial[] = [
     },
     {
         id: "fallback-6",
-        text: "Buena coordinacion, precio claro y una experiencia muy recomendable para conocer los manglares.",
+        text: "Buena coordinación, precio claro y una experiencia muy recomendable para conocer los manglares.",
         name: "Rafael Cueva",
         role: "Viajero de Ecuador",
         image: "/images/clients/client6.png",
