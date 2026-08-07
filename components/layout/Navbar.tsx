@@ -79,7 +79,8 @@ export default function Navbar() {
                             alt="Logo AviTours"
                             width={220}
                             height={64}
-                            priority
+                            loading="eager"
+                            fetchPriority="low"
                             sizes="(min-width: 768px) 220px, 170px"
                             className="h-auto w-[95px] drop-shadow-[0_3px_12px_rgba(0,0,0,0.28)] transition md:w-[130px]"
                         />

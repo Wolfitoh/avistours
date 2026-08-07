@@ -103,7 +103,8 @@ export default async function PackagesPage({ searchParams }: PackagesPageProps) 
                     src="/images-optimized/hero/bg_inicio2.webp"
                     alt="Manglares de Puerto Pizarro"
                     fill
-                    priority
+                    preload
+                    fetchPriority="high"
                     sizes="100vw"
                     quality={70}
                     className="object-cover opacity-35"

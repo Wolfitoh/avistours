@@ -3,7 +3,6 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { ArrowLeft, ArrowRight, CalendarDays, CheckCircle2, Clock, MapPin, MessageCircle, Quote, ShipWheel, UserRound } from "lucide-react"
-import AdSlot from "@/components/ads/AdSlot"
 import JsonLd from "@/components/seo/JsonLd"
 import WhatsAppLink from "@/components/whatsapp/WhatsAppLink"
 import { companyProfile } from "@/data/company"
@@ -255,7 +254,8 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                     src={post.image}
                     alt={post.title}
                     fill
-                    priority
+                    preload
+                    fetchPriority="high"
                     sizes="100vw"
                     className="object-cover"
                 />
@@ -493,8 +493,6 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                                     ))}
                                 </div>
                             </div>
-
-                            {/* <AdSlot label="Anuncio lateral para articulos de Puerto Pizarro" slot="blog-sidebar" /> */}
                         </aside>
                     </div>
                 </div>

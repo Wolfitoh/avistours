@@ -20,7 +20,8 @@ export default function FeedbackPage() {
                     src="/images-optimized/promotions/pajaros.webp"
                     alt="Manglares de Puerto Pizarro"
                     fill
-                    priority
+                    preload
+                    fetchPriority="high"
                     sizes="100vw"
                     className="object-cover opacity-35"
                 />

@@ -64,7 +64,8 @@ export default function HeroDesktopCarousel() {
                             fill
                             sizes="100vw"
                             quality={62}
-                            priority={index === 0}
+                            preload={index === 0}
+                            fetchPriority={index === 0 ? "high" : undefined}
                             loading={index === 0 ? undefined : "lazy"}
                             className="object-cover"
                         />

@@ -62,7 +62,8 @@ export default function Hero() {
                         fill
                         sizes="100vw"
                         quality={60}
-                        priority
+                        preload
+                        fetchPriority="high"
                         className="object-cover"
                     />
                     <div className="absolute inset-0 bg-slate-900/70" />

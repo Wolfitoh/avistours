@@ -39,7 +39,8 @@ export default function BlogPage() {
                     src={featuredPost.image}
                     alt={featuredPost.title}
                     fill
-                    priority
+                    preload
+                    fetchPriority="high"
                     sizes="100vw"
                     className="object-cover"
                 />

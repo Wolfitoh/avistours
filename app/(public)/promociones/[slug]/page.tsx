@@ -3,7 +3,6 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { ArrowLeft, Binoculars, CheckCircle2, Clock, Compass, MapPin, Sailboat, ShieldCheck, Star, Sun } from "lucide-react"
-import AdSlot from "@/components/ads/AdSlot"
 import PackageGallery from "@/components/gallery/PackageGallery"
 import TourPricingCard from "@/components/promotions/TourPricingCard"
 import JsonLd from "@/components/seo/JsonLd"
@@ -146,7 +145,8 @@ export default async function PromotionDetailPage({ params }: PromotionDetailPag
                     src={tour.image}
                     alt={tour.title}
                     fill
-                    priority
+                    preload
+                    fetchPriority="high"
                     sizes="100vw"
                     className="object-cover"
                 />
@@ -314,8 +314,6 @@ export default async function PromotionDetailPage({ params }: PromotionDetailPag
                                     ))}
                                 </div>
                             </div>
-
-                            {/* <AdSlot label="Anuncio lateral para paquetes turísticos" slot="tour-sidebar" /> */}
                         </aside>
                     </div>
                 </div>

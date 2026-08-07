@@ -149,7 +149,8 @@ export default function ContactPage() {
                     src="/images-optimized/hero/bg_inicio2.webp"
                     alt={`Paseo en Puerto Pizarro con ${brandName}`}
                     fill
-                    priority
+                    preload
+                    fetchPriority="high"
                     sizes="100vw"
                     className="object-cover opacity-35"
                 />

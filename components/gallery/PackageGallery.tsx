@@ -167,7 +167,7 @@ export default function PackageGallery({ images, title }: PackageGalleryProps) {
                                 fill
                                 sizes="100vw"
                                 className="object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
-                                priority
+                                loading="eager"
                             />
 
                             {uniqueImages.length > 1 && (
