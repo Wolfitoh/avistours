@@ -1065,7 +1065,6 @@ const blogConnections: Record<string, BlogConnection> = {
         relatedTourSlugs: [
             "islas-manglares-cocodrilos",
             "puerto-pizarro-completo",
-            "isla-pajaros-manglares",
         ],
         relatedPostSlugs: [
             "mareas-en-puerto-pizarro",
@@ -1077,7 +1076,6 @@ const blogConnections: Record<string, BlogConnection> = {
     "manglares-de-puerto-pizarro": {
         primaryTourSlug: "puerto-pizarro-completo",
         relatedTourSlugs: [
-            "puerto-pizarro-completo",
             "islas-manglares-cocodrilos",
             "isla-pajaros-manglares",
         ],
