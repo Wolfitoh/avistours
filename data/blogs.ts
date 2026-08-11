@@ -716,7 +716,291 @@ export const blogPosts: BlogPost[] = [
                 text: "Escríbenos por WhatsApp y planifica tu visita a los manglares de Tumbes."
             }
         ]
-    }
+    },
+    {
+        slug: "zoocriadero-cocodrilos-puerto-pizarro",
+        title: "Zoocriadero de cocodrilos de Puerto Pizarro: qué ver y cómo visitarlo",
+        excerpt: "Conoce el zoocriadero de cocodrilos de Puerto Pizarro, qué puedes encontrar durante la visita y cómo incluirlo en tu recorrido por los manglares de Tumbes.",
+        category: "Naturaleza",
+        location: "Puerto Pizarro, Tumbes",
+        readTime: "7 min",
+        date: "11 Ago 2026",
+        author: "Equipo Avis Tours",
+        image: "/images-optimized/galeria/manglares_cocodrilos_galeria1.webp",
+        highlights: [
+            "Conoce uno de los atractivos más visitados de Puerto Pizarro",
+            "Descubre cómo combinar la visita con los manglares e islas",
+            "Consejos para organizar tu recorrido en Puerto Pizarro",
+        ],
+        body: [
+            {
+                type: "paragraph",
+                text: "El zoocriadero de cocodrilos de Puerto Pizarro es uno de los atractivos que puedes conocer durante una visita a esta zona turística de Tumbes. Para muchos viajeros, observar estos animales complementa perfectamente el recorrido por los manglares, las islas y los canales naturales que caracterizan a Puerto Pizarro.",
+            },
+            {
+                type: "heading",
+                text: "¿Qué es el zoocriadero de cocodrilos de Puerto Pizarro?",
+            },
+            {
+                type: "paragraph",
+                text: "Es un espacio dedicado a los cocodrilos que forma parte de los puntos de interés que pueden visitarse durante determinados recorridos turísticos por Puerto Pizarro. Su visita permite conocer de cerca a estos animales y añadir una experiencia diferente al tradicional paseo en bote por los manglares de Tumbes.",
+            },
+            {
+                type: "heading",
+                text: "¿Qué puedes ver durante la visita?",
+            },
+            {
+                type: "paragraph",
+                text: "El principal atractivo son los cocodrilos. La experiencia resulta especialmente interesante para familias, viajeros que visitan Puerto Pizarro por primera vez y personas interesadas en conocer algunos de los animales representativos de esta parte del norte peruano.",
+            },
+            {
+                type: "list",
+                items: [
+                    "Observación de cocodrilos.",
+                    "Recorrido por las instalaciones destinadas a su visita.",
+                    "Una parada diferente dentro de la experiencia en Puerto Pizarro.",
+                    "Oportunidad de tomar fotografías durante el recorrido.",
+                ],
+            },
+            {
+                type: "heading",
+                text: "¿Cómo visitar los cocodrilos de Puerto Pizarro?",
+            },
+            {
+                type: "paragraph",
+                text: "Una forma práctica de conocer este atractivo es incluirlo dentro de un tour en Puerto Pizarro. Existen recorridos que combinan diferentes puntos de interés, permitiendo conocer los manglares, navegar entre las islas y visitar los cocodrilos durante una misma experiencia.",
+            },
+            {
+                type: "image",
+                src: "/images-optimized/galeria/manglares_cocodrilos_galeria2.webp",
+                alt: "Tour para visitar cocodrilos y manglares en Puerto Pizarro Tumbes",
+                caption: "La visita a los cocodrilos puede combinarse con un recorrido por los manglares de Puerto Pizarro.",
+            },
+            {
+                type: "heading",
+                text: "Tour por manglares y cocodrilos en Puerto Pizarro",
+            },
+            {
+                type: "paragraph",
+                text: "Si quieres aprovechar mejor tu visita, puedes elegir un recorrido que combine islas, manglares y cocodrilos. De esta manera no necesitas organizar cada atractivo por separado y puedes conocer diferentes zonas de Puerto Pizarro durante una misma salida.",
+            },
+            {
+                type: "list",
+                items: [
+                    "Paseo en bote desde Puerto Pizarro.",
+                    "Recorrido por zonas de manglar.",
+                    "Visita a islas según la ruta seleccionada.",
+                    "Parada para conocer los cocodrilos.",
+                    "Experiencia acompañada por el entorno natural de Tumbes.",
+                ],
+            },
+            {
+                type: "heading",
+                text: "¿Cuándo es mejor realizar el recorrido?",
+            },
+            {
+                type: "paragraph",
+                text: "Las condiciones de la marea y el clima pueden influir en los recorridos por Puerto Pizarro. Por esta razón, antes de elegir una hora de salida conviene consultar las condiciones del día y confirmar qué ruta se encuentra disponible.",
+            },
+            {
+                type: "heading",
+                text: "¿Qué llevar para la visita?",
+            },
+            {
+                type: "paragraph",
+                text: "Puerto Pizarro tiene un clima cálido durante buena parte del año. Para realizar el recorrido con mayor comodidad es recomendable llevar elementos básicos para protegerte del sol y disfrutar del paseo en bote.",
+            },
+            {
+                type: "list",
+                items: [
+                    "Protector solar.",
+                    "Gorra o sombrero.",
+                    "Agua.",
+                    "Ropa fresca y cómoda.",
+                    "Celular o cámara para fotografías.",
+                    "Una bolsa o protección para objetos sensibles al agua.",
+                ],
+            },
+            {
+                type: "heading",
+                text: "¿Vale la pena visitar los cocodrilos de Puerto Pizarro?",
+            },
+            {
+                type: "paragraph",
+                text: "Puede ser una parada interesante si quieres realizar algo más que un paseo en bote. Al combinarla con los manglares y las islas, obtienes una experiencia más variada y puedes conocer diferentes atractivos de Puerto Pizarro en una sola visita.",
+            },
+            {
+                type: "quote",
+                text: "Combinar manglares, islas y cocodrilos permite conocer diferentes facetas de Puerto Pizarro durante una misma salida.",
+                author: "Equipo Avis Tours",
+            },
+            {
+                type: "heading",
+                text: "Reserva un tour por manglares y cocodrilos",
+            },
+            {
+                type: "paragraph",
+                text: "En Avis Tours contamos con opciones para recorrer Puerto Pizarro y conocer sus principales atractivos. Podemos orientarte sobre las rutas disponibles y el horario más conveniente según las condiciones de marea, clima y disponibilidad de embarcaciones.",
+            },
+            {
+                type: "paragraph",
+                text: "Si quieres visitar los manglares y cocodrilos de Puerto Pizarro, consulta disponibilidad antes de tu llegada para elegir el recorrido que mejor se adapte a tu tiempo.",
+            },
+        ],
+    },
+    {
+        slug: "manglares-de-puerto-pizarro",
+        title: "Manglares de Puerto Pizarro: qué ver, cómo visitarlos y tours",
+        excerpt: "Descubre qué puedes ver en los manglares de Puerto Pizarro, cómo visitarlos y qué debes considerar antes de realizar un tour por esta zona de Tumbes.",
+        category: "Guía",
+        location: "Puerto Pizarro, Tumbes",
+        readTime: "9 min",
+        date: "11 Ago 2026",
+        author: "Equipo Avis Tours",
+        image: "/images-optimized/galeria/pajaros_galeria3.webp",
+        highlights: [
+            "Guía para conocer los manglares desde Puerto Pizarro",
+            "Islas, aves, cocodrilos y recorridos en bote",
+            "Recomendaciones para elegir tu tour y horario",
+        ],
+        body: [
+            {
+                type: "paragraph",
+                text: "Los manglares de Puerto Pizarro son uno de los principales motivos para visitar esta zona de Tumbes. Desde el muelle turístico parten recorridos en bote que permiten navegar por canales, conocer diferentes islas y descubrir un entorno natural muy diferente al de las playas tradicionales del norte del Perú.",
+            },
+            {
+                type: "heading",
+                text: "¿Dónde están los manglares de Puerto Pizarro?",
+            },
+            {
+                type: "paragraph",
+                text: "Puerto Pizarro se encuentra cerca de la ciudad de Tumbes y funciona como uno de los principales puntos de salida para los paseos turísticos por esta zona de manglares. Desde su muelle se coordinan diferentes rutas en bote según los lugares que el visitante quiera conocer.",
+            },
+            {
+                type: "paragraph",
+                text: "Si todavía no sabes cómo llegar, puedes consultar nuestra guía específica para llegar a Puerto Pizarro desde Tumbes o desde el aeropuerto.",
+            },
+            {
+                type: "heading",
+                text: "¿Qué puedes ver durante un tour por los manglares?",
+            },
+            {
+                type: "paragraph",
+                text: "Los recorridos pueden variar según el tour elegido, las condiciones del día y los puntos incluidos. Por eso no todos los paseos por Puerto Pizarro ofrecen exactamente la misma experiencia.",
+            },
+            {
+                type: "list",
+                items: [
+                    "Canales y zonas de manglar.",
+                    "Islas ubicadas dentro del recorrido.",
+                    "Aves y otros animales del entorno.",
+                    "Isla de los Pájaros en las rutas que la incluyen.",
+                    "Cocodrilos en los recorridos que contemplan esta visita.",
+                    "Boca del mar en las rutas de mayor recorrido.",
+                ],
+            },
+            {
+                type: "image",
+                src: "/images-optimized/galeria/completo_galeria2.webp",
+                alt: "Manglares de Puerto Pizarro durante un tour en bote en Tumbes",
+                caption: "Los recorridos en bote permiten conocer diferentes sectores de Puerto Pizarro.",
+            },
+            {
+                type: "heading",
+                text: "La Isla de los Pájaros",
+            },
+            {
+                type: "paragraph",
+                text: "La Isla de los Pájaros es uno de los atractivos naturales más conocidos de los recorridos por Puerto Pizarro. Para quienes disfrutan de la naturaleza y la observación de aves, existen rutas que permiten acercarse a esta zona durante el paseo.",
+            },
+            {
+                type: "heading",
+                text: "Cocodrilos en Puerto Pizarro",
+            },
+            {
+                type: "paragraph",
+                text: "Otra alternativa es elegir un tour que incluya la visita a los cocodrilos. Esta opción suele interesar especialmente a quienes viajan en familia o quieren combinar naturaleza, navegación y diferentes atractivos durante una misma salida.",
+            },
+            {
+                type: "heading",
+                text: "¿Cómo visitar los manglares de Puerto Pizarro?",
+            },
+            {
+                type: "paragraph",
+                text: "La forma habitual de recorrer esta zona es mediante un paseo en bote desde Puerto Pizarro. Antes de reservar conviene revisar qué lugares incluye cada opción, ya que existen recorridos cortos y alternativas más completas.",
+            },
+            {
+                type: "list",
+                items: [
+                    "Define cuánto tiempo tienes disponible.",
+                    "Revisa qué islas incluye el recorrido.",
+                    "Consulta si deseas visitar la Isla de los Pájaros.",
+                    "Comprueba si la ruta incluye cocodrilos.",
+                    "Pregunta por las condiciones de marea antes de elegir el horario.",
+                ],
+            },
+            {
+                type: "heading",
+                text: "¿Cuánto dura un tour por los manglares?",
+            },
+            {
+                type: "paragraph",
+                text: "La duración depende del recorrido seleccionado. Una ruta enfocada en pocos atractivos requiere menos tiempo que un tour que combina varias islas, manglares, cocodrilos y otros puntos de Puerto Pizarro. Por eso es recomendable elegir el paseo según el tiempo disponible y los lugares que realmente quieres conocer.",
+            },
+            {
+                type: "heading",
+                text: "¿Cuál es la mejor hora para visitar los manglares?",
+            },
+            {
+                type: "paragraph",
+                text: "No existe una única hora perfecta para todos los días. La marea puede modificar las condiciones de navegación y la experiencia en determinados sectores. Antes de reservar, lo más recomendable es consultar las condiciones previstas para la fecha de tu visita.",
+            },
+            {
+                type: "heading",
+                text: "¿Qué llevar a un tour por los manglares?",
+            },
+            {
+                type: "paragraph",
+                text: "Para disfrutar del paseo conviene llevar ropa cómoda y prepararse para el sol y el entorno acuático. No necesitas llevar demasiadas cosas, pero algunos elementos pueden hacer que el recorrido resulte mucho más cómodo.",
+            },
+            {
+                type: "list",
+                items: [
+                    "Protector solar.",
+                    "Gorra o sombrero.",
+                    "Agua.",
+                    "Ropa fresca.",
+                    "Calzado cómodo.",
+                    "Protección para celular, cámara y objetos personales.",
+                ],
+            },
+            {
+                type: "heading",
+                text: "¿Qué tour por los manglares elegir?",
+            },
+            {
+                type: "paragraph",
+                text: "La mejor opción depende de lo que quieras conocer. Si tienes poco tiempo puedes elegir un recorrido más corto. Si es tu primera visita y quieres conocer varios atractivos, un tour completo por Puerto Pizarro permite aprovechar mejor la salida y combinar diferentes puntos en una misma experiencia.",
+            },
+            {
+                type: "quote",
+                text: "Antes de elegir un tour, revisa los lugares incluidos y las condiciones de marea para aprovechar mejor tu visita.",
+                author: "Equipo Avis Tours",
+            },
+            {
+                type: "heading",
+                text: "Tours por los manglares de Puerto Pizarro con Avis Tours",
+            },
+            {
+                type: "paragraph",
+                text: "En Avis Tours organizamos diferentes recorridos desde Puerto Pizarro. Puedes elegir entre alternativas enfocadas en determinados atractivos o recorridos más completos para conocer islas, manglares, cocodrilos y otros puntos de interés.",
+            },
+            {
+                type: "paragraph",
+                text: "Antes de separar tu paseo podemos orientarte sobre la ruta y el horario disponible según la marea, el clima y las condiciones de navegación del día.",
+            },
+        ],
+    },
 ]
 
 const blogConnections: Record<string, BlogConnection> = {
@@ -775,7 +1059,36 @@ const blogConnections: Record<string, BlogConnection> = {
             "mareas-en-puerto-pizarro"
         ],
         whatsappMessage: "Hola Avis Tours, estoy decidiendo entre Puerto Pizarro y Máncora y quiero información sobre sus tours."
-    }
+    },
+    "zoocriadero-cocodrilos-puerto-pizarro": {
+        primaryTourSlug: "islas-manglares-cocodrilos",
+        relatedTourSlugs: [
+            "islas-manglares-cocodrilos",
+            "puerto-pizarro-completo",
+            "isla-pajaros-manglares",
+        ],
+        relatedPostSlugs: [
+            "mareas-en-puerto-pizarro",
+            "que-llevar-a-un-tour-por-los-manglares-de-puerto-pizarro",
+            "ruta-completa-islas-manglares-cocodrilos",
+        ],
+        whatsappMessage: "Hola Avis Tours, quiero visitar el zoocriadero de cocodrilos y los manglares de Puerto Pizarro. ¿Qué tour me recomiendan?",
+    },
+    "manglares-de-puerto-pizarro": {
+        primaryTourSlug: "puerto-pizarro-completo",
+        relatedTourSlugs: [
+            "puerto-pizarro-completo",
+            "islas-manglares-cocodrilos",
+            "isla-pajaros-manglares",
+        ],
+        relatedPostSlugs: [
+            "isla-de-los-pajaros-y-manglares",
+            "mareas-en-puerto-pizarro",
+            "que-llevar-a-un-tour-por-los-manglares-de-puerto-pizarro",
+            "como-llegar-a-puerto-pizarro-desde-tumbes",
+        ],
+        whatsappMessage: "Hola Avis Tours, quiero conocer los manglares de Puerto Pizarro. ¿Qué tour me recomiendan según los lugares que quiero visitar?",
+    },
 }
 
 export function getBlogPost(slug: string) {

@@ -25,7 +25,7 @@ export const fallbackTestimonials: PublicTestimonial[] = [
         role: "Familia viajera",
         image: "/images/clients/client2.png",
         rating: 5,
-        tourTitle: "Islas, manglares y cocodrilos",
+        tourTitle: "Isla del Amor, manglares y cocodrilos",
     },
     {
         id: "fallback-3",
@@ -43,7 +43,7 @@ export const fallbackTestimonials: PublicTestimonial[] = [
         role: "Viajero nacional",
         image: "/images/clients/client5.png",
         rating: 5,
-        tourTitle: "Isla, pájaros y manglares",
+        tourTitle: "Isla del Amor, pájaros y manglares",
     },
     {
         id: "fallback-5",
@@ -61,6 +61,6 @@ export const fallbackTestimonials: PublicTestimonial[] = [
         role: "Viajero de Ecuador",
         image: "/images/clients/client6.png",
         rating: 5,
-        tourTitle: "Islas, manglares y cocodrilos",
+        tourTitle: "Isla del Amor, manglares y cocodrilos",
     },
 ]

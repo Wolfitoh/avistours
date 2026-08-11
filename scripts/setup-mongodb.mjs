@@ -54,7 +54,7 @@ const seedTestimonials = [
         clientName: "Carlos Medina",
         clientOrigin: "Familia viajera",
         tourSlug: "islas-manglares-cocodrilos",
-        tourTitle: "Islas, manglares y cocodrilos",
+        tourTitle: "Isla del Amor, manglares y cocodrilos",
         rating: 5,
         comment: "Nos ayudaron a elegir el horario segun la marea y el recorrido salio perfecto para viajar con ninos.",
         visitDate: "2026-04-04",

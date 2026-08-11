@@ -308,18 +308,6 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                             </div>
 
                             <div className="max-w-[720px]">
-                                <div className="mb-8 rounded-lg border border-green-100 bg-green-50/60 px-5 py-4">
-                                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-green-600">
-                                        Resumen
-                                    </span>
-                                    <p className="mt-2 text-[15px] md:text-base leading-7 text-gray-700">
-                                        {seoTarget.intro}
-                                    </p>
-                                    <p className="mt-3 text-sm leading-6 text-gray-600">
-                                        {post.excerpt}
-                                    </p>
-                                </div>
-
                                 {(primaryTour || relatedPosts[0]) && (
                                     <div className="mb-8 rounded-lg border border-slate-200 bg-slate-50 px-5 py-4 text-[15px] leading-7 text-gray-700">
                                         <span className="text-xs font-semibold uppercase tracking-[0.16em] text-green-600">

@@ -46,7 +46,7 @@
     {
         "id": 3,
         "slug": "isla-pajaros-manglares",
-        "title": "Isla, pájaros y manglares",
+        "title": "Isla del Amor, pájaros y manglares",
         "location": "Manglares de Tumbes",
         "price": 10,
         "groupPrice": 100,
@@ -57,17 +57,17 @@
         "rating": 5,
         "reviews": 2,
         "duration": "1 a 2 horas",
-        "description": "Una ruta escénica para navegar entre canales, observar aves y sentir de cerca el paisaje de los manglares.",
-        "features": ["Isla", "Aves", "Manglares"],
-        "activities": ["Navegación por manglares", "Observación de aves", "Fotografía de paisaje", "Visita a isla"],
+        "description": "Una ruta escénica para visitar la isla del Amor, observar aves en la Isla de los Pájaros y navegar por los manglares.",
+        "features": ["Isla del Amor", "Isla de los Pájaros", "Manglares"],
+        "activities": ["Visita a la isla del Amor", "Navegación por manglares", "Observación de aves", "Fotografía de paisaje"],
         "includes": ["Bote turístico", "Guía local", "Ruta por canales", "Parada de observación"],
         "recommendations": ["Llevar cámara o celular cargado", "Usar ropa ligera", "Evitar alimentar aves con alimentos no permitidos"],
-        "itinerary": ["Salida desde Puerto Pizarro", "Recorrido por canales del manglar", "Observación de aves en Isla de los Pájaros", "Estadía en la isla del Amor", "Retorno al muelle turístico"]
+        "itinerary": ["Salida desde Puerto Pizarro", "Visita a la isla del Amor", "Recorrido por canales del manglar", "Observación de aves en la Isla de los Pájaros", "Retorno al muelle turístico"]
     },
     {
         "id": 4,
         "slug": "islas-manglares-cocodrilos",
-        "title": "Islas, manglares y cocodrilos",
+        "title": "Isla del Amor, manglares y cocodrilos",
         "location": "Puerto Pizarro, Tumbes",
         "price": 10,
         "groupPrice": 100,
@@ -78,12 +78,12 @@
         "rating": 4.9,
         "reviews": 3,
         "duration": "2 horas",
-        "description": "Tour equilibrado para conocer los canales del manglar, las islas principales y el zoocriadero de cocodrilos.",
-        "features": ["Islas", "Manglares", "Zoocriadero"],
-        "activities": ["Recorrido por islas", "Navegación por manglares", "Visita al zoocriadero", "Interpretación natural"],
+        "description": "Tour para conocer la isla del Amor, navegar por los canales del manglar y visitar el zoocriadero de cocodrilos.",
+        "features": ["Isla del Amor", "Manglares", "Zoocriadero de cocodrilos"],
+        "activities": ["Visita a la isla del Amor", "Navegación por manglares", "Visita al zoocriadero", "Interpretación natural"],
         "includes": ["Bote turístico", "Guía local", "Ingreso coordinado a paradas", "Asistencia durante el paseo"],
         "recommendations": ["Llevar repelente", "Usar calzado cómodo", "Confirmar salida según marea"],
-        "itinerary": ["Embarque en el muelle turístico", "Recorrido por islas y canales de manglar", "Visita al zoocriadero de cocodrilos", "Estadía en la isla del Amor", "Retorno a Puerto Pizarro"]
+        "itinerary": ["Embarque en el muelle turístico", "Visita a la isla del Amor", "Navegación por los canales del manglar", "Visita al zoocriadero de cocodrilos", "Retorno a Puerto Pizarro"]
     },
     {
         "id": 5,

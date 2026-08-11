@@ -77,8 +77,8 @@ export const primaryKeywords = {
 export const primaryTourKeywords: Record<string, string> = {
     "puerto-pizarro-completo": "Tour completo en Puerto Pizarro",
     "solo-visita-a-la-isla": "Tour a la isla en Puerto Pizarro",
-    "isla-pajaros-manglares": "Tour Isla de los Pájaros Tumbes",
-    "islas-manglares-cocodrilos": "Tour islas manglares y cocodrilos Puerto Pizarro",
+    "isla-pajaros-manglares": "Tour Isla del Amor, Isla de los Pájaros y manglares Tumbes",
+    "islas-manglares-cocodrilos": "Tour Isla del Amor, manglares y cocodrilos Puerto Pizarro",
     "pajaros-y-manglares": "Tour manglares Tumbes",
     "manglares-y-cocodrilos": "Tour manglares y cocodrilos Tumbes",
 }
@@ -87,6 +87,8 @@ export const primaryBlogKeywords: Record<string, string> = {
     "mareas-en-puerto-pizarro": "Mareas en Puerto Pizarro",
     "ruta-completa-islas-manglares-cocodrilos": "Tour completo en Puerto Pizarro",
     "isla-de-los-pajaros-y-manglares": "Isla de los Pájaros Tumbes",
+    "zoocriadero-cocodrilos-puerto-pizarro": "Zoocriadero de cocodrilos de Puerto Pizarro",
+    "manglares-de-puerto-pizarro": "Manglares de Puerto Pizarro",
     "como-llegar-a-puerto-pizarro-desde-tumbes": "Cómo llegar a Puerto Pizarro desde Tumbes",
     "que-llevar-a-un-tour-por-los-manglares-de-puerto-pizarro": "Qué llevar a un tour por los manglares de Puerto Pizarro",
     "que-hacer-en-tumbes-en-1-dia": "Qué hacer en Tumbes en 1 día",
@@ -116,17 +118,17 @@ export const tourSeoTargets: Record<string, SeoTarget> = {
     },
 
     "isla-pajaros-manglares": {
-        intro: "Este tour a la Isla de los Pájaros en Puerto Pizarro combina navegación por manglares, observación de aves y una ruta natural muy buscada en Tumbes.",
+        intro: "Este tour a la isla del Amor y la Isla de los Pájaros en Puerto Pizarro combina navegación por manglares, observación de aves y una ruta natural muy buscada en Tumbes.",
         secondaryKeyword: "tour isla de los pájaros Puerto Pizarro",
         intent: "reservar una ruta natural con aves y manglar",
-        metaDescription: "Tour a la Isla de los Pájaros en Tumbes desde Puerto Pizarro. Navega entre manglares, observa aves y consulta precios y horarios según la marea.",
+        metaDescription: "Tour a la isla del Amor y la Isla de los Pájaros en Tumbes desde Puerto Pizarro. Navega entre manglares, observa aves y consulta precios y horarios según la marea.",
     },
 
     "islas-manglares-cocodrilos": {
-        intro: "Este tour por islas, manglares y cocodrilos en Puerto Pizarro funciona muy bien si quieres una ruta variada con naturaleza, fauna y paseo en lancha.",
+        intro: "Este tour a la isla del Amor, los manglares y los cocodrilos en Puerto Pizarro es ideal si quieres una ruta variada con naturaleza, fauna y paseo en lancha.",
         secondaryKeyword: "tour cocodrilos Puerto Pizarro",
         intent: "evaluar una ruta variada con fauna y esteros",
-        metaDescription: "Tour por islas, manglares y cocodrilos en Puerto Pizarro. Recorre los esteros, visita el zoocriadero y revisa duración y precio por grupo.",
+        metaDescription: "Tour a la isla del Amor, manglares y cocodrilos en Puerto Pizarro. Recorre los esteros, visita el zoocriadero y revisa duración y precio por grupo.",
     },
 
     "pajaros-y-manglares": {
@@ -164,6 +166,20 @@ export const blogSeoTargets: Record<string, SeoTarget> = {
         secondaryKeyword: "tour Isla de los Pájaros Tumbes",
         intent: "descubrir qué ver en la Isla de los Pájaros",
         metaDescription: "Isla de los Pájaros en Tumbes: descubre qué ver, cómo es el paseo por los manglares y cuándo conviene reservar el tour.",
+    },
+
+    "zoocriadero-cocodrilos-puerto-pizarro": {
+        intro: "Si quieres visitar el zoocriadero de cocodrilos de Puerto Pizarro, esta guía explica qué ver y cómo incluirlo en un recorrido por los manglares de Tumbes.",
+        secondaryKeyword: "tour cocodrilos Puerto Pizarro",
+        intent: "organizar una visita al zoocriadero y los manglares",
+        metaDescription: "Zoocriadero de cocodrilos de Puerto Pizarro: qué ver, cómo visitarlo y qué tour elegir para combinarlo con manglares e islas.",
+    },
+
+    "manglares-de-puerto-pizarro": {
+        intro: "Esta guía reúne lo que necesitas saber para visitar los manglares de Puerto Pizarro: qué ver, cómo recorrerlos y cómo elegir un tour en Tumbes.",
+        secondaryKeyword: "tour manglares Puerto Pizarro",
+        intent: "organizar una visita a los manglares de Puerto Pizarro",
+        metaDescription: "Manglares de Puerto Pizarro: qué ver, cómo visitarlos y qué considerar antes de elegir un tour por esta zona natural de Tumbes.",
     },
 
     "como-llegar-a-puerto-pizarro-desde-tumbes": {
@@ -280,6 +296,8 @@ const tourAliasMap: Record<string, string[]> = {
         "paseo en lancha Puerto Pizarro",
     ],
     "isla-pajaros-manglares": [
+        "tour isla del Amor y pájaros",
+        "tour isla del Amor pájaros y manglares",
         "tour isla de los pájaros Puerto Pizarro",
         "tour isla de los pájaros Tumbes",
         "isla de los pájaros Tumbes",
@@ -290,6 +308,8 @@ const tourAliasMap: Record<string, string[]> = {
         "tour manglares Tumbes",
     ],
     "islas-manglares-cocodrilos": [
+        "tour isla del Amor manglares y cocodrilos",
+        "isla del Amor Puerto Pizarro",
         "tour manglares y cocodrilos",
         "tour cocodrilos Puerto Pizarro",
         "manglares cocodrilos Puerto Pizarro",
@@ -342,6 +362,20 @@ const blogAliasMap: Record<string, string[]> = {
         "tour aves Puerto Pizarro",
         "tour aves Tumbes",
         "manglares de Tumbes",
+    ],
+    "zoocriadero-cocodrilos-puerto-pizarro": [
+        "zoocriadero de cocodrilos Puerto Pizarro",
+        "cocodrilos de Puerto Pizarro",
+        "tour cocodrilos Puerto Pizarro",
+        "zoocriadero cocodrilos Tumbes",
+        "manglares y cocodrilos Tumbes",
+    ],
+    "manglares-de-puerto-pizarro": [
+        "manglares de Puerto Pizarro",
+        "tour manglares Puerto Pizarro",
+        "paseo por manglares Tumbes",
+        "qué ver en Puerto Pizarro",
+        "tours en los manglares de Tumbes",
     ],
     "como-llegar-a-puerto-pizarro-desde-tumbes": [
         "cómo llegar a Puerto Pizarro",
