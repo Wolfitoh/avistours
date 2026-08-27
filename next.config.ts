@@ -21,6 +21,26 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/index.html",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/index",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/home",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/inicio",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/operador-turistico",
         destination: "/contact",
         permanent: true,
