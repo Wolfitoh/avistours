@@ -89,7 +89,7 @@ export const primaryBlogKeywords: Record<string, string> = {
     "isla-de-los-pajaros-y-manglares": "Isla de los Pájaros Tumbes",
     "zoocriadero-cocodrilos-puerto-pizarro": "Zoocriadero de cocodrilos de Puerto Pizarro",
     "manglares-de-puerto-pizarro": "Manglares de Puerto Pizarro",
-    "como-llegar-a-puerto-pizarro-desde-tumbes": "Cómo llegar a Puerto Pizarro desde Tumbes",
+    "como-llegar-a-puerto-pizarro-desde-tumbes": "¿Dónde queda Puerto Pizarro? Cómo llegar desde Tumbes",
     "que-llevar-a-un-tour-por-los-manglares-de-puerto-pizarro": "Qué llevar a un tour por los manglares de Puerto Pizarro",
     "que-hacer-en-tumbes-en-1-dia": "Qué hacer en Tumbes en 1 día",
     "puerto-pizarro-o-mancora": "Puerto Pizarro o Máncora",
@@ -162,10 +162,10 @@ export const blogSeoTargets: Record<string, SeoTarget> = {
     },
 
     "isla-de-los-pajaros-y-manglares": {
-        intro: "Si te interesa la Isla de los Pájaros en Tumbes, esta guía resume qué ver, cómo es el recorrido y por qué este paseo destaca entre los tours naturales de Puerto Pizarro.",
-        secondaryKeyword: "tour Isla de los Pájaros Tumbes",
-        intent: "descubrir qué ver en la Isla de los Pájaros",
-        metaDescription: "Isla de los Pájaros en Tumbes: descubre qué ver, cómo es el paseo por los manglares y cuándo conviene reservar el tour.",
+        intro: "¿Dónde queda la Isla de los Pájaros en Tumbes? Se visita desde Puerto Pizarro, dentro de los manglares. Descubre qué ver y cómo es el recorrido en lancha.",
+        secondaryKeyword: "dónde queda la Isla de los Pájaros",
+        intent: "ubicar y descubrir qué ver en la Isla de los Pájaros",
+        metaDescription: "Isla de los Pájaros en Tumbes: conoce dónde queda, qué ver y cómo es el paseo en lancha desde Puerto Pizarro por los manglares.",
     },
 
     "zoocriadero-cocodrilos-puerto-pizarro": {
@@ -183,10 +183,10 @@ export const blogSeoTargets: Record<string, SeoTarget> = {
     },
 
     "como-llegar-a-puerto-pizarro-desde-tumbes": {
-        intro: "Si necesitas saber cómo llegar a Puerto Pizarro desde Tumbes o desde el aeropuerto, aquí tienes una guía clara para ubicar el muelle turístico y organizar mejor tu visita.",
-        secondaryKeyword: "muelle turístico Puerto Pizarro",
-        intent: "resolver cómo llegar sin perder tiempo",
-        metaDescription: "Cómo llegar a Puerto Pizarro desde Tumbes o el aeropuerto: conoce las opciones de traslado, el punto de encuentro y cómo ubicar el muelle turístico.",
+        intro: "¿Dónde queda Puerto Pizarro? Está cerca de la ciudad de Tumbes, en el norte del Perú. Esta guía explica cómo llegar desde Tumbes o el aeropuerto y ubicar el muelle turístico.",
+        secondaryKeyword: "dónde queda Puerto Pizarro",
+        intent: "ubicar Puerto Pizarro y organizar cómo llegar",
+        metaDescription: "¿Dónde queda Puerto Pizarro? Está cerca de Tumbes, en el norte del Perú. Conoce cómo llegar desde Tumbes o el aeropuerto y ubicar el muelle turístico.",
     },
 
     "que-llevar-a-un-tour-por-los-manglares-de-puerto-pizarro": {
@@ -356,6 +356,9 @@ const blogAliasMap: Record<string, string[]> = {
     ],
     "isla-de-los-pajaros-y-manglares": [
         "isla de los pájaros Tumbes",
+        "isla de los pájaros",
+        "la isla de los pájaros",
+        "dónde queda la isla de los pájaros",
         "tour isla de los pájaros Tumbes",
         "Isla de los Pájaros Puerto Pizarro",
         "visita a isla de los pájaros y manglares",
@@ -378,6 +381,8 @@ const blogAliasMap: Record<string, string[]> = {
         "tours en los manglares de Tumbes",
     ],
     "como-llegar-a-puerto-pizarro-desde-tumbes": [
+        "dónde queda Puerto Pizarro",
+        "dónde queda Puerto Pizarro en Perú",
         "cómo llegar a Puerto Pizarro",
         "cómo llegar a Puerto Pizarro desde Tumbes",
         "muelle turístico Puerto Pizarro",

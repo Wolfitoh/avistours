@@ -250,14 +250,14 @@ export const blogPosts: BlogPost[] = [
         author: "Equipo Avis Tours",
         image: "/images-optimized/galeria/pajaros_manglares_galeria1.webp",
         highlights: [
-            "Uno de los principales atractivos turísticos de Puerto Pizarro",
+            "Ubicada en los manglares de Puerto Pizarro, cerca de Tumbes",
             "Ideal para observar aves en su hábitat natural",
             "Perfecto para tours cortos en los manglares de Tumbes"
         ],
         body: [
             {
                 type: "paragraph",
-                text: "La Isla de los Pájaros en Puerto Pizarro es uno de los destinos más visitados dentro de los manglares de Tumbes. Este recorrido es ideal para quienes buscan una experiencia natural, tranquila y enfocada en la observación de aves y paisajes únicos del ecosistema costero."
+                text: "La Isla de los Pájaros queda dentro de los manglares de Puerto Pizarro, cerca de la ciudad de Tumbes, en el norte del Perú. Es uno de los destinos más visitados para quienes buscan observar aves y disfrutar paisajes naturales durante un paseo en lancha."
             },
             {
                 type: "heading",
@@ -266,6 +266,14 @@ export const blogPosts: BlogPost[] = [
             {
                 type: "paragraph",
                 text: "La Isla de los Pájaros es una zona dentro de los manglares de Puerto Pizarro donde se pueden observar diversas especies de aves en su entorno natural. Es una parada común en los tours en lancha y uno de los puntos más representativos del turismo en Tumbes."
+            },
+            {
+                type: "heading",
+                text: "¿Dónde queda la Isla de los Pájaros en Tumbes?"
+            },
+            {
+                type: "paragraph",
+                text: "La Isla de los Pájaros se visita desde Puerto Pizarro, una zona turística cercana a la ciudad de Tumbes. El recorrido comienza en el muelle turístico y continúa en lancha por los canales de manglar hasta las zonas de observación de aves."
             },
             {
                 type: "image",
@@ -345,8 +353,8 @@ export const blogPosts: BlogPost[] = [
     },
     {
         slug: "como-llegar-a-puerto-pizarro-desde-tumbes",
-        title: "Cómo llegar a Puerto Pizarro desde Tumbes o aeropuerto (guía 2026)",
-        excerpt: "Aprende cómo llegar a Puerto Pizarro desde el centro de Tumbes o el aeropuerto y planifica tu tour por los manglares sin contratiempos.",
+        title: "¿Dónde queda Puerto Pizarro? Cómo llegar desde Tumbes y el aeropuerto",
+        excerpt: "Puerto Pizarro queda cerca de la ciudad de Tumbes, en el norte del Perú. Conoce cómo llegar desde Tumbes o el aeropuerto y cómo ubicar el muelle turístico.",
         category: "Planificación",
         location: "Tumbes y Puerto Pizarro",
         readTime: "7 min",
@@ -354,14 +362,14 @@ export const blogPosts: BlogPost[] = [
         author: "Equipo Avis Tours",
         image: "/images-optimized/galeria/galeria29.webp",
         highlights: [
-            "Guía clara para llegar al muelle turístico de Puerto Pizarro",
+            "Ubicación de Puerto Pizarro y del muelle turístico",
             "Opciones desde el centro de Tumbes y el aeropuerto",
             "Consejos para llegar a tiempo a tu tour"
         ],
         body: [
             {
                 type: "paragraph",
-                text: "Si estás planeando un tour en Puerto Pizarro, uno de los primeros pasos es saber cómo llegar correctamente. Este destino turístico, ubicado a pocos minutos de la ciudad de Tumbes, es el punto de partida para recorrer los manglares, islas y realizar paseos en lancha."
+                text: "Puerto Pizarro queda cerca de la ciudad de Tumbes, en el norte del Perú. Es una zona turística y el punto de partida para recorrer los manglares, las islas y realizar paseos en lancha."
             },
             {
                 type: "heading",
@@ -369,7 +377,7 @@ export const blogPosts: BlogPost[] = [
             },
             {
                 type: "paragraph",
-                text: "Puerto Pizarro es una zona turística ubicada cerca de la ciudad de Tumbes, en el norte del Perú. Aquí se encuentra el muelle turístico desde donde parten los tours hacia los manglares de Tumbes, la Isla de los Pájaros, el zoocriadero de cocodrilos y la boca del mar."
+                text: "Puerto Pizarro es una zona turística cercana a la ciudad de Tumbes, en el norte del Perú. Allí se encuentra el muelle turístico desde donde parten los tours hacia los manglares de Tumbes, la Isla de los Pájaros, el zoocriadero de cocodrilos y la boca del mar."
             },
             {
                 type: "image",
@@ -1019,13 +1027,13 @@ const blogConnections: Record<string, BlogConnection> = {
     "isla-de-los-pajaros-y-manglares": {
         primaryTourSlug: "isla-pajaros-manglares",
         relatedTourSlugs: ["isla-pajaros-manglares", "pajaros-y-manglares"],
-        relatedPostSlugs: ["ruta-completa-islas-manglares-cocodrilos", "mareas-en-puerto-pizarro"],
+        relatedPostSlugs: ["como-llegar-a-puerto-pizarro-desde-tumbes", "ruta-completa-islas-manglares-cocodrilos", "manglares-de-puerto-pizarro"],
         whatsappMessage: "Hola Avis Tours, vi su artículo sobre Isla de los Pájaros y quiero cotizar ese tour en Puerto Pizarro.",
     },
     "como-llegar-a-puerto-pizarro-desde-tumbes": {
         primaryTourSlug: "solo-visita-a-la-isla",
         relatedTourSlugs: ["puerto-pizarro-completo", "solo-visita-a-la-isla"],
-        relatedPostSlugs: ["mareas-en-puerto-pizarro", "que-llevar-a-un-tour-por-los-manglares-de-puerto-pizarro"],
+        relatedPostSlugs: ["isla-de-los-pajaros-y-manglares", "manglares-de-puerto-pizarro", "mareas-en-puerto-pizarro"],
         whatsappMessage: "Hola Avis Tours, voy a llegar a Tumbes y quiero ayuda para coordinar mi tour en Puerto Pizarro.",
     },
     "que-llevar-a-un-tour-por-los-manglares-de-puerto-pizarro": {
