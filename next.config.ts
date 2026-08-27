@@ -41,6 +41,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/promociones",
+        destination: "/packages",
+        permanent: true,
+      },
+      {
+        source: "/promociones.html",
+        destination: "/packages",
+        permanent: true,
+      },
+      {
         source: "/operador-turistico",
         destination: "/contact",
         permanent: true,

@@ -2,14 +2,14 @@ import Script from "next/script"
 
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-5S2LZ9G7"
 const gaId = process.env.NEXT_PUBLIC_GA_ID
-const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID ?? "w9lus4o8np"
+const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID
 const loadDirectGa = Boolean(gaId && !gtmId)
 
 export default function GoogleScripts() {
     return (
         <>
             {gtmId && (
-                <Script id="google-tag-manager" strategy="afterInteractive">
+                <Script id="google-tag-manager" strategy="lazyOnload">
                     {`
                         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -24,9 +24,9 @@ export default function GoogleScripts() {
                 <>
                     <Script
                         src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-                        strategy="afterInteractive"
+                        strategy="lazyOnload"
                     />
-                    <Script id="google-analytics" strategy="afterInteractive">
+                    <Script id="google-analytics" strategy="lazyOnload">
                         {`
                             window.dataLayer = window.dataLayer || [];
                             function gtag(){dataLayer.push(arguments);}
@@ -38,7 +38,7 @@ export default function GoogleScripts() {
             )}
 
             {clarityProjectId && (
-                <Script id="microsoft-clarity" strategy="afterInteractive">
+                <Script id="microsoft-clarity" strategy="lazyOnload">
                     {`
                         (function(c,l,a,r,i,t,y){
                             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

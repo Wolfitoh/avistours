@@ -6,6 +6,7 @@ import BlogSection from "@/components/home/BlogSection";
 import TidesSection from "@/components/home/TidesSection";
 import HomeTrustSection from "@/components/home/HomeTrustSection";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import FaqSection from "@/components/seo/FaqSection";
 import JsonLd from "@/components/seo/JsonLd";
 import { companyProfile, getCompanySameAs } from "@/data/company";
@@ -87,10 +88,16 @@ export default function HomePage() {
             />
             <HeroCarousel />
             <SearchBar />
-            <TidesSection />
-            <PromotionsSection />
+            <Suspense fallback={null}>
+                <TidesSection />
+            </Suspense>
+            <Suspense fallback={null}>
+                <PromotionsSection />
+            </Suspense>
             <HomeTrustSection />
-            <TestimonialsSection />
+            <Suspense fallback={null}>
+                <TestimonialsSection />
+            </Suspense>
             <BlogSection />
             <FaqSection
                 eyebrow="Preguntas frecuentes"
