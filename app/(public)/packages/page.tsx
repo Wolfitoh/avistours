@@ -18,22 +18,22 @@ type PackagesPageProps = {
 }
 
 export const metadata: Metadata = {
-    title: "Tours en Puerto Pizarro: precios, rutas y reservas",
-    description: `Compara tours en Puerto Pizarro con ${brandName}: precios, rutas por manglares, islas, aves, cocodrilos y reserva directa por WhatsApp.`,
+    title: "Tours en Puerto Pizarro: manglares, precios y reservas",
+    description: `Reserva tours en Puerto Pizarro con ${brandName}: manglares, islas, aves y cocodrilos. Compara precios, rutas y coordina tu salida por WhatsApp.`,
     keywords: [...siteWideKeywords, primaryKeywords.packages, ...packagesKeywords],
     alternates: {
         canonical: "/packages",
     },
     openGraph: {
         title: `Tours en Puerto Pizarro y manglares de Tumbes | ${brandName}`,
-        description: "Paquetes por islas, manglares, Isla de los Pájaros, cocodrilos y boca del mar en Puerto Pizarro.",
+        description: "Tours por islas, manglares, Isla de los Pájaros, cocodrilos y boca del mar en Puerto Pizarro.",
         url: "/packages",
         images: [
             {
                 url: absoluteUrl("/images-optimized/promotions/manglares_cocodrilos.webp"),
                 width: 1200,
                 height: 630,
-                alt: "Paquetes turísticos por Puerto Pizarro y manglares de Tumbes",
+                alt: "Tours por Puerto Pizarro y manglares de Tumbes",
             },
         ],
     },
@@ -120,7 +120,7 @@ export default async function PackagesPage({ searchParams }: PackagesPageProps) 
                         Tours en Puerto Pizarro con precios, rutas y guía local
                     </h1>
                     <p className="mt-5 max-w-2xl text-sm leading-7 text-white/75 md:text-base">
-                        Encuentra paseos en bote por manglares, islas, aves, cocodrilos y boca del mar. Compara paquetes, revisa detalles y elige la salida que mejor se adapta a tu tiempo y presupuesto.
+                        Encuentra paseos en bote por manglares, islas, aves, cocodrilos y boca del mar. Compara tours, revisa detalles y elige la salida que mejor se adapta a tu tiempo y presupuesto.
                     </p>
 
                     <SiteSearch
@@ -137,14 +137,14 @@ export default async function PackagesPage({ searchParams }: PackagesPageProps) 
                     <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                         <div>
                             <span className="text-sm font-semibold uppercase tracking-[0.18em] text-green-500">
-                                {hasQuery ? "Resultados de búsqueda" : "Paquetes disponibles"}
+                                {hasQuery ? "Resultados de búsqueda" : "Tours disponibles"}
                             </span>
                             <h2 className="mt-2 text-2xl font-semibold text-slate-900 md:text-3xl">
                                 {hasQuery ? `Resultados para "${query}"` : "Elige tu paseo por Puerto Pizarro"}
                             </h2>
                             <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500 md:text-base">
                                 {hasQuery
-                                    ? `${totalResults} resultado(s) entre paquetes y entradas del blog.`
+                                    ? `${totalResults} resultado(s) entre tours y entradas del blog.`
                                     : "Opciones pensadas para distintos tiempos de viaje, desde traslados cortos hasta el recorrido completo."}
                             </p>
                         </div>

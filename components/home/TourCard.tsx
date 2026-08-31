@@ -73,8 +73,6 @@ export default function TourCard({ tour }: { tour: Tour }) {
 
                 {/* RATING */}
                 <div className="flex flex-wrap items-center gap-1 mt-2 text-sm text-gray-500">
-                    <span>Rating:</span>
-
                     <div className="flex text-yellow-400">
                         {[1, 2, 3, 4, 5].map(i => (
                             <Star
@@ -93,17 +91,6 @@ export default function TourCard({ tour }: { tour: Tour }) {
 
                 {/* DIVIDER */}
                 <div className="border-t border-slate-200 my-3"></div>
-
-                <div className="flex flex-wrap gap-2 mb-3">
-                    <span className="rounded bg-green-50 px-2 py-1 text-xs font-medium text-green-600">
-                        {tour.duration}
-                    </span>
-                    {tour.features.slice(0, 3).map((feature) => (
-                        <span key={feature} className="rounded bg-slate-50 px-2 py-1 text-xs text-gray-500">
-                            {feature}
-                        </span>
-                    ))}
-                </div>
 
                 {/* FOOTER */}
                 <div className="flex flex-wrap gap-3 justify-between items-center">

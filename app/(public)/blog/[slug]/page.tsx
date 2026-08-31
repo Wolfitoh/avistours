@@ -281,9 +281,6 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                     <p className="text-base text-white/95 mt-5 max-w-3xl leading-7 drop-shadow-[0_2px_12px_rgba(15,23,42,0.65)]">
                         {seoTarget.intro}
                     </p>
-                    <p className="text-sm text-white/85 mt-4 max-w-3xl leading-7 drop-shadow-[0_2px_12px_rgba(15,23,42,0.65)]">
-                        {post.excerpt}
-                    </p>
                 </div>
             </section>
 
@@ -308,6 +305,10 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                             </div>
 
                             <div className="max-w-[720px]">
+                                <p className="mb-8 text-base leading-7 text-gray-600">
+                                    {post.excerpt}
+                                </p>
+
                                 {(primaryTour || relatedPosts[0]) && (
                                     <div className="mb-8 rounded-lg border border-slate-200 bg-slate-50 px-5 py-4 text-[15px] leading-7 text-gray-700">
                                         <span className="text-xs font-semibold uppercase tracking-[0.16em] text-green-600">

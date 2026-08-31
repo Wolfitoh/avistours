@@ -1,5 +1,19 @@
 import promotions from "./promotions.json"
 
+export type TourIcon =
+    | "beach"
+    | "bird"
+    | "boat"
+    | "camera"
+    | "crocodile"
+    | "island"
+    | "kayak"
+    | "mangrove"
+    | "route"
+    | "sea"
+    | "view"
+    | "zoo"
+
 export type Tour = {
     id: number
     slug: string
@@ -17,7 +31,9 @@ export type Tour = {
     duration: string
     description: string
     features: string[]
+    featureIcons?: Partial<Record<string, TourIcon>>
     activities: string[]
+    activityIcons?: Partial<Record<string, TourIcon>>
     includes: string[]
     recommendations: string[]
     itinerary: string[]

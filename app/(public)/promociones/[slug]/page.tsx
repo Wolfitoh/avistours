@@ -2,12 +2,14 @@ import Image from "next/image"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { ArrowLeft, Binoculars, CheckCircle2, Clock, Compass, MapPin, Sailboat, ShieldCheck, Star, Sun } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
+import { ArrowLeft, Binoculars, Bird, Camera, CheckCircle2, Clock, Kayak, Map, MapPin, ShieldCheck, ShipWheel, Star, TreePine, Umbrella, Waves } from "lucide-react"
 import PackageGallery from "@/components/gallery/PackageGallery"
+import { CrocodileIcon, IslandIcon } from "@/components/icons/TourFeatureIcons"
 import TourPricingCard from "@/components/promotions/TourPricingCard"
 import JsonLd from "@/components/seo/JsonLd"
 import { companyProfile } from "@/data/company"
-import { getTour, getTourDiscount, getTourPricing, tours } from "@/data/promotions"
+import { getTour, getTourDiscount, getTourPricing, tours, type TourIcon } from "@/data/promotions"
 import { brandName, getTourMetaDescription, getTourSearchTerms, getTourSeoTarget } from "@/data/seo"
 import { absoluteUrl, siteConfig } from "@/data/site"
 import { getTourRatingSummaries } from "@/services/testimonials"
@@ -16,7 +18,23 @@ type PromotionDetailPageProps = {
     params: Promise<{ slug: string }>
 }
 
-const activityIcons = [Sailboat, Binoculars, Compass, Sun]
+const fallbackActivityIcons: TourIcon[] = ["boat", "view", "route", "sea"]
+
+type StandardTourIcon = Exclude<TourIcon, "crocodile">
+
+const featureIconComponents: Record<StandardTourIcon, LucideIcon> = {
+    beach: Umbrella,
+    bird: Bird,
+    boat: ShipWheel,
+    camera: Camera,
+    island: IslandIcon,
+    kayak: Kayak,
+    mangrove: TreePine,
+    route: Map,
+    sea: Waves,
+    view: Binoculars,
+    zoo: ShieldCheck,
+}
 
 export function generateStaticParams() {
     return tours.map((tour) => ({
@@ -165,7 +183,7 @@ export default async function PromotionDetailPage({ params }: PromotionDetailPag
                             </span>
                         )}
                     </div>
-                    <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-white/85 backdrop-blur">
+                    <span className="inline-flex rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-green-500/85 backdrop-blur">
                         {seoTarget.primaryKeyword}
                     </span>
                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mt-5 leading-tight max-w-4xl drop-shadow-[0_2px_14px_rgba(15,23,42,0.65)]">
@@ -174,9 +192,6 @@ export default async function PromotionDetailPage({ params }: PromotionDetailPag
                     <p className="text-base text-white/95 mt-5 max-w-3xl leading-7 drop-shadow-[0_2px_12px_rgba(15,23,42,0.65)]">
                         {seoTarget.intro}
                     </p>
-                    <p className="text-sm text-white/85 mt-4 max-w-3xl leading-7 drop-shadow-[0_2px_12px_rgba(15,23,42,0.65)]">
-                        {tour.description}
-                    </p>
                 </div>
             </section>
 
@@ -184,57 +199,96 @@ export default async function PromotionDetailPage({ params }: PromotionDetailPag
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="grid lg:grid-cols-[minmax(0,1fr)_340px] gap-10 items-start">
                         <div className="bg-white rounded-lg shadow-[0_24px_70px_rgba(15,23,42,0.10)] border border-slate-100 p-6 md:p-9 lg:p-10 -mt-12 relative z-10">
-                            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 border-b border-slate-200 pb-6 mb-8">
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 border-b border-slate-200 pb-6 mb-8">
                                 <div className="rounded-md bg-slate-50 border border-slate-200 px-3 py-3">
-                                    <MapPin size={17} className="text-green-500" />
-                                    <span className="block text-xs text-gray-500 mt-2">Lugar</span>
+                                    <div className="flex items-center gap-2">
+                                        <MapPin size={17} className="text-green-500" />
+                                        <span className="block text-xs text-gray-500">Lugar</span>
+                                    </div>
                                     <strong className="text-sm text-gray-800">{tour.location}</strong>
                                 </div>
                                 <div className="rounded-md bg-slate-50 border border-slate-200 px-3 py-3">
-                                    <Clock size={17} className="text-green-500" />
-                                    <span className="block text-xs text-gray-500 mt-2">Duracion</span>
+                                    <div className="flex items-center gap-2">
+                                        <Clock size={17} className="text-green-500" />
+                                        <span className="block text-xs text-gray-500">Duración</span>
+                                    </div>
                                     <strong className="text-sm text-gray-800">{tour.duration}</strong>
                                 </div>
                                 <div className="rounded-md bg-slate-50 border border-slate-200 px-3 py-3">
-                                    <Star size={17} className="text-green-500" fill="currentColor" />
-                                    <span className="block text-xs text-gray-500 mt-2">Valoracion</span>
+                                    <div className="flex items-center gap-2">
+                                        <Star size={17} className="text-green-500" fill="currentColor" />
+                                        <span className="block text-xs text-gray-500">Valoración</span>
+                                    </div>
                                     <strong className="text-sm text-gray-800">{liveRating} ({liveReviews})</strong>
-                                </div>
-                                <div className="rounded-md bg-slate-50 border border-slate-200 px-3 py-3">
-                                    <ShieldCheck size={17} className="text-green-500" />
-                                    <span className="block text-xs text-gray-500 mt-2">Reserva</span>
-                                    <strong className="text-sm text-gray-800">Segun marea</strong>
                                 </div>
                             </div>
 
-                            <div>
+                            <p className="mb-8 max-w-2xl text-base leading-7 text-gray-600">
+                                {tour.description}
+                            </p>
+
+                            <section>
                                 <span className="text-green-500 font-semibold text-sm uppercase tracking-[0.18em]">
-                                    Actividades
+                                    Paradas destacadas
                                 </span>
                                 <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mt-3">
-                                    Que haras durante el paquete
+                                    Lo mejor de este recorrido
                                 </h2>
                                 <p className="text-gray-500 leading-7 mt-3 max-w-2xl">
-                                    Una experiencia pensada para conocer Puerto Pizarro desde el agua, con paradas claras y tiempo para disfrutar el paisaje del manglar.
+                                    Estas son las paradas y experiencias principales que incluye el tour.
                                 </p>
 
-                                <div className="grid sm:grid-cols-2 gap-4 mt-7">
-                                    {tour.activities.map((activity, index) => {
-                                        const Icon = activityIcons[index % activityIcons.length]
+                                <div className="grid gap-4 mt-7 sm:grid-cols-2">
+                                    {tour.features.map((feature) => {
+                                        const iconName = tour.featureIcons?.[feature] ?? "route"
+                                        const standardIconName = iconName === "crocodile" ? "route" : iconName as StandardTourIcon
+                                        const Icon = featureIconComponents[standardIconName] ?? Map
 
                                         return (
-                                            <div key={activity} className="rounded-lg border border-slate-200 bg-slate-50 p-5">
-                                                <div className="h-11 w-11 rounded-md bg-green-500 text-white flex items-center justify-center">
-                                                    <Icon size={22} />
+                                            <div key={feature} className="group flex items-center gap-4 rounded-xl border border-green-100 bg-gradient-to-br from-green-50 to-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                                                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-green-500 text-white shadow-[0_8px_20px_rgba(34,197,94,0.25)]">
+                                                    {iconName === "crocodile" ? <CrocodileIcon size={23} /> : <Icon size={23} />}
                                                 </div>
-                                                <h3 className="font-semibold text-gray-800 mt-4">
-                                                    {activity}
+                                                <h3 className="font-semibold leading-snug text-gray-900">
+                                                    {feature}
                                                 </h3>
                                             </div>
                                         )
                                     })}
                                 </div>
-                            </div>
+                            </section>
+
+                            <section className="mt-10 border-t border-slate-200 pt-8">
+                                <span className="text-green-500 font-semibold text-sm uppercase tracking-[0.18em]">
+                                    Actividades
+                                </span>
+                                <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mt-3">
+                                    Lo que haras durante el tour
+                                </h2>
+                                <p className="text-gray-500 leading-7 mt-3 max-w-2xl">
+                                    Estas son las actividades que podrás realizar durante el tour.
+                                </p>
+
+                                <ul className="grid gap-x-6 gap-y-3 mt-5 sm:grid-cols-2">
+                                    {tour.activities.map((activity, index) => {
+                                        const iconName = tour.activityIcons?.[activity]
+                                            ?? fallbackActivityIcons[index % fallbackActivityIcons.length]
+                                        const standardIconName = iconName === "crocodile" ? "route" : iconName as StandardTourIcon
+                                        const Icon = featureIconComponents[standardIconName] ?? Map
+
+                                        return (
+                                            <li key={activity} className="flex gap-4">
+                                                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-50 text-green-600">
+                                                    {iconName === "crocodile" ? <CrocodileIcon size={17} /> : <Icon size={17} />}
+                                                </span>
+                                                <span className="text-sm md:text-base leading-7 text-gray-600">
+                                                    {activity}
+                                                </span>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </section>
 
                             <section className="mt-12">
                                 <span className="text-green-500 font-semibold text-sm uppercase tracking-[0.18em]">
@@ -299,21 +353,8 @@ export default async function PromotionDetailPage({ params }: PromotionDetailPag
                             </section>
                         </div>
 
-                        <aside className="space-y-6 lg:sticky lg:top-24">
+                        <aside className="lg:sticky lg:top-24">
                             <TourPricingCard tour={tour} number={companyProfile.whatsapp} />
-
-                            <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
-                                <h2 className="text-lg font-semibold text-gray-900">
-                                    Paradas destacadas
-                                </h2>
-                                <div className="flex flex-wrap gap-2 mt-4">
-                                    {tour.features.map((feature) => (
-                                        <span key={feature} className="rounded bg-white border border-slate-200 px-3 py-1 text-sm text-gray-600">
-                                            {feature}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
                         </aside>
                     </div>
                 </div>

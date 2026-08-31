@@ -22,7 +22,7 @@ type SearchResult = {
     description: string
     href: string
     image: string
-    type: "Paquete" | "Blog"
+    type: "Tour" | "Blog"
     keywords: string
 }
 
@@ -32,7 +32,7 @@ const results: SearchResult[] = [
         description: tour.description,
         href: `/promociones/${tour.slug}`,
         image: tour.image,
-        type: "Paquete" as const,
+        type: "Tour" as const,
         keywords: getTourSearchTerms(tour).join(" "),
     })),
     ...blogPosts.map((post) => ({
@@ -131,7 +131,7 @@ export default function SiteSearch({
                     <div className="mt-3 grid gap-2 md:grid-cols-2">
                         {suggestions.length > 0 ? (
                             suggestions.map((item) => {
-                                const Icon = item.type === "Paquete" ? ShipWheel : BookOpen
+                                const Icon = item.type === "Tour" ? ShipWheel : BookOpen
 
                                 return (
                                     <Link
