@@ -1,8 +1,10 @@
 import Image from "next/image"
-import Link from "next/link"
 import HeroDesktopBackground from "./HeroDesktopBackground"
+import { getTranslations } from "next-intl/server"
+import { Link } from "@/i18n/navigation"
 
-function HeroStaticContent() {
+async function HeroStaticContent({ locale }: { locale: string }) {
+    const t = await getTranslations({ locale, namespace: "Hero" })
     return (
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 pt-20 text-center text-white md:pt-12">
             <Image
@@ -16,21 +18,21 @@ function HeroStaticContent() {
             />
 
             <h1 className="mt-5 mb-4 max-w-5xl text-3xl leading-tight font-semibold text-white sm:text-4xl md:mb-6 lg:text-6xl">
-                Tours en Puerto Pizarro y manglares de Tumbes
+                {t("title")}
             </h1>
 
             <p className="mt-2 max-w-2xl text-sm leading-7 text-gray-200 sm:text-base md:mt-4">
-                Vive paseos en bote por manglares, islas, cocodrilos y la Isla de los Pájaros con guía local, coordinación por marea y reserva directa por WhatsApp.
+                {t("description")}
             </p>
 
             <Link href="/packages" className="btn mt-6 mb-10 border-green-500 bg-green-500 text-white md:mb-20">
-                Ver tours
+                {t("viewTours")}
             </Link>
         </div>
     )
 }
 
-export default function Hero() {
+export default function Hero({ locale }: { locale: string }) {
     return (
         <section className="h-[100svh] min-h-[560px] w-full md:h-[calc(100vh-43px)]">
             <div className="relative h-full w-full bg-slate-950">
@@ -46,7 +48,7 @@ export default function Hero() {
                 />
                 <HeroDesktopBackground />
                 <div className="absolute inset-0 z-10 bg-slate-900/70" />
-                <HeroStaticContent />
+                <HeroStaticContent locale={locale} />
             </div>
         </section>
     )

@@ -1,23 +1,15 @@
 import Image from "next/image"
-import Link from "next/link"
-import { brandName } from "@/data/seo"
+import { getTranslations } from "next-intl/server"
+import { Link } from "@/i18n/navigation"
 
-const homeTrustPillars = [
-    {
-        title: "Guías y coordinación local",
-        description: "Salidas organizadas en Puerto Pizarro, con información clara y recomendaciones según tu tipo de viaje.",
-    },
-    {
-        title: "Horarios según marea",
-        description: "Coordinamos la mejor hora para disfrutar manglares, islas y cocodrilos con una navegación más cómoda.",
-    },
-    {
-        title: "Reserva rápida por WhatsApp",
-        description: "Cotiza, consulta disponibilidad y separa tu tour de forma rápida y directa.",
-    },
-]
+export default async function HomeTrustSection({ locale }: { locale: string }) {
+    const t = await getTranslations({ locale, namespace: "HomeTrust" })
+    const homeTrustPillars = [
+        { title: t("localTitle"), description: t("localDescription") },
+        { title: t("tideTitle"), description: t("tideDescription") },
+        { title: t("bookingTitle"), description: t("bookingDescription") },
+    ]
 
-export default function HomeTrustSection() {
     return (
         <section className="relative isolate overflow-hidden bg-slate-950 py-14 text-white md:py-20">
             <Image
@@ -34,26 +26,26 @@ export default function HomeTrustSection() {
             <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
                 <div>
                     <span className="text-sm font-semibold uppercase tracking-[0.18em] text-green-300">
-                        Tours en Puerto Pizarro
+                        {t("eyebrow")}
                     </span>
                     <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-tight text-white md:text-4xl">
-                        Manglares de Tumbes, islas, aves y cocodrilos
+                        {t("title")}
                     </h2>
                     <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-100 md:text-base">
-                        Vive Puerto Pizarro con {brandName}. Recorre los manglares de Tumbes, visita la Isla de los Pájaros, el zoocriadero de cocodrilos y disfruta paseos guiados por locales, con salidas recomendadas según la marea.
+                        {t("descriptionOne")}
                     </p>
                     <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-100 md:text-base">
-                        Compara rutas, precios base e inclusiones para elegir el tour ideal en Tumbes y reservar con más seguridad.
+                        {t("descriptionTwo")}
                     </p>
                     <div className="mt-6 flex flex-wrap gap-3 text-sm font-medium">
                         <Link href="/packages" className="rounded-md bg-green-500 px-5 py-3 text-white transition hover:bg-green-600">
-                            Ver tours disponibles
+                            {t("viewTours")}
                         </Link>
                         <Link href="/contact" className="rounded-md border border-white/35 px-5 py-3 text-white transition hover:border-green-300 hover:text-green-200">
-                            Conoce al operador
+                            {t("meetOperator")}
                         </Link>
                         <Link href="/blog" className="rounded-md border border-white/35 px-5 py-3 text-white transition hover:border-green-300 hover:text-green-200">
-                            Leer guía local
+                            {t("readGuide")}
                         </Link>
                     </div>
                 </div>

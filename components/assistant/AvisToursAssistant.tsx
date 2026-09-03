@@ -1,8 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Loader2, MessageCircleMore, Send, Sparkles, X } from "lucide-react"
+import { useLocale, useTranslations } from "next-intl"
+import { resolveLocale } from "@/i18n/locales"
+import { getLocalizedPath } from "@/i18n/urls"
 
 type AssistantSuggestion = {
     label: string
@@ -16,30 +19,33 @@ type ChatMessage = {
     suggestions?: AssistantSuggestion[]
 }
 
-const quickPrompts = [
-    "Que tour me recomiendas si voy con familia?",
-    "Cual incluye cocodrilos?",
-    "Como esta la marea ahora?",
-    "Como llego a Puerto Pizarro?",
-]
-
-const initialMessage: ChatMessage = {
-    id: "welcome",
-    role: "assistant",
-    content:
-        "Hola, soy el asistente de Avis Tours. Puedo ayudarte con tours, marea, precios, blogs y recomendaciones para visitar Puerto Pizarro.",
-    suggestions: [
-        { label: "Ver tours", href: "/packages" },
-        { label: "Leer blog", href: "/blog" },
-        { label: "Operador", href: "/contact" },
-    ],
-}
-
 export default function AvisToursAssistant() {
+    const locale = resolveLocale(useLocale())
+    const t = useTranslations("Assistant")
     const [open, setOpen] = useState(false)
     const [input, setInput] = useState("")
     const [loading, setLoading] = useState(false)
+    const quickPrompts = [
+        t("quickFamily"),
+        t("quickCrocodiles"),
+        t("quickTide"),
+        t("quickGettingThere"),
+    ]
+    const initialMessage = useMemo<ChatMessage>(() => ({
+        id: "welcome",
+        role: "assistant",
+        content: t("welcome"),
+        suggestions: [
+            { label: t("viewTours"), href: getLocalizedPath(locale, "/packages") },
+            { label: t("readBlog"), href: getLocalizedPath(locale, "/blog") },
+            { label: t("operator"), href: getLocalizedPath(locale, "/contact") },
+        ],
+    }), [locale, t])
     const [messages, setMessages] = useState<ChatMessage[]>([initialMessage])
+
+    useEffect(() => {
+        setMessages([initialMessage])
+    }, [initialMessage])
 
     const apiMessages = useMemo(
         () => messages.map(({ role, content }) => ({ role, content })),
@@ -69,6 +75,7 @@ export default function AvisToursAssistant() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
+                    locale,
                     messages: [...apiMessages, { role: "user", content: cleanText }],
                 }),
             })
@@ -79,7 +86,7 @@ export default function AvisToursAssistant() {
                 role: "assistant",
                 content: typeof payload.message === "string"
                     ? payload.message
-                    : "No pude responder bien esta vez. Intenta con otra pregunta.",
+                    : t("fallbackError"),
                 suggestions: Array.isArray(payload.suggestions) ? payload.suggestions : undefined,
             }
 
@@ -90,7 +97,7 @@ export default function AvisToursAssistant() {
                 {
                     id: `${Date.now()}-assistant-error`,
                     role: "assistant",
-                    content: "No pude responder en este momento. Intenta otra vez en unos segundos.",
+                    content: t("fallbackError"),
                 },
             ])
         } finally {
@@ -104,7 +111,7 @@ export default function AvisToursAssistant() {
                 type="button"
                 onClick={() => setOpen((current) => !current)}
                 className="fixed bottom-5 left-5 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-white shadow-[0_12px_30px_rgba(15,23,42,0.28)] transition hover:bg-slate-800 md:h-14 md:w-14"
-                aria-label={open ? "Cerrar asistente" : "Abrir asistente"}
+                aria-label={open ? t("close") : t("open")}
             >
                 {open ? <X size={22} /> : <MessageCircleMore size={22} />}
             </button>
@@ -116,17 +123,17 @@ export default function AvisToursAssistant() {
                             <div>
                                 <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-green-300">
                                     <Sparkles size={14} />
-                                    Avis Tours IA
+                                    {t("brand")}
                                 </p>
                                 <h2 className="mt-2 text-lg font-semibold">
-                                    Te ayudo a elegir mejor tu paseo
+                                    {t("title")}
                                 </h2>
                             </div>
                             <button
                                 type="button"
                                 onClick={() => setOpen(false)}
                                 className="rounded-md border border-white/15 p-2 text-white/80 transition hover:bg-white/10 hover:text-white"
-                                aria-label="Cerrar asistente"
+                                aria-label={t("close")}
                             >
                                 <X size={18} />
                             </button>
@@ -169,7 +176,7 @@ export default function AvisToursAssistant() {
                             <div className="flex justify-start">
                                 <div className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600 shadow-sm">
                                     <Loader2 size={16} className="animate-spin text-green-500" />
-                                    Pensando la mejor respuesta...
+                                    {t("thinking")}
                                 </div>
                             </div>
                         )}
@@ -199,14 +206,14 @@ export default function AvisToursAssistant() {
                             <input
                                 value={input}
                                 onChange={(event) => setInput(event.target.value)}
-                                placeholder="Pregunta por tours, marea, precios o blogs"
+                                placeholder={t("placeholder")}
                                 className="h-11 flex-1 rounded-md border border-slate-200 bg-slate-50 px-3 text-sm text-slate-700 outline-none transition focus:border-green-400 focus:bg-white"
                             />
                             <button
                                 type="submit"
                                 disabled={loading || input.trim().length === 0}
                                 className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-green-500 text-white transition hover:bg-green-600 disabled:cursor-not-allowed disabled:bg-slate-300"
-                                aria-label="Enviar mensaje"
+                                aria-label={t("send")}
                             >
                                 <Send size={17} />
                             </button>

@@ -2,14 +2,20 @@
 
 import { MapPin, Heart, Star, ArrowRight } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
+import { useLocale, useTranslations } from "next-intl"
 import { formatPrice, getTourDiscount, getTourPricing, type Tour } from "@/data/promotions"
+import { Link } from "@/i18n/navigation"
+import { resolveLocale } from "@/i18n/locales"
+import { useCurrency } from "@/components/currency/CurrencyProvider"
 
 export default function TourCard({ tour }: { tour: Tour }) {
+    const t = useTranslations("TourCard")
+    const locale = useLocale()
+    const { currency } = useCurrency()
     const roundedRating = Math.round(tour.rating)
     const formattedRating = Number.isInteger(tour.rating) ? tour.rating.toFixed(0) : tour.rating.toFixed(1)
     const pricing = getTourPricing(tour)
-    const promotion = getTourDiscount(tour)
+    const promotion = getTourDiscount(tour, resolveLocale(locale))
 
     return (
         <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition p-3 sm:p-4 flex flex-col sm:flex-row gap-4 sm:items-center">
@@ -32,8 +38,8 @@ export default function TourCard({ tour }: { tour: Tour }) {
 
                 {/* CENTER BUTTON */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <Link href={`/promociones/${tour.slug}`} className="bg-white cursor-pointer text-gray-800 px-4 py-2 rounded-md text-sm font-medium shadow hover:bg-green-500 hover:text-white transition">
-                        Ver detalle
+                    <Link href={{ pathname: "/promociones/[slug]", params: { slug: tour.slug } }} className="bg-white cursor-pointer text-gray-800 px-4 py-2 rounded-md text-sm font-medium shadow hover:bg-green-500 hover:text-white transition">
+                        {t("viewDetails")}
                     </Link>
                 </div>
 
@@ -62,7 +68,7 @@ export default function TourCard({ tour }: { tour: Tour }) {
 
                 {/* TITLE */}
                 <h3 className="font-semibold text-base md:text-lg text-gray-800 mt-1 leading-snug">
-                    <Link href={`/promociones/${tour.slug}`} className="hover:text-green-500 transition">
+                    <Link href={{ pathname: "/promociones/[slug]", params: { slug: tour.slug } }} className="hover:text-green-500 transition">
                         {tour.title}
                     </Link>
                 </h3>
@@ -104,33 +110,33 @@ export default function TourCard({ tour }: { tour: Tour }) {
                         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                             {pricing.hasDiscount && (
                                 <span className="text-sm font-medium text-gray-400 line-through">
-                                    {formatPrice(pricing.originalStartingPrice)}
+                                    {formatPrice(pricing.originalStartingPrice, currency)}
                                 </span>
                             )}
                             <div className="text-green-500 font-semibold">
-                                {pricing.isGroupPricing ? "Desde " : ""}
-                                {formatPrice(pricing.startingPrice)}{" "}
-                                <span className="text-gray-500 font-normal">/ persona</span>
+                                {pricing.isGroupPricing ? `${t("from")} ` : ""}
+                                {formatPrice(pricing.startingPrice, currency)}{" "}
+                                <span className="text-gray-500 font-normal">{t("perPerson")}</span>
                             </div>
                         </div>
                         {pricing.isGroupPricing && (
                             <p className="mt-1 flex flex-wrap gap-x-1 text-xs text-gray-500">
-                                <span>Tarifa base del grupo:</span>
+                                <span>{t("groupBase")}</span>
                                 {pricing.hasDiscount && (
                                     <span className="text-gray-400 line-through">
-                                        {formatPrice(pricing.originalTotalPrice)}
+                                        {formatPrice(pricing.originalTotalPrice, currency)}
                                     </span>
                                 )}
                                 <span className={pricing.hasDiscount ? "font-semibold text-red-500" : undefined}>
-                                    {formatPrice(pricing.totalPrice)}
+                                    {formatPrice(pricing.totalPrice, currency)}
                                 </span>
-                                <span>hasta {pricing.maxPeople} personas</span>
+                                <span>{t("upToPeople", { count: pricing.maxPeople ?? 1 })}</span>
                             </p>
                         )}
                     </div>
 
-                    <Link href={`/promociones/${tour.slug}`} className="text-gray-500 text-sm hover:text-green-500 transition flex items-center gap-1">
-                        <span>Consultar</span>
+                    <Link href={{ pathname: "/promociones/[slug]", params: { slug: tour.slug } }} className="text-gray-500 text-sm hover:text-green-500 transition flex items-center gap-1">
+                        <span>{t("ask")}</span>
                         <span className="hidden" aria-hidden="true">
                             Ver más
                         </span>

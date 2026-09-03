@@ -1,0 +1,68 @@
+{
+  "Hero": {
+    "title": "Puerto Pizarro tours and Tumbes mangroves",
+    "description": "Enjoy boat trips through mangroves, islands, crocodiles and Bird Island with a local guide, tide-based coordination and direct WhatsApp booking.",
+    "viewTours": "View tours"
+  },
+  "HomeTours": {
+    "eyebrow": "Puerto Pizarro tours",
+    "title": "Island, mangrove and crocodile tours",
+    "description": "Choose a Puerto Pizarro tour according to your time and budget: islands, birds, mangroves, crocodiles and the mouth of the sea with direct booking."
+  },
+  "HomeSearch": {
+    "eyebrow": "Find your route",
+    "title": "Search Puerto Pizarro tours and guides",
+    "description": "Tell us what you want to experience: mangroves, tides, crocodiles, Bird Island or the mouth of the sea."
+  },
+  "HomeTrust": {
+    "eyebrow": "Puerto Pizarro tours",
+    "title": "Tumbes mangroves, islands, birds and crocodiles",
+    "descriptionOne": "Experience Puerto Pizarro with Avis Tours. Explore the Tumbes mangroves, visit Bird Island and the crocodile breeding centre, and enjoy locally guided trips with departures recommended around the tide.",
+    "descriptionTwo": "Compare routes, base rates and inclusions to choose the right Tumbes tour and book with confidence.",
+    "viewTours": "View available tours",
+    "meetOperator": "Meet the operator",
+    "readGuide": "Read the local guide",
+    "localTitle": "Local guides and coordination",
+    "localDescription": "Organised departures in Puerto Pizarro, with clear information and recommendations for your travel style.",
+    "tideTitle": "Tide-based schedules",
+    "tideDescription": "We coordinate the best time to enjoy mangroves, islands and crocodiles with a more comfortable cruise.",
+    "bookingTitle": "Quick WhatsApp booking",
+    "bookingDescription": "Get a quote, check availability and reserve your tour quickly and directly."
+  },
+  "Tides": {
+    "eyebrow": "Tides in Tumbes",
+    "title": "The tide also sets the pace of your trip",
+    "description": "The tide helps determine the best time to experience Puerto Pizarro. We coordinate your departure based on water levels so you can better enjoy mangroves, islands and birdwatching.",
+    "highTitle": "High tide",
+    "highDescription": "Better cruising through channels and mangroves.",
+    "lowTitle": "Low tide",
+    "lowDescription": "A better view of roots, shores and birds in their natural environment.",
+    "estimated": "Estimated current tide",
+    "chartTitle": "Today's estimated tide",
+    "chartHeight": "Sea level height in metres",
+    "now": "Now",
+    "period": "From - To",
+    "changes": "Changes around",
+    "next": "Next state",
+    "pending": "To be confirmed",
+    "updated": "Reading close to {time} for Avis Tours.",
+    "notice": "This section is an informational guide. Exact tide times change daily and are confirmed when you book a tour.",
+    "source": "Estimate based on marine models. Data: Open-Meteo and DWD.",
+    "high": "High tide",
+    "low": "Low tide",
+    "rising": "Rising",
+    "falling": "Falling",
+    "noData": "No data"
+  },
+  "Testimonials": {
+    "eyebrow": "Experiences",
+    "title": "Travellers who have explored Puerto Pizarro",
+    "description": "Reviews from visitors who have explored islands, mangroves and the mouth of the sea in Tumbes.",
+    "empty": "We'll share new traveller experiences soon."
+  },
+  "HomeFaq": {
+    "eyebrow": "Frequently asked questions",
+    "title": "What travellers ask before booking",
+    "description": "We answer common questions about tides, schedules, trip types and booking so you can plan your Puerto Pizarro visit more confidently."
+  }
+}

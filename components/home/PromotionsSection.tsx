@@ -1,8 +1,12 @@
 import TourCard from "./TourCard";
-import { tours } from "@/data/promotions";
+import { getLocalizedTours } from "@/data/promotions";
+import { resolveLocale } from "@/i18n/locales";
 import { applyTourRating, getTourRatingSummaries } from "@/services/testimonials";
+import { getTranslations } from "next-intl/server";
 
-export default async function ToursSection() {
+export default async function ToursSection({ locale }: { locale: string }) {
+    const t = await getTranslations({ locale, namespace: "HomeTours" })
+    const tours = getLocalizedTours(resolveLocale(locale))
     const ratingSummaries = await getTourRatingSummaries()
     const toursWithRatings = tours.map((tour) => applyTourRating(tour, ratingSummaries))
 
@@ -13,16 +17,16 @@ export default async function ToursSection() {
                 {/* TITLE */}
                 <div className="text-center mb-8 md:mb-10">
                     <span className="text-green-500 font-semibold text-sm uppercase tracking-[0.18em]">
-                        Tours en Puerto Pizarro
+                        {t("eyebrow")}
                     </span>
                     <h2 className="hidden">
                         Paquetes en promoción
                     </h2>
                     <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mt-2">
-                        Tours por islas, manglares y cocodrilos
+                        {t("title")}
                     </h2>
                     <p className="text-sm md:text-base text-gray-500 mt-3 max-w-xl mx-auto leading-7">
-                        Elige un tour en Puerto Pizarro según tu tiempo y presupuesto: islas, aves, manglares, cocodrilos y la boca del mar con reserva directa.
+                        {t("description")}
                     </p>
                 </div>
 

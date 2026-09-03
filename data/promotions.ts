@@ -1,4 +1,7 @@
 import promotions from "./promotions.json"
+import { englishTourTranslations } from "./tour-translations"
+import { defaultLocale, getTranslationLocale, type AppLocale } from "@/i18n/locales"
+import { formatCurrency, type CurrencyCode } from "./currency"
 
 export type TourIcon =
     | "beach"
@@ -42,6 +45,27 @@ export type Tour = {
 
 export const tours = promotions as Tour[]
 
+export type TourLocale = AppLocale
+
+type TourTranslations = Partial<Record<Tour["slug"], Partial<Tour>>>
+
+/**
+ * Cada idioma puede aportar solo los tours que ya fueron revisados. Si falta
+ * una entrada, se conserva el contenido de origen en español.
+ */
+const tourTranslations: Partial<Record<AppLocale, TourTranslations>> = {
+    en: englishTourTranslations,
+}
+
+export function getLocalizedTour(tour: Tour, locale: TourLocale) {
+    const translation = tourTranslations[getTranslationLocale(locale)]?.[tour.slug]
+    return translation ? { ...tour, ...translation } : tour
+}
+
+export function getLocalizedTours(locale: TourLocale) {
+    return tours.map((tour) => getLocalizedTour(tour, locale))
+}
+
 export function getTour(slug: string) {
     return tours.find((tour) => tour.slug === slug)
 }
@@ -71,10 +95,8 @@ function getDiscountPercent(originalPrice: number, currentPrice: number) {
     return Math.max(1, Math.round(((originalPrice - currentPrice) / originalPrice) * 100))
 }
 
-export function formatPrice(value: number) {
-    const safeValue = roundPrice(value)
-
-    return `S/. ${Number.isInteger(safeValue) ? safeValue.toFixed(0) : safeValue.toFixed(2).replace(/0+$/, "").replace(/\.$/, "")}`
+export function formatPrice(value: number, currency?: CurrencyCode) {
+    return formatCurrency(roundPrice(value), currency)
 }
 
 export function getTourStartingPrice(tour: Tour) {
@@ -85,7 +107,7 @@ export function hasGroupPricing(tour: Tour) {
     return Boolean(tour.groupPrice && tour.maxPeople && tour.maxPeople > 1)
 }
 
-export function getTourDiscount(tour: Tour) {
+export function getTourDiscount(tour: Tour, locale: AppLocale = defaultLocale) {
     const originalPrice = hasGroupPricing(tour) ? roundPrice(tour.groupPrice!) : roundPrice(tour.price)
     const discountPrice = getValidDiscountPrice(tour.discountPrice, originalPrice)
 
@@ -104,7 +126,7 @@ export function getTourDiscount(tour: Tour) {
         discountPrice,
         amountOff: roundPrice(originalPrice - discountPrice),
         percent,
-        label: `En Promoción -${percent}%`,
+        label: locale === "en" ? `On sale -${percent}%` : `En Promoción -${percent}%`,
     }
 }
 

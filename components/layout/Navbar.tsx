@@ -2,21 +2,30 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { useLocale, useTranslations } from "next-intl"
+import { useParams } from "next/navigation"
 import { Search, ChevronDown, Menu, X } from "lucide-react"
-
-const navLinks = [
-    { label: "Inicio", href: "/" },
-    { label: "Tours", href: "/packages" },
-    { label: "Blog", href: "/blog" },
-    { label: "Operador", href: "/contact" },
-]
+import { Link, usePathname, useRouter } from "@/i18n/navigation"
+import { appLocales, getLocaleConfig, resolveLocale, type AppLocale } from "@/i18n/locales"
+import { currencyConfig } from "@/data/currency"
+import { currencies, useCurrency } from "@/components/currency/CurrencyProvider"
 
 export default function Navbar() {
+    const t = useTranslations("Navbar")
+    const locale = useLocale()
+    const activeLocale = resolveLocale(locale)
+    const { currency, setCurrency } = useCurrency()
     const pathname = usePathname()
+    const router = useRouter()
+    const params = useParams()
     const [scrolled, setScrolled] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
+    const navLinks = [
+        { label: t("home"), href: "/" },
+        { label: t("tours"), href: "/packages" },
+        { label: t("blog"), href: "/blog" },
+        { label: t("operator"), href: "/contact" },
+    ] as const
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,6 +38,14 @@ export default function Navbar() {
 
     const isActive = (path: string) => pathname === path || (path !== "/" && pathname.startsWith(path))
     const closeMenu = () => setMenuOpen(false)
+    const changeLocale = (nextLocale: AppLocale) => {
+        if (nextLocale === activeLocale) return
+
+        // pathname y params proceden del mismo router; next-intl conserva la ruta actual.
+        // @ts-expect-error Los parámetros corresponden al pathname actual en tiempo de ejecución.
+        router.replace({ pathname, params }, { locale: nextLocale })
+        closeMenu()
+    }
 
     const linkClass = (path: string) => `
     transition-colors duration-300
@@ -129,7 +146,31 @@ export default function Navbar() {
             ${scrolled ? "text-black" : "text-white"}
           `}
                 >
-                    <Link href="/packages" aria-label="Buscar tours y blogs">
+                    <select
+                        value={activeLocale}
+                        onChange={(event) => changeLocale(resolveLocale(event.target.value))}
+                        aria-label={t("language")}
+                        className={`bg-transparent text-xs font-semibold tracking-wide outline-none transition hover:text-green-500 ${scrolled ? "text-black" : "text-white"}`}
+                    >
+                        {appLocales.map((language) => (
+                            <option key={language} value={language} className="text-slate-900">
+                                {getLocaleConfig(language).shortLabel}
+                            </option>
+                        ))}
+                    </select>
+                    <select
+                        value={currency}
+                        onChange={(event) => setCurrency(event.target.value as typeof currency)}
+                        aria-label={t("currency")}
+                        className={`bg-transparent text-xs font-semibold tracking-wide outline-none transition hover:text-green-500 ${scrolled ? "text-black" : "text-white"}`}
+                    >
+                        {currencies.map((code) => (
+                            <option key={code} value={code} className="text-slate-900">
+                                {currencyConfig[code].shortLabel}
+                            </option>
+                        ))}
+                    </select>
+                    <Link href="/packages" aria-label={t("search")}>
                         <Search size={20} className="cursor-pointer hover:text-green-500 transition" />
                     </Link>
                     {/* <User size={20} className="cursor-pointer hover:text-green-500 transition" /> */}
@@ -137,7 +178,7 @@ export default function Navbar() {
 
                 <button
                     type="button"
-                    aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+                    aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
                     aria-expanded={menuOpen}
                     onClick={() => setMenuOpen((open) => !open)}
                     className={`
@@ -156,14 +197,45 @@ export default function Navbar() {
             <div
                 className={`
           lg:hidden mx-4 overflow-hidden rounded-lg bg-white shadow-[0_18px_60px_rgba(15,23,42,0.18)] transition-all duration-300
-          ${menuOpen ? "max-h-[520px] opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"}
+          ${menuOpen ? "max-h-[600px] opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"}
         `}
             >
                 <div className="p-3">
                     <Link href="/packages" onClick={closeMenu} className="flex items-center gap-3 border-b border-slate-100 px-3 py-3 text-gray-700">
                         <Search size={18} className="text-green-500" />
-                        <span className="text-sm">Buscar tours y blogs</span>
+                        <span className="text-sm">{t("search")}</span>
                     </Link>
+
+                    <div className="mt-3 grid grid-cols-2 gap-2 rounded-md bg-slate-50 p-1" aria-label={t("language")}>
+                        {appLocales.map((language) => (
+                            <button
+                                key={language}
+                                type="button"
+                                onClick={() => changeLocale(language)}
+                                className={`rounded px-3 py-2 text-xs font-semibold transition ${activeLocale === language
+                                    ? "bg-white text-green-600 shadow-sm"
+                                    : "text-slate-500 hover:text-green-600"
+                                    }`}
+                            >
+                                {getLocaleConfig(language).label}
+                            </button>
+                        ))}
+                    </div>
+
+                    <label className="mt-3 flex items-center justify-between gap-3 rounded-md bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-600">
+                        <span>{t("currency")}</span>
+                        <select
+                            value={currency}
+                            onChange={(event) => setCurrency(event.target.value as typeof currency)}
+                            className="bg-transparent text-xs font-semibold text-green-600 outline-none"
+                        >
+                            {currencies.map((code) => (
+                                <option key={code} value={code}>
+                                    {currencyConfig[code].label} ({currencyConfig[code].shortLabel})
+                                </option>
+                            ))}
+                        </select>
+                    </label>
 
                     <nav className="py-3">
                         {navLinks.map((link) => (
@@ -175,11 +247,11 @@ export default function Navbar() {
 
                         <div className="mt-2 rounded-md bg-slate-50 px-4 py-3">
                             <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
-                                Más información <ChevronDown size={16} />
+                                {t("moreInformation")} <ChevronDown size={16} />
                             </div>
                             <div className="mt-3 grid gap-2 text-sm text-gray-500">
-                                <Link href="/blog/mareas-en-puerto-pizarro" onClick={closeMenu} className="hover:text-green-600 transition">Mareas</Link>
-                                <Link href="/blog/isla-de-los-pajaros-y-manglares" onClick={closeMenu} className="hover:text-green-600 transition">Manglares</Link>
+                                <Link href={{ pathname: "/blog/[slug]", params: { slug: "mareas-en-puerto-pizarro" } }} onClick={closeMenu} className="hover:text-green-600 transition">Mareas</Link>
+                                <Link href={{ pathname: "/blog/[slug]", params: { slug: "isla-de-los-pajaros-y-manglares" } }} onClick={closeMenu} className="hover:text-green-600 transition">Manglares</Link>
                             </div>
                         </div>
                     </nav>
@@ -189,7 +261,7 @@ export default function Navbar() {
                         onClick={closeMenu}
                         className="flex items-center justify-center rounded-md bg-green-500 px-4 py-3 text-sm font-semibold text-white hover:bg-green-600 transition"
                     >
-                        Planificar viaje
+                        {t("planTrip")}
                     </Link>
                 </div>
             </div>

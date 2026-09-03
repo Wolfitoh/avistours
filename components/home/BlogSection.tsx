@@ -1,31 +1,40 @@
 import Image from "next/image"
-import Link from "next/link"
 import { ArrowRight, CalendarDays, MapPin } from "lucide-react"
-import { blogPosts } from "@/data/blogs"
+import { getTranslations } from "next-intl/server"
+import { Link } from "@/i18n/navigation"
+import { getLocalizedBlogPosts } from "@/data/blogs"
+import { resolveLocale } from "@/i18n/locales"
 
-export default function BlogSection() {
+export default async function BlogSection({ locale }: { locale: string }) {
+    const t = await getTranslations({ locale, namespace: "Blog" })
+    const posts = getLocalizedBlogPosts(resolveLocale(locale)).slice(0, 3)
+
+    if (posts.length === 0) {
+        return null
+    }
+
     return (
         <section className="py-20 bg-white">
             <div className="max-w-6xl mx-auto px-4">
                 <div className="text-center mb-12">
                     <span className="text-green-500 font-semibold text-sm uppercase tracking-[0.18em]">
-                        Guía local
+                        {t("homeEyebrow")}
                     </span>
                     <h2 className="text-3xl font-semibold text-gray-800 mt-3">
-                        Guía para visitar Puerto Pizarro y sus manglares
+                        {t("homeTitle")}
                     </h2>
                     <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
-                        Mareas, rutas por manglares, horarios y recomendaciones para elegir mejor tu tour en Puerto Pizarro, Tumbes.
+                        {t("homeDescription")}
                     </p>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-3">
-                    {blogPosts.map((post) => (
+                    {posts.map((post) => (
                         <article
                             key={post.slug}
                             className="group bg-white rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden"
                         >
-                            <Link href={`/blog/${post.slug}`} className="block relative h-60 overflow-hidden">
+                            <Link href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }} className="block relative h-60 overflow-hidden">
                                 <Image
                                     src={post.image}
                                     alt={post.title}
@@ -52,7 +61,7 @@ export default function BlogSection() {
                                 </div>
 
                                 <h3 className="text-lg font-semibold text-gray-800 mt-4 leading-snug">
-                                    <Link href={`/blog/${post.slug}`} className="hover:text-green-500 transition">
+                                    <Link href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }} className="hover:text-green-500 transition">
                                         {post.title}
                                     </Link>
                                 </h3>
@@ -62,10 +71,10 @@ export default function BlogSection() {
                                 </p>
 
                                 <Link
-                                    href={`/blog/${post.slug}`}
+                                    href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }}
                                     className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-gray-700 hover:text-green-500 transition"
                                 >
-                                    Leer más
+                                    {t("readMore")}
                                     <ArrowRight size={16} />
                                 </Link>
                             </div>

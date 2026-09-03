@@ -1,7 +1,10 @@
-import { blogPosts } from "@/data/blogs"
-import { getTourPricing, tours } from "@/data/promotions"
+import { getLocalizedBlogPosts } from "@/data/blogs"
+import { getLocalizedTours, getTourPricing } from "@/data/promotions"
 import { getBlogSearchTerms, getTourSearchTerms } from "@/data/seo"
 import { siteConfig } from "@/data/site"
+import { getLocaleMessages } from "@/i18n/messages"
+import { defaultLocale, getTranslationLocale, type AppLocale } from "@/i18n/locales"
+import { getLocalizedPath } from "@/i18n/urls"
 import { getTideSummary } from "@/services/tides"
 
 export type AssistantTurn = {
@@ -18,6 +21,36 @@ export type AssistantReply = {
     message: string
     suggestions: AssistantSuggestion[]
     usedFallback: boolean
+}
+
+type AssistantLocale = AppLocale
+
+function getCopy(locale: AssistantLocale) {
+    return getLocaleMessages(locale).Assistant.server
+}
+
+function format(template: string, values: Record<string, string | number>) {
+    return Object.entries(values).reduce(
+        (result, [key, value]) => result.replaceAll(`{${key}}`, String(value)),
+        template,
+    )
+}
+
+function getLocalizedTideStatus(status: string | null | undefined, locale: AssistantLocale) {
+    if (!status) {
+        return status ?? getCopy(locale).noData
+    }
+
+    const translations: Partial<Record<AppLocale, Record<string, string>>> = {
+        en: {
+        "Marea alta": "High tide",
+        "Marea baja": "Low tide",
+        Llenando: "Rising",
+        Secando: "Falling",
+        },
+    }
+
+    return translations[getTranslationLocale(locale)]?.[status] ?? status
 }
 
 function normalize(value: string) {
@@ -51,11 +84,19 @@ function scoreText(query: string, values: string[]) {
     return score
 }
 
-function getRelevantTours(query: string) {
-    return tours
+function getRelevantTours(query: string, locale: AssistantLocale) {
+    return getLocalizedTours(locale)
         .map((tour) => ({
             tour,
-            score: scoreText(query, getTourSearchTerms(tour)),
+            score: scoreText(query, [
+                ...getTourSearchTerms(tour),
+                tour.title,
+                tour.description,
+                tour.location,
+                ...tour.features,
+                ...tour.activities,
+                ...tour.includes,
+            ]),
         }))
         .filter((item) => item.score > 0)
         .sort((left, right) => right.score - left.score)
@@ -63,8 +104,8 @@ function getRelevantTours(query: string) {
         .map((item) => item.tour)
 }
 
-function getRelevantBlogs(query: string) {
-    return blogPosts
+function getRelevantBlogs(query: string, locale: AssistantLocale) {
+    return getLocalizedBlogPosts(locale)
         .map((post) => ({
             post,
             score: scoreText(query, getBlogSearchTerms(post)),
@@ -75,8 +116,9 @@ function getRelevantBlogs(query: string) {
         .map((item) => item.post)
 }
 
-function buildTourSnippet(slug: string) {
-    const tour = tours.find((item) => item.slug === slug)
+function buildTourSnippet(slug: string, locale: AssistantLocale) {
+    const copy = getCopy(locale)
+    const tour = getLocalizedTours(locale).find((item) => item.slug === slug)
 
     if (!tour) {
         return null
@@ -86,20 +128,21 @@ function buildTourSnippet(slug: string) {
 
     return [
         `- ${tour.title}`,
-        `  Duracion: ${tour.duration}`,
-        `  Ubicacion: ${tour.location}`,
-        `  Descripcion: ${tour.description}`,
-        `  Incluye: ${tour.includes.join(", ")}`,
-        `  Actividades: ${tour.activities.join(", ")}`,
+        `  ${copy.tourDuration}: ${tour.duration}`,
+        `  ${copy.tourLocation}: ${tour.location}`,
+        `  ${copy.tourDescription}: ${tour.description}`,
+        `  ${copy.tourIncludes}: ${tour.includes.join(", ")}`,
+        `  ${copy.tourActivities}: ${tour.activities.join(", ")}`,
         pricing.isGroupPricing
-            ? `  Precio: grupo desde S/. ${pricing.totalPrice} total o desde S/. ${pricing.startingPrice} por persona hasta ${pricing.maxPeople} personas`
-            : `  Precio: desde S/. ${pricing.perPersonPrice} por persona`,
-        `  URL: /promociones/${tour.slug}`,
+            ? `  ${copy.tourPrice}: ${format(copy.priceGroup, { starting: pricing.startingPrice, total: pricing.totalPrice })}`
+            : `  ${copy.tourPrice}: ${format(copy.pricePerson, { price: pricing.perPersonPrice })}`,
+        `  URL: ${getLocalizedPath(locale, "/promociones/[slug]", { slug: tour.slug })}`,
     ].join("\n")
 }
 
-function buildBlogSnippet(slug: string) {
-    const post = blogPosts.find((item) => item.slug === slug)
+function buildBlogSnippet(slug: string, locale: AssistantLocale) {
+    const copy = getCopy(locale)
+    const post = getLocalizedBlogPosts(locale).find((item) => item.slug === slug)
 
     if (!post) {
         return null
@@ -107,28 +150,30 @@ function buildBlogSnippet(slug: string) {
 
     return [
         `- ${post.title}`,
-        `  Categoria: ${post.category}`,
-        `  Extracto: ${post.excerpt}`,
-        `  Ubicacion: ${post.location}`,
-        `  URL: /blog/${post.slug}`,
+        `  ${copy.blogCategory}: ${post.category}`,
+        `  ${copy.blogExcerpt}: ${post.excerpt}`,
+        `  ${copy.tourLocation}: ${post.location}`,
+        `  URL: ${getLocalizedPath(locale, "/blog/[slug]", { slug: post.slug })}`,
     ].join("\n")
 }
 
-function buildSuggestions(query: string, tourSlugs: string[], blogSlugs: string[]) {
+function buildSuggestions(query: string, tourSlugs: string[], blogSlugs: string[], locale: AssistantLocale) {
+    const copy = getCopy(locale)
+    const assistant = getLocaleMessages(locale).Assistant
     const suggestions: AssistantSuggestion[] = []
 
     for (const slug of tourSlugs) {
-        const tour = tours.find((item) => item.slug === slug)
+        const tour = getLocalizedTours(locale).find((item) => item.slug === slug)
         if (tour) {
             suggestions.push({
                 label: tour.title,
-                href: `/promociones/${tour.slug}`,
+                href: getLocalizedPath(locale, "/promociones/[slug]", { slug: tour.slug }),
             })
         }
     }
 
     for (const slug of blogSlugs) {
-        const post = blogPosts.find((item) => item.slug === slug)
+        const post = getLocalizedBlogPosts(locale).find((item) => item.slug === slug)
         if (post) {
             suggestions.push({
                 label: post.title,
@@ -137,27 +182,28 @@ function buildSuggestions(query: string, tourSlugs: string[], blogSlugs: string[
         }
     }
 
-    if (normalize(query).includes("contact") || normalize(query).includes("reserv")) {
+    if (normalize(query).includes("contact") || normalize(query).includes("reserv") || normalize(query).includes("book")) {
         suggestions.push({
-            label: "Contacto",
-            href: "/contact",
+            label: copy.contact,
+            href: getLocalizedPath(locale, "/contact"),
         })
     }
 
     if (suggestions.length === 0) {
         suggestions.push(
-            { label: "Ver tours", href: "/packages" },
-            { label: "Leer blog", href: "/blog" },
-            { label: "Contactar", href: "/contact" },
+            { label: assistant.viewTours, href: getLocalizedPath(locale, "/packages") },
+            { label: assistant.readBlog, href: getLocalizedPath(locale, "/blog") },
+            { label: copy.contactUs, href: getLocalizedPath(locale, "/contact") },
         )
     }
 
     return suggestions.slice(0, 4)
 }
 
-async function buildContext(query: string) {
-    const relevantTours = getRelevantTours(query)
-    const relevantBlogs = getRelevantBlogs(query)
+async function buildContext(query: string, locale: AssistantLocale) {
+    const copy = getCopy(locale)
+    const relevantTours = getRelevantTours(query, locale)
+    const relevantBlogs = getRelevantBlogs(query, locale)
     const tide = await getTideSummary()
 
     return {
@@ -165,41 +211,54 @@ async function buildContext(query: string) {
         relevantBlogs,
         tide,
         context: [
-            `Marca: ${siteConfig.name}`,
-            `Descripcion: ${siteConfig.description}`,
-            `Telefono: ${siteConfig.phone}`,
-            `Email: ${siteConfig.email}`,
-            `Direccion: ${siteConfig.address}`,
+            `${copy.contextBrand}: ${siteConfig.name}`,
+            `${copy.contextDescription}: ${siteConfig.description}`,
+            `${copy.contextPhone}: ${siteConfig.phone}`,
+            `${copy.contextEmail}: ${siteConfig.email}`,
+            `${copy.contextAddress}: ${siteConfig.address}`,
             "",
-            "Marea actual informativa:",
-            `- Estado: ${tide.status}`,
-            `- Proceso: ${tide.processPeriod ?? "Por confirmar"}`,
-            `- Cambia aprox.: ${tide.nextChangeTime ?? "Por confirmar"}`,
-            `- Siguiente estado: ${tide.nextStatus ?? "Por confirmar"}`,
+            `${copy.contextTide}:`,
+            `- ${copy.contextStatus}: ${getLocalizedTideStatus(tide.status, locale)}`,
+            `- ${copy.contextProcess}: ${tide.processPeriod ?? copy.noData}`,
+            `- ${copy.contextNext}: ${tide.nextChangeTime ?? copy.noData}`,
+            `- ${copy.contextFollowing}: ${getLocalizedTideStatus(tide.nextStatus, locale)}`,
             "",
-            "Tours relevantes:",
-            ...(relevantTours.map((tour) => buildTourSnippet(tour.slug)).filter(Boolean) as string[]),
+            `${copy.contextTours}:`,
+            ...(relevantTours.map((tour) => buildTourSnippet(tour.slug, locale)).filter(Boolean) as string[]),
             "",
-            "Blogs relevantes:",
-            ...(relevantBlogs.map((post) => buildBlogSnippet(post.slug)).filter(Boolean) as string[]),
+            `${copy.contextBlogs}:`,
+            ...(relevantBlogs.map((post) => buildBlogSnippet(post.slug, locale)).filter(Boolean) as string[]),
         ].join("\n"),
     }
 }
 
-function buildFallbackResponse(query: string, context: Awaited<ReturnType<typeof buildContext>>): AssistantReply {
+function buildFallbackResponse(
+    query: string,
+    context: Awaited<ReturnType<typeof buildContext>>,
+    locale: AssistantLocale,
+): AssistantReply {
+    const copy = getCopy(locale)
     const lowerQuery = normalize(query)
     const suggestions = buildSuggestions(
         query,
         context.relevantTours.map((tour) => tour.slug),
         context.relevantBlogs.map((post) => post.slug),
+        locale,
     )
 
-    if (lowerQuery.includes("marea")) {
+    if (lowerQuery.includes("marea") || lowerQuery.includes("tide")) {
+        const tideStatus = getLocalizedTideStatus(context.tide.status, locale)
+        const tideProcess = context.tide.processPeriod ?? copy.noData
+        const tideTime = context.tide.nextChangeTime ?? copy.noData
+        const tideNextStatus = getLocalizedTideStatus(context.tide.nextStatus, locale)
+        const direction = context.tide.nextStatus
+            ? format(copy.towards, { status: tideNextStatus })
+            : ""
         const message = [
-            `Ahora mismo la referencia informativa de marea para Puerto Pizarro es: ${context.tide.status}.`,
-            `Proceso actual: ${context.tide.processPeriod ?? "por confirmar"}.`,
-            `Siguiente cambio aproximado: ${context.tide.nextChangeTime ?? "por confirmar"}${context.tide.nextStatus ? ` hacia ${context.tide.nextStatus.toLowerCase()}` : ""}.`,
-            "Tómalo como guía para planificar tu paseo; el horario exacto siempre conviene confirmarlo antes de zarpar.",
+            format(copy.tideNow, { status: tideStatus }),
+            format(copy.tideProcess, { value: tideProcess }),
+            format(copy.tideNext, { time: tideTime, direction }),
+            copy.tideNote,
         ].join(" ")
 
         return { message, suggestions, usedFallback: true }
@@ -209,18 +268,18 @@ function buildFallbackResponse(query: string, context: Awaited<ReturnType<typeof
         const lines = context.relevantTours.map((tour) => {
             const pricing = getTourPricing(tour)
             const priceText = pricing.isGroupPricing
-                ? `desde S/. ${pricing.startingPrice} por persona o S/. ${pricing.totalPrice} el grupo`
-                : `desde S/. ${pricing.perPersonPrice} por persona`
+                ? format(copy.priceGroup, { starting: pricing.startingPrice, total: pricing.totalPrice })
+                : format(copy.pricePerson, { price: pricing.perPersonPrice })
 
             return `- ${tour.title}: ${tour.duration}, ${priceText}. ${tour.description}`
         })
 
-        const intro = lowerQuery.includes("recom")
-            ? "Te recomendaría estas opciones según lo que preguntas:"
-            : "Estas son las opciones más cercanas a lo que buscas:"
+        const intro = lowerQuery.includes("recom") || lowerQuery.includes("recommend")
+            ? copy.tourRecommendation
+            : copy.tourMatches
 
         return {
-            message: [intro, ...lines, "Si quieres, también puedo orientarte según tiempo, presupuesto o si viajas en familia."].join("\n"),
+            message: [intro, ...lines, copy.tourFollowUp].join("\n"),
             suggestions,
             usedFallback: true,
         }
@@ -229,9 +288,9 @@ function buildFallbackResponse(query: string, context: Awaited<ReturnType<typeof
     if (context.relevantBlogs.length > 0) {
         return {
             message: [
-                "No encontré un tour exacto para esa consulta, pero sí contenido útil para orientarte:",
+                copy.blogIntro,
                 ...context.relevantBlogs.map((post) => `- ${post.title}: ${post.excerpt}`),
-                "Si me dices si buscas precio, marea, cocodrilos, isla o un paseo corto, te afino mejor la recomendación.",
+                copy.blogFollowUp,
             ].join("\n"),
             suggestions,
             usedFallback: true,
@@ -239,7 +298,7 @@ function buildFallbackResponse(query: string, context: Awaited<ReturnType<typeof
     }
 
     return {
-        message: "Puedo ayudarte con tours, precios, marea actual, recomendaciones de paseo, blogs locales y contacto de Avis Tours. Prueba preguntándome por manglares, Isla de los Pájaros, cocodrilos, marea o cómo reservar.",
+        message: copy.generic,
         suggestions,
         usedFallback: true,
     }
@@ -269,7 +328,7 @@ function extractResponseText(payload: unknown) {
     return text
 }
 
-async function getOpenAiReply(messages: AssistantTurn[], contextText: string) {
+async function getOpenAiReply(messages: AssistantTurn[], contextText: string, locale: AssistantLocale) {
     const apiKey = process.env.OPENAI_API_KEY
 
     if (!apiKey) {
@@ -284,12 +343,12 @@ async function getOpenAiReply(messages: AssistantTurn[], contextText: string) {
                 {
                     type: "input_text",
                     text: [
-                        "Eres el asistente virtual de Avis Tours, una web de tours en Puerto Pizarro, Tumbes.",
-                        "Responde en espanol, con tono cercano y profesional.",
-                        "Usa solo el contexto proporcionado. Si algo no esta claro, dilo con honestidad y ofrece contacto por WhatsApp o la pagina de contacto.",
-                        "No inventes precios, horarios fijos de marea, disponibilidad ni politicas no mencionadas.",
-                        "Cuando hables de marea, aclarala como referencia informativa y no como dato nautico exacto.",
-                        "Si el usuario pide recomendaciones, sugiere el tour o blog mas adecuado y explica por que.",
+                        "You are the virtual assistant for Avis Tours, a Puerto Pizarro, Tumbes tour website.",
+                        getCopy(locale).languageInstruction,
+                        "Use only the provided context. If something is unclear, say so honestly and offer WhatsApp or the contact page.",
+                        "Do not invent prices, fixed tide schedules, availability or policies not stated in the context.",
+                        "When discussing tides, describe them as an informational reference, never as exact nautical data.",
+                        "When the user asks for recommendations, suggest the most suitable tour or blog and explain why.",
                         "",
                         "Contexto del sitio:",
                         contextText,
@@ -331,18 +390,19 @@ async function getOpenAiReply(messages: AssistantTurn[], contextText: string) {
     return extractResponseText(payload)
 }
 
-export async function generateAssistantReply(messages: AssistantTurn[]) {
+export async function generateAssistantReply(messages: AssistantTurn[], locale: AssistantLocale = defaultLocale) {
     const lastUserMessage = [...messages].reverse().find((message) => message.role === "user")
     const query = lastUserMessage?.content.trim() ?? ""
-    const context = await buildContext(query)
+    const context = await buildContext(query, locale)
     const suggestions = buildSuggestions(
         query,
         context.relevantTours.map((tour) => tour.slug),
         context.relevantBlogs.map((post) => post.slug),
+        locale,
     )
 
     try {
-        const openAiReply = await getOpenAiReply(messages, context.context)
+        const openAiReply = await getOpenAiReply(messages, context.context, locale)
 
         if (openAiReply) {
             return {
@@ -355,5 +415,5 @@ export async function generateAssistantReply(messages: AssistantTurn[]) {
         console.error("Could not generate OpenAI assistant reply", error)
     }
 
-    return buildFallbackResponse(query, context)
+    return buildFallbackResponse(query, context, locale)
 }

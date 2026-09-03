@@ -3,11 +3,16 @@
 import { useState } from "react"
 import type { FormEvent } from "react"
 import { CheckCircle2, Loader2, Star } from "lucide-react"
-import { tours } from "@/data/promotions"
+import { useLocale, useTranslations } from "next-intl"
+import { getLocalizedTours } from "@/data/promotions"
+import { resolveLocale } from "@/i18n/locales"
 
 type SubmitState = "idle" | "submitting" | "success" | "error"
 
 export default function TestimonialFeedbackForm() {
+    const locale = resolveLocale(useLocale())
+    const t = useTranslations("FeedbackForm")
+    const tours = getLocalizedTours(locale)
     const [rating, setRating] = useState(5)
     const [status, setStatus] = useState<SubmitState>("idle")
     const [message, setMessage] = useState("")
@@ -38,19 +43,17 @@ export default function TestimonialFeedbackForm() {
                 body: JSON.stringify(payload),
             })
 
-            const data = await response.json()
-
             if (!response.ok) {
-                throw new Error(data.message ?? "No pudimos guardar tu comentario.")
+                throw new Error(t("genericError"))
             }
 
             setStatus("success")
-            setMessage(data.message)
+            setMessage(t("success"))
             form.reset()
             setRating(5)
-        } catch (error) {
+        } catch {
             setStatus("error")
-            setMessage(error instanceof Error ? error.message : "No pudimos guardar tu comentario.")
+            setMessage(t("genericError"))
         }
     }
 
@@ -58,41 +61,41 @@ export default function TestimonialFeedbackForm() {
         <form onSubmit={handleSubmit} className="">
             <div>
                 <span className="text-sm font-semibold uppercase tracking-[0.18em] text-green-500">
-                    Tu experiencia
+                    {t("eyebrow")}
                 </span>
                 <h2 className="mt-3 text-2xl font-semibold text-slate-900">
-                    Califica el paseo que realizaste
+                    {t("title")}
                 </h2>
                 <p className="mt-3 text-sm leading-6 text-slate-500">
-                    Tu comentario ayuda a otros viajeros y se publicara en la web luego de revisarlo.
+                    {t("description")}
                 </p>
             </div>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <label className="text-sm font-medium text-slate-700">
-                    Nombre
+                    {t("name")}
                     <input
                         name="clientName"
                         required
                         maxLength={70}
-                        placeholder="Tu nombre"
+                        placeholder={t("namePlaceholder")}
                         className="mt-2 h-11 w-full rounded-md border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-green-400 focus:bg-white"
                     />
                 </label>
 
                 <label className="text-sm font-medium text-slate-700">
-                    Ciudad o referencia
+                    {t("origin")}
                     <input
                         name="clientOrigin"
                         required
                         maxLength={80}
-                        placeholder="Ej. Visitante de Lima"
+                        placeholder={t("originPlaceholder")}
                         className="mt-2 h-11 w-full rounded-md border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-green-400 focus:bg-white"
                     />
                 </label>
 
                 <label className="text-sm font-medium text-slate-700">
-                    Tour realizado
+                    {t("tour")}
                     <select
                         name="tourSlug"
                         required
@@ -107,7 +110,7 @@ export default function TestimonialFeedbackForm() {
                 </label>
 
                 <label className="text-sm font-medium text-slate-700">
-                    Fecha del paseo
+                    {t("date")}
                     <input
                         name="visitDate"
                         type="date"
@@ -118,7 +121,7 @@ export default function TestimonialFeedbackForm() {
 
             <div className="mt-5">
                 <span className="text-sm font-medium text-slate-700">
-                    Calificacion
+                    {t("rating")}
                 </span>
                 <div className="mt-2 flex gap-2">
                     {[1, 2, 3, 4, 5].map((item) => (
@@ -127,7 +130,7 @@ export default function TestimonialFeedbackForm() {
                             type="button"
                             onClick={() => setRating(item)}
                             className="rounded-md p-1 text-yellow-400 transition hover:bg-yellow-50"
-                            aria-label={`Calificar con ${item} estrellas`}
+                            aria-label={t("ratingAria", { count: item })}
                         >
                             <Star size={28} fill={item <= rating ? "currentColor" : "none"} />
                         </button>
@@ -136,13 +139,13 @@ export default function TestimonialFeedbackForm() {
             </div>
 
             <label className="mt-5 block text-sm font-medium text-slate-700">
-                Comentario
+                {t("comment")}
                 <textarea
                     name="comment"
                     required
                     maxLength={700}
                     rows={5}
-                    placeholder="Cuéntanos qué te gustó del recorrido, la atención o las paradas del tour."
+                    placeholder={t("commentPlaceholder")}
                     className="mt-2 w-full rounded-md border border-slate-200 bg-slate-50 px-3 py-3 text-sm outline-none transition focus:border-green-400 focus:bg-white"
                 />
             </label>
@@ -160,7 +163,7 @@ export default function TestimonialFeedbackForm() {
                 className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-green-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-600 disabled:cursor-not-allowed disabled:opacity-70"
             >
                 {status === "submitting" && <Loader2 size={16} className="animate-spin" />}
-                Enviar comentario
+                {status === "submitting" ? t("submitting") : t("submit")}
             </button>
         </form>
     )

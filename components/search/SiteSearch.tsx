@@ -3,12 +3,13 @@
 import { useMemo, useState } from "react"
 import type { FormEvent } from "react"
 import Image from "next/image"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { useLocale, useTranslations } from "next-intl"
 import { ArrowRight, BookOpen, MapPin, Search, ShipWheel } from "lucide-react"
-import { blogPosts } from "@/data/blogs"
-import { tours } from "@/data/promotions"
+import { getLocalizedBlogPosts } from "@/data/blogs"
+import { getLocalizedTours } from "@/data/promotions"
 import { getBlogSearchTerms, getTourSearchTerms } from "@/data/seo"
+import { Link, useRouter } from "@/i18n/navigation"
+import { resolveLocale } from "@/i18n/locales"
 
 type SiteSearchProps = {
     initialQuery?: string
@@ -20,30 +21,11 @@ type SiteSearchProps = {
 type SearchResult = {
     title: string
     description: string
-    href: string
+    slug: string
     image: string
-    type: "Tour" | "Blog"
+    type: "tour" | "blog"
     keywords: string
 }
-
-const results: SearchResult[] = [
-    ...tours.map((tour) => ({
-        title: tour.title,
-        description: tour.description,
-        href: `/promociones/${tour.slug}`,
-        image: tour.image,
-        type: "Tour" as const,
-        keywords: getTourSearchTerms(tour).join(" "),
-    })),
-    ...blogPosts.map((post) => ({
-        title: post.title,
-        description: post.excerpt,
-        href: `/blog/${post.slug}`,
-        image: post.image,
-        type: "Blog" as const,
-        keywords: getBlogSearchTerms(post).join(" "),
-    })),
-]
 
 function normalize(value: string) {
     return value
@@ -58,9 +40,36 @@ export default function SiteSearch({
     placeholder = "Busca paquetes, mareas, islas o blogs",
     showSuggestions = true,
 }: SiteSearchProps) {
+    const locale = useLocale()
+    const activeLocale = resolveLocale(locale)
+    const t = useTranslations("Search")
     const router = useRouter()
     const [query, setQuery] = useState(initialQuery)
     const cleanQuery = query.trim()
+
+    const results = useMemo<SearchResult[]>(() => {
+        const tours = getLocalizedTours(activeLocale)
+        const tourResults = tours.map((tour) => ({
+            title: tour.title,
+            description: tour.description,
+            slug: tour.slug,
+            image: tour.image,
+            type: "tour" as const,
+            keywords: getTourSearchTerms(tour).join(" "),
+        }))
+
+        return [
+            ...tourResults,
+            ...getLocalizedBlogPosts(activeLocale).map((post) => ({
+                title: post.title,
+                description: post.excerpt,
+                slug: post.slug,
+                image: post.image,
+                type: "blog" as const,
+                keywords: getBlogSearchTerms(post).join(" "),
+            })),
+        ]
+    }, [activeLocale])
 
     const suggestions = useMemo(() => {
         if (!cleanQuery) {
@@ -72,7 +81,7 @@ export default function SiteSearch({
         return results
             .filter((item) => normalize(item.keywords).includes(term))
             .slice(0, 5)
-    }, [cleanQuery])
+    }, [cleanQuery, results])
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -82,7 +91,7 @@ export default function SiteSearch({
             return
         }
 
-        router.push(`/packages?q=${encodeURIComponent(cleanQuery)}`)
+        router.push({ pathname: "/packages", query: { q: cleanQuery } })
     }
 
     return (
@@ -109,7 +118,7 @@ export default function SiteSearch({
                         type="submit"
                         className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-green-500 px-5 text-sm font-semibold text-white transition hover:bg-green-600"
                     >
-                        Buscar
+                        {t("submit")}
                         <ArrowRight size={16} />
                     </button>
                 </div>
@@ -119,11 +128,11 @@ export default function SiteSearch({
                 <div className="mt-4 rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
                     <div className="flex items-center justify-between gap-4 px-1">
                         <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                            {cleanQuery ? "Resultados sugeridos" : "Busquedas populares"}
+                            {cleanQuery ? t("suggested") : t("popular")}
                         </span>
                         {cleanQuery && (
                             <span className="text-xs text-slate-400">
-                                {suggestions.length} encontrados
+                                {t("found", { count: suggestions.length })}
                             </span>
                         )}
                     </div>
@@ -131,12 +140,14 @@ export default function SiteSearch({
                     <div className="mt-3 grid gap-2 md:grid-cols-2">
                         {suggestions.length > 0 ? (
                             suggestions.map((item) => {
-                                const Icon = item.type === "Tour" ? ShipWheel : BookOpen
+                                const Icon = item.type === "tour" ? ShipWheel : BookOpen
 
                                 return (
                                     <Link
-                                        key={`${item.type}-${item.href}`}
-                                        href={item.href}
+                                        key={`${item.type}-${item.slug}`}
+                                        href={item.type === "tour"
+                                            ? { pathname: "/promociones/[slug]", params: { slug: item.slug } }
+                                            : { pathname: "/blog/[slug]", params: { slug: item.slug } }}
                                         className="group flex gap-3 rounded-md p-2 transition hover:bg-slate-50"
                                     >
                                         <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-md">
@@ -153,7 +164,7 @@ export default function SiteSearch({
                                         <div className="min-w-0 flex-1">
                                             <span className="inline-flex items-center gap-1 text-xs font-semibold text-green-600">
                                                 <Icon size={13} />
-                                                {item.type}
+                                                {item.type === "tour" ? t("tour") : t("blog")}
                                             </span>
                                             <h3 className="truncate text-sm font-semibold text-slate-900 transition group-hover:text-green-600">
                                                 {item.title}
@@ -168,7 +179,7 @@ export default function SiteSearch({
                         ) : (
                             <div className="md:col-span-2 flex items-start gap-3 rounded-md bg-slate-50 p-4 text-sm text-slate-500">
                                 <MapPin size={18} className="mt-0.5 shrink-0 text-green-500" />
-                                No encontramos resultados. Prueba con: manglares, cocodrilos, marea o isla.
+                                {t("noResults")}
                             </div>
                         )}
                     </div>

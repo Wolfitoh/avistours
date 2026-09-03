@@ -1,10 +1,11 @@
-"use client"
-
 import Link from "next/link"
 import { Clock, Mail, MapPin, Phone } from "lucide-react"
+import { getTranslations } from "next-intl/server"
 import { companyProfile } from "@/data/company"
 
-export default function TopBar() {
+export default async function TopBar({ locale }: { locale: string }) {
+    const t = await getTranslations({ locale, namespace: "TopBar" })
+
     return (
         <div className="hidden md:block w-full bg-[#0b132b] text-white/70 text-[13px]">
             <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
@@ -13,7 +14,7 @@ export default function TopBar() {
                 <div className="flex items-center gap-6">
                     <div className="flex items-center gap-2">
                         <Clock size={16} className="text-green-500" />
-                        <span>{companyProfile.schedule}</span>
+                        <span>{t("schedule")}</span>
                     </div>
 
                     <div className="flex items-center gap-2">

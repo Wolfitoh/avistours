@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 // Avoid shipping Next's feature-detected legacy shim in modern browser bundles.
 const emptyPolyfillModule = "./utils/empty-polyfill.js";
@@ -59,4 +60,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
+
+export default withNextIntl(nextConfig);

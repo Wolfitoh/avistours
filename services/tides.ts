@@ -5,11 +5,22 @@ export type TideApiResponse = {
     }
 }
 
-type TideExtreme = {
+export type TideExtreme = {
     type: "high" | "low"
     time: string
     height: number
     index: number
+}
+
+export type TidePoint = {
+    time: string
+    height: number
+}
+
+export type TideChartData = {
+    points: TidePoint[]
+    extremes: TideExtreme[]
+    currentTime: string
 }
 
 export type TideSummary = {
@@ -19,6 +30,7 @@ export type TideSummary = {
     nextStatus?: "Marea alta" | "Marea baja"
     nextChangeTime?: string
     updatedAt?: string
+    chart?: TideChartData
 }
 
 const PUERTO_PIZARRO_COORDS = {
@@ -77,6 +89,14 @@ function buildTideSummary(data: TideApiResponse): TideSummary {
 
     const extremes = findExtremes(times, levels)
     const currentTime = toLimaDate(times[currentIndex])
+    const chartDate = times[currentIndex].slice(0, 10)
+    const chartPoints = times.reduce<TidePoint[]>((points, time, index) => {
+        if (time.startsWith(chartDate)) {
+            points.push({ time, height: levels[index] })
+        }
+
+        return points
+    }, [])
     const currentHeight = levels[currentIndex]
     const previousExtreme = [...extremes].reverse().find((item) => toLimaDate(item.time) < currentTime)
     const nextExtreme = extremes.find((item) => toLimaDate(item.time) > currentTime)
@@ -127,6 +147,13 @@ function buildTideSummary(data: TideApiResponse): TideSummary {
         nextStatus,
         nextChangeTime,
         updatedAt: formatHour(times[currentIndex]),
+        chart: chartPoints.length >= 3
+            ? {
+                points: chartPoints,
+                extremes: extremes.filter((item) => item.time.startsWith(chartDate)),
+                currentTime: now.toISOString(),
+            }
+            : undefined,
     }
 }
 

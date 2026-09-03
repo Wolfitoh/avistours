@@ -1,0 +1,31 @@
+{
+  "FeedbackPage": {
+    "eyebrow": "Formulario para clientes",
+    "title": "Cuéntanos cómo fue tu experiencia con Avis Tours",
+    "description": "Este enlace no está pensado para buscadores. Lo compartimos con clientes que ya navegaron Puerto Pizarro para recoger comentarios reales.",
+    "improve": "Tu calificación ayuda a mejorar la ruta, la atención y la información previa al paseo.",
+    "review": "Revisamos cada comentario antes de publicarlo en la sección de testimonios.",
+    "thanks": "Gracias por viajar",
+    "sidebarTitle": "Tus palabras pueden aparecer en nuestra web",
+    "sidebarDescription": "Usaremos tu nombre, referencia de ciudad, tour realizado, comentario y calificación. Si prefieres que no se publique algún dato, indícalo dentro del comentario."
+  },
+  "FeedbackForm": {
+    "eyebrow": "Tu experiencia",
+    "title": "Califica el paseo que realizaste",
+    "description": "Tu comentario ayuda a otros viajeros y se publicará en la web luego de revisarlo.",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "origin": "Ciudad o referencia",
+    "originPlaceholder": "Ej. Visitante de Lima",
+    "tour": "Tour realizado",
+    "date": "Fecha del paseo",
+    "rating": "Calificación",
+    "ratingAria": "Calificar con {count} estrellas",
+    "comment": "Comentario",
+    "commentPlaceholder": "Cuéntanos qué te gustó del recorrido, la atención o las paradas del tour.",
+    "submit": "Enviar comentario",
+    "submitting": "Enviando comentario",
+    "genericError": "No pudimos guardar tu comentario.",
+    "success": "Gracias por compartir tu experiencia. La publicaremos luego de revisarla."
+  }
+}
