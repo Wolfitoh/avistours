@@ -1,0 +1,26 @@
+# Avis Tours
+
+> Operador turístico local de Puerto Pizarro, Tumbes, Perú. Ofrece paseos en bote por manglares, islas, avistamiento de aves, cocodrilos y la boca del mar, con reserva directa por WhatsApp.
+
+## Información principal
+
+- Sitio web: https://avistours.com
+- Ubicación: Muelle turístico de Puerto Pizarro, Tumbes, Perú.
+- Atención: lunes a domingo, de 8:00 a. m. a 5:00 p. m.
+- WhatsApp: +51 959 828 235
+- Correo: avistourssac@gmail.com
+
+## Páginas principales
+
+- [Inicio](https://avistours.com/): información general y recomendaciones para visitar Puerto Pizarro.
+- [Tours](https://avistours.com/packages): rutas, precios base, actividades e inclusiones.
+- [Guías locales](https://avistours.com/blog): recomendaciones sobre manglares, mareas e islas.
+- [Contacto y reservas](https://avistours.com/contact): consulta disponibilidad y reserva por WhatsApp.
+
+## Para consultas sobre reservas
+
+Los horarios de salida se confirman con Avis Tours antes de reservar, según disponibilidad, clima y condiciones de marea. Los precios y actividades incluidos pueden variar según el tour seleccionado.
+
+## Idiomas
+
+El sitio está disponible en español e inglés. La versión en inglés se encuentra bajo `/en`.
