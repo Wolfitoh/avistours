@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState, type ComponentType } from "react"
+import { useTranslations } from "next-intl"
 import { Star, Quote } from "lucide-react"
 import Image from "next/image"
 import type { PublicTestimonial } from "@/data/testimonials"
@@ -10,6 +11,7 @@ type TestimonialsCarouselProps = {
 }
 
 export default function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps) {
+    const t = useTranslations("Testimonials")
     const containerRef = useRef<HTMLDivElement>(null)
     const [shouldLoadCarousel, setShouldLoadCarousel] = useState(false)
     const [SwiperCarousel, setSwiperCarousel] = useState<ComponentType<TestimonialsCarouselProps> | null>(null)
@@ -64,13 +66,16 @@ export default function TestimonialsCarousel({ testimonials }: TestimonialsCarou
             {SwiperCarousel ? (
                 <SwiperCarousel testimonials={testimonials} />
             ) : (
-                <TestimonialsStaticPreview testimonials={testimonials} />
+                <TestimonialsStaticPreview testimonials={testimonials} emptyMessage={t("empty")} />
             )}
         </div>
     )
 }
 
-function TestimonialsStaticPreview({ testimonials }: TestimonialsCarouselProps) {
+function TestimonialsStaticPreview({
+    testimonials,
+    emptyMessage,
+}: TestimonialsCarouselProps & { emptyMessage: string }) {
     return (
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial) => (
@@ -126,7 +131,7 @@ function TestimonialsStaticPreview({ testimonials }: TestimonialsCarouselProps) 
 
             {testimonials.length === 0 && (
                 <div className="rounded-lg border border-slate-200 bg-white p-8 text-center text-sm text-gray-500 md:col-span-2 lg:col-span-3">
-                    Pronto compartiremos nuevas experiencias de viajeros.
+                    {emptyMessage}
                 </div>
             )}
         </div>

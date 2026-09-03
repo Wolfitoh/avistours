@@ -1,0 +1,21 @@
+{
+  "Faqs": {
+    "home": [
+      { "question": "¿Cuál es el mejor horario para visitar los manglares de Puerto Pizarro?", "answer": "El mejor horario depende de la marea del día. En Avis Tours confirmamos la ventana recomendada antes de zarpar para que el recorrido por manglares, islas o cocodrilos se adapte mejor al estero." },
+      { "question": "¿Qué incluye un tour por Puerto Pizarro?", "answer": "Según el tour, puedes visitar manglares, Isla de los Pájaros, el zoocriadero de cocodrilos, islas cercanas y la boca del mar. Cada tour detalla las actividades, el tiempo estimado y lo que incluye." },
+      { "question": "¿Hay tours cortos y también un recorrido completo?", "answer": "Sí. Tenemos opciones breves para visitar una isla o los manglares, y también el tour completo por Puerto Pizarro para quienes quieren aprovechar más paradas en una sola salida." },
+      { "question": "¿Cómo reservar un paseo en Puerto Pizarro?", "answer": "Puedes reservar por WhatsApp o desde la página del operador. Lo ideal es escribir con la fecha tentativa, el número de personas y el tour que te interesa para confirmar la disponibilidad y la marea." }
+    ],
+    "packages": [
+      { "question": "¿Cuánto cuesta un tour por los manglares de Puerto Pizarro?", "answer": "El precio varía según la ruta y la cantidad de personas. En los tours mostramos el valor base y, cuando corresponde, el cálculo por persona para grupos de hasta 10 viajeros." },
+      { "question": "¿Qué diferencia hay entre el tour completo y los paseos cortos?", "answer": "El tour completo recorre más paradas, como islas, manglares, cocodrilos y la boca del mar. Los paseos cortos se enfocan en una combinación puntual, por ejemplo, la Isla de los Pájaros y los manglares." },
+      { "question": "¿Los tours en Puerto Pizarro son aptos para familias?", "answer": "Sí. Muchas rutas son ideales para familias, parejas o grupos pequeños. La mejor opción depende del tiempo disponible, la edad de los viajeros y el tipo de experiencia que buscan." },
+      { "question": "¿Se puede reservar el tour por WhatsApp?", "answer": "Sí. Todas las rutas de Avis Tours tienen acceso rápido por WhatsApp para consultar la disponibilidad, los horarios, la marea y la coordinación del punto de encuentro." }
+    ],
+    "contact": [
+      { "question": "¿Dónde está el punto de encuentro para los tours?", "answer": "Coordinamos cerca del muelle turístico de Puerto Pizarro. Antes de la salida confirmamos la ubicación exacta y la hora recomendada según la marea y el clima." },
+      { "question": "¿Con cuánta anticipación debo reservar?", "answer": "Para fines de semana o feriados conviene reservar con anticipación. Si viajas entre semana, aun así es recomendable escribir antes para confirmar la embarcación y el horario." },
+      { "question": "¿Atienden todos los días?", "answer": "Sí. Atendemos todos los días, pero los horarios de salida pueden variar de acuerdo con la marea, el clima y la disponibilidad del recorrido." }
+    ]
+  }
+}

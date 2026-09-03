@@ -1,0 +1,31 @@
+{
+  "FeedbackPage": {
+    "eyebrow": "Customer feedback form",
+    "title": "Tell us about your experience with Avis Tours",
+    "description": "This link is not intended for search engines. We share it with guests who have already explored Puerto Pizarro to collect genuine feedback.",
+    "improve": "Your rating helps us improve the route, service and information we share before the trip.",
+    "review": "We review every comment before publishing it in the testimonials section.",
+    "thanks": "Thank you for travelling with us",
+    "sidebarTitle": "Your words may appear on our website",
+    "sidebarDescription": "We use your name, city reference, tour, comment and rating. If you would rather not publish any detail, please say so in your comment."
+  },
+  "FeedbackForm": {
+    "eyebrow": "Your experience",
+    "title": "Rate the trip you took",
+    "description": "Your comment helps other travellers and may be published on the website after review.",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "origin": "City or reference",
+    "originPlaceholder": "For example: visitor from Lima",
+    "tour": "Tour taken",
+    "date": "Trip date",
+    "rating": "Rating",
+    "ratingAria": "Rate with {count} stars",
+    "comment": "Comment",
+    "commentPlaceholder": "Tell us what you liked about the route, service or stops on the tour.",
+    "submit": "Send feedback",
+    "submitting": "Sending feedback",
+    "genericError": "We couldn't save your feedback.",
+    "success": "Thank you for sharing your experience. We will publish it after review."
+  }
+}

@@ -1,28 +1,34 @@
 import { NextResponse } from "next/server"
 import { generateAssistantReply, type AssistantTurn } from "@/services/assistant"
+import { getLocaleMessages } from "@/i18n/messages"
+import { defaultLocale, resolveLocale, type AppLocale } from "@/i18n/locales"
 
 export const runtime = "nodejs"
 
 export async function POST(request: Request) {
+    let locale: AppLocale = defaultLocale
+
     try {
         const body = await request.json()
         const messages = sanitizeMessages(body.messages)
+        locale = resolveLocale(typeof body.locale === "string" ? body.locale : undefined)
+        const assistantCopy = getLocaleMessages(locale).Assistant
 
         if (messages.length === 0) {
             return NextResponse.json(
-                { message: "Envía una consulta para ayudarte mejor." },
+                { message: assistantCopy.fallbackError },
                 { status: 400 },
             )
         }
 
-        const reply = await generateAssistantReply(messages)
+        const reply = await generateAssistantReply(messages, locale)
 
         return NextResponse.json(reply)
     } catch (error) {
         console.error("Could not process assistant request", error)
 
         return NextResponse.json(
-            { message: "No pude responder en este momento. Inténtalo nuevamente en unos segundos." },
+            { message: getLocaleMessages(locale).Assistant.fallbackError },
             { status: 500 },
         )
     }

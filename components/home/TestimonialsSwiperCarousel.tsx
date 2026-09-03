@@ -2,6 +2,7 @@
 
 import { Star, Quote } from "lucide-react"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Pagination } from "swiper/modules"
 import type { PublicTestimonial } from "@/data/testimonials"
@@ -14,10 +15,11 @@ type TestimonialsSwiperCarouselProps = {
 }
 
 export default function TestimonialsSwiperCarousel({ testimonials }: TestimonialsSwiperCarouselProps) {
+    const t = useTranslations("Testimonials")
     if (testimonials.length === 0) {
         return (
             <div className="mt-14 rounded-lg border border-slate-200 bg-white p-8 text-center text-sm text-gray-500">
-                Pronto compartiremos nuevas experiencias de viajeros.
+                {t("empty")}
             </div>
         )
     }

@@ -1,4 +1,6 @@
 import { getTour, type Tour } from "./promotions"
+import { englishBlogTranslations, type BlogPostTranslation } from "./blog-translations"
+import { getTranslationLocale, type AppLocale } from "@/i18n/locales"
 
 export type BlogContentBlock =
     | {
@@ -1099,6 +1101,34 @@ const blogConnections: Record<string, BlogConnection> = {
 
 export function getBlogPost(slug: string) {
     return blogPosts.find((post) => post.slug === slug)
+}
+
+export type BlogLocale = AppLocale
+
+/**
+ * Un idioma puede publicar solo los artículos que ya fueron traducidos y
+ * revisados. Los artículos ausentes no se muestran para ese idioma.
+ */
+const blogTranslations: Partial<Record<AppLocale, Partial<Record<string, BlogPostTranslation>>>> = {
+    en: englishBlogTranslations,
+}
+
+export function getLocalizedBlogPost(post: BlogPost, locale: BlogLocale) {
+    const translationLocale = getTranslationLocale(locale)
+
+    if (translationLocale === "es") {
+        return post
+    }
+
+    const translation = blogTranslations[translationLocale]?.[post.slug]
+
+    return translation ? { ...post, ...translation } : undefined
+}
+
+export function getLocalizedBlogPosts(locale: BlogLocale) {
+    return blogPosts
+        .map((post) => getLocalizedBlogPost(post, locale))
+        .filter((post): post is BlogPost => Boolean(post))
 }
 
 export function getBlogRelatedTours(post: BlogPost): Tour[] {

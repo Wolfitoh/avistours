@@ -1,0 +1,68 @@
+{
+  "Hero": {
+    "title": "Tours en Puerto Pizarro y manglares de Tumbes",
+    "description": "Vive paseos en bote por manglares, islas, cocodrilos y la Isla de los Pájaros con guía local, coordinación por marea y reserva directa por WhatsApp.",
+    "viewTours": "Ver tours"
+  },
+  "HomeTours": {
+    "eyebrow": "Tours en Puerto Pizarro",
+    "title": "Tours por islas, manglares y cocodrilos",
+    "description": "Elige un tour en Puerto Pizarro según tu tiempo y presupuesto: islas, aves, manglares, cocodrilos y la boca del mar con reserva directa."
+  },
+  "HomeSearch": {
+    "eyebrow": "Encuentra tu ruta",
+    "title": "Busca tours y guías de Puerto Pizarro",
+    "description": "Escribe lo que quieres vivir: manglares, mareas, cocodrilos, Isla de los Pájaros o boca del mar."
+  },
+  "HomeTrust": {
+    "eyebrow": "Tours en Puerto Pizarro",
+    "title": "Manglares de Tumbes, islas, aves y cocodrilos",
+    "descriptionOne": "Vive Puerto Pizarro con Avis Tours. Recorre los manglares de Tumbes, visita la Isla de los Pájaros, el zoocriadero de cocodrilos y disfruta paseos guiados por locales, con salidas recomendadas según la marea.",
+    "descriptionTwo": "Compara rutas, precios base e inclusiones para elegir el tour ideal en Tumbes y reservar con más seguridad.",
+    "viewTours": "Ver tours disponibles",
+    "meetOperator": "Conoce al operador",
+    "readGuide": "Leer guía local",
+    "localTitle": "Guías y coordinación local",
+    "localDescription": "Salidas organizadas en Puerto Pizarro, con información clara y recomendaciones según tu tipo de viaje.",
+    "tideTitle": "Horarios según marea",
+    "tideDescription": "Coordinamos la mejor hora para disfrutar manglares, islas y cocodrilos con una navegación más cómoda.",
+    "bookingTitle": "Reserva rápida por WhatsApp",
+    "bookingDescription": "Cotiza, consulta disponibilidad y separa tu tour de forma rápida y directa."
+  },
+  "Tides": {
+    "eyebrow": "Mareas en Tumbes",
+    "title": "La marea también decide el ritmo del paseo",
+    "description": "La marea define el mejor momento para vivir Puerto Pizarro. Coordinamos tu salida según el nivel del agua para que disfrutes mejor los manglares, las islas y el avistamiento de aves.",
+    "highTitle": "Marea alta",
+    "highDescription": "Mejor navegación por canales y manglares.",
+    "lowTitle": "Marea baja",
+    "lowDescription": "Mejor vista de raíces, orillas y aves en su entorno natural.",
+    "estimated": "Marea actual estimada",
+    "chartTitle": "Marea estimada de hoy",
+    "chartHeight": "Altura del mar en metros",
+    "now": "Ahora",
+    "period": "Desde - Hasta",
+    "changes": "Cambia aprox.",
+    "next": "Siguiente estado",
+    "pending": "Por confirmar",
+    "updated": "Lectura cercana a las {time} h para Avis Tours.",
+    "notice": "Esta sección es una guía informativa. Los horarios exactos de marea cambian cada día y se validan al reservar el tour.",
+    "source": "Estimación basada en modelos marinos. Datos: Open-Meteo y DWD.",
+    "high": "Marea alta",
+    "low": "Marea baja",
+    "rising": "Llenando",
+    "falling": "Secando",
+    "noData": "Sin datos"
+  },
+  "Testimonials": {
+    "eyebrow": "Experiencias",
+    "title": "Viajeros que ya navegaron Puerto Pizarro",
+    "description": "Opiniones de visitantes que recorrieron islas, manglares y la boca del mar en Tumbes.",
+    "empty": "Pronto compartiremos nuevas experiencias de viajeros."
+  },
+  "HomeFaq": {
+    "eyebrow": "Preguntas frecuentes",
+    "title": "Lo que más consultan antes de reservar",
+    "description": "Resolvemos dudas comunes sobre marea, horarios, tipos de paseo y reserva para que tu visita a Puerto Pizarro llegue mejor encaminada."
+  }
+}

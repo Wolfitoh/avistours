@@ -1,0 +1,21 @@
+{
+  "Faqs": {
+    "home": [
+      { "question": "What is the best time to visit the Puerto Pizarro mangroves?", "answer": "The best time depends on that day’s tide. At Avis Tours, we confirm the recommended window before departure so your mangrove, island or crocodile route suits the estuary conditions better." },
+      { "question": "What does a Puerto Pizarro tour include?", "answer": "Depending on the tour, you can visit mangroves, Bird Island, the crocodile breeding centre, nearby islands and the mouth of the sea. Each tour details its activities, estimated time and inclusions." },
+      { "question": "Are there short tours as well as a complete route?", "answer": "Yes. We have short options for visiting an island or the mangroves, as well as a complete Puerto Pizarro tour for travellers who want more stops in one departure." },
+      { "question": "How do I book a Puerto Pizarro trip?", "answer": "You can book on WhatsApp or through the operator page. Send your preferred date, number of travellers and the tour you are interested in so we can confirm availability and the tide." }
+    ],
+    "packages": [
+      { "question": "How much does a Puerto Pizarro mangrove tour cost?", "answer": "The price varies by route and number of travellers. Tours show the base price and, where relevant, the per-person calculation for groups of up to 10 travellers." },
+      { "question": "What is the difference between the complete tour and shorter trips?", "answer": "The complete tour covers more stops, such as islands, mangroves, crocodiles and the mouth of the sea. Shorter trips focus on a particular combination, such as Bird Island and the mangroves." },
+      { "question": "Are Puerto Pizarro tours suitable for families?", "answer": "Yes. Many routes are ideal for families, couples and small groups. The best option depends on available time, travellers’ ages and the experience they are looking for." },
+      { "question": "Can I book a tour on WhatsApp?", "answer": "Yes. Every Avis Tours route has a quick WhatsApp option to ask about availability, schedules, the tide and meeting-point coordination." }
+    ],
+    "contact": [
+      { "question": "Where is the meeting point for tours?", "answer": "We coordinate close to the Puerto Pizarro tourist pier. Before departure, we confirm the exact location and recommended time according to the tide and weather." },
+      { "question": "How far in advance should I book?", "answer": "For weekends or holidays, booking ahead is advisable. If you travel on a weekday, it is still best to message us first to confirm the boat and departure time." },
+      { "question": "Are you available every day?", "answer": "Yes. We are available every day, though departure times can vary with the tide, weather and route availability." }
+    ]
+  }
+}
