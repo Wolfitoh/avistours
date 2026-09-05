@@ -5,7 +5,7 @@ export default async function SearchSection({ locale }: { locale: string }) {
     const t = await getTranslations({ locale, namespace: "HomeSearch" })
 
     return (
-        <section className="bg-slate-50 py-10 md:py-14">
+        <section className="overflow-x-clip bg-slate-50 py-10 md:py-14">
             <div className="max-w-6xl mx-auto px-4">
                 <div className="mx-auto max-w-4xl text-center">
                     <span className="text-sm font-semibold uppercase tracking-[0.18em] text-green-500">

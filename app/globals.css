@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+html,
+body {
+  overflow-x: clip;
+}
+
 /* 1. TEMA CLARO (Default) */
 @plugin "daisyui/theme" {
   name: "light";

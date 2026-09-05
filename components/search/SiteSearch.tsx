@@ -95,13 +95,13 @@ export default function SiteSearch({
     }
 
     return (
-        <div className={className}>
+        <div className={`min-w-0 w-full ${className}`}>
             <form
                 onSubmit={handleSubmit}
-                className="rounded-lg border border-slate-200 bg-white p-2 shadow-[0_20px_60px_rgba(15,23,42,0.10)]"
+                className="min-w-0 max-w-full rounded-lg border border-slate-200 bg-white p-2 shadow-[0_20px_60px_rgba(15,23,42,0.10)]"
             >
-                <div className="flex flex-col gap-3 md:flex-row md:items-center">
-                    <label className="relative flex-1">
+                <div className="flex min-w-0 flex-col gap-3 md:flex-row md:items-center">
+                    <label className="relative min-w-0 flex-1">
                         <Search
                             size={18}
                             className="absolute left-4 top-1/2 -translate-y-1/2 text-green-500"
@@ -110,7 +110,7 @@ export default function SiteSearch({
                             value={query}
                             onChange={(event) => setQuery(event.target.value)}
                             placeholder={placeholder}
-                            className="h-12 w-full rounded-md border border-slate-200 bg-slate-50 pl-11 pr-4 text-sm text-slate-800 outline-none transition focus:border-green-400 focus:bg-white"
+                            className="h-12 min-w-0 w-full rounded-md border border-slate-200 bg-slate-50 pl-11 pr-4 text-sm text-slate-800 outline-none transition focus:border-green-400 focus:bg-white"
                         />
                     </label>
 
@@ -125,8 +125,8 @@ export default function SiteSearch({
             </form>
 
             {showSuggestions && (
-                <div className="mt-4 rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
-                    <div className="flex items-center justify-between gap-4 px-1">
+                <div className="mt-4 min-w-0 max-w-full overflow-hidden rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
+                    <div className="flex min-w-0 items-center justify-between gap-4 px-1">
                         <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
                             {cleanQuery ? t("suggested") : t("popular")}
                         </span>
@@ -137,7 +137,7 @@ export default function SiteSearch({
                         )}
                     </div>
 
-                    <div className="mt-3 grid gap-2 md:grid-cols-2">
+                    <div className="mt-3 grid min-w-0 gap-2 md:grid-cols-2">
                         {suggestions.length > 0 ? (
                             suggestions.map((item) => {
                                 const Icon = item.type === "tour" ? ShipWheel : BookOpen
@@ -148,7 +148,7 @@ export default function SiteSearch({
                                         href={item.type === "tour"
                                             ? { pathname: "/promociones/[slug]", params: { slug: item.slug } }
                                             : { pathname: "/blog/[slug]", params: { slug: item.slug } }}
-                                        className="group flex gap-3 rounded-md p-2 transition hover:bg-slate-50"
+                                        className="group flex min-w-0 max-w-full gap-3 rounded-md p-2 transition hover:bg-slate-50"
                                     >
                                         <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-md">
                                             <Image
@@ -177,7 +177,7 @@ export default function SiteSearch({
                                 )
                             })
                         ) : (
-                            <div className="md:col-span-2 flex items-start gap-3 rounded-md bg-slate-50 p-4 text-sm text-slate-500">
+                            <div className="md:col-span-2 flex min-w-0 items-start gap-3 rounded-md bg-slate-50 p-4 text-sm text-slate-500">
                                 <MapPin size={18} className="mt-0.5 shrink-0 text-green-500" />
                                 {t("noResults")}
                             </div>
